@@ -1,0 +1,22 @@
+<div>
+    <p>movies works!</p>
+    <div class="schedule">
+        <p>{{schedule(0)}}</p>
+        <p>{{schedule(1)}}</p>
+        <p>{{schedule(2)}}</p>
+        <p>{{schedule(3)}}</p>
+        <p>{{schedule(4)}}</p>
+        <p>{{schedule(5)}}</p>
+    </div>
+</div>
+<div *ngFor="let movie of movies" class="single-movie">
+    <img src="{{movie.imageSource}}" class="single-movie--image">
+    <div>
+        <h1>{{movie.title}}</h1>
+        <p>big dicks</p>
+        <a href="">would you like to know more?</a>
+        <div *ngFor="let hour of movie.viewings">
+            <p>{{hour}}</p>
+        </div>
+    </div>
+</div>
