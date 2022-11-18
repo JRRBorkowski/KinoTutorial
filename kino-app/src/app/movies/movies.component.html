@@ -11,12 +11,22 @@
 </div>
 <div *ngFor="let movie of movies" class="single-movie">
     <img src="{{movie.imageSource}}" class="single-movie--image">
-    <div>
+    <p *ngIf="movie.premiere" class="premiere">Premiere</p>
+    <div class="single-movie--body">
+        <div>
         <h1>{{movie.title}}</h1>
-        <p>big dicks</p>
+        <p>{{movie.shortDescription}}</p>
+        <p>{{movie.description}}</p>
         <a href="">would you like to know more?</a>
-        <div *ngFor="let hour of movie.viewings">
-            <p>{{hour}}</p>
+        <div class="viewings">
+            <p *ngFor="let hour of movie.viewings">{{hour}}</p>
+        </div>
+    </div>
+        <div class="single-movie--rating">
+            <p>Ocena</p>
+            <h2>1</h2>
+            <button>buttcheek</button>
+            <button>buttocks</button>
         </div>
     </div>
 </div>

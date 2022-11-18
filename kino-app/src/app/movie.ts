@@ -3,5 +3,6 @@ export interface Movie {
     description: string,
     shortDescription: string,
     imageSource: string,
-    viewings: string[]
+    viewings: string[],
+    premiere: boolean
 }
