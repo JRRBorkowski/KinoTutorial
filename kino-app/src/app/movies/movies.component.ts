@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Movies } from '../mock-movies';
+import { Movie } from '../movie';
+import { MoviesService } from './movies.service';
 
 @Component({
   selector: 'app-movies',
@@ -8,16 +9,40 @@ import { Movies } from '../mock-movies';
 })
 export class MoviesComponent implements OnInit {
 
-  movies = Movies;
+  movies: Movie[] = [];
 
-      schedule(day : number) {
-      let date = new Date();
-      var nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+day)
-        return `${nextweek.getDate()}/${nextweek.getMonth()}`;
+  clickedMore : boolean = false;
+  tellMeMore() {
+    this.clickedMore === false ? this.clickedMore = true : this.clickedMore = false;
+  }
+  
+
+  week: string[] = [];
+
+  getSchedule(day : number) {
+    let date = new Date();
+    for (let i = 0; i < day; i++){
+      let nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+i);
+      this.week.push(`${nextweek.getDate()}/${nextweek.getMonth()}`);
     }
+  }
+  getScore(scores: number[]) {
+    let score = scores.reduce((a, b) => a + b, 0) / scores.length;
+    return Math.round(score);
+  }
+  getMovies():void {
+    this.moviesService.getMovies().subscribe(movies => this.movies = movies)
+  }
+  selectMovie() {
+    
+  }
 
-  constructor() { }
+
+
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
+    this.getMovies();
+    this.getSchedule(7);
   }
 }

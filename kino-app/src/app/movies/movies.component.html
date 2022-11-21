@@ -1,12 +1,7 @@
 <div>
     <p>movies works!</p>
     <div class="schedule">
-        <p>{{schedule(0)}}</p>
-        <p>{{schedule(1)}}</p>
-        <p>{{schedule(2)}}</p>
-        <p>{{schedule(3)}}</p>
-        <p>{{schedule(4)}}</p>
-        <p>{{schedule(5)}}</p>
+        <p *ngFor="let day of week">{{day}}</p>
     </div>
 </div>
 <div *ngFor="let movie of movies" class="single-movie">
@@ -15,16 +10,16 @@
     <div class="single-movie--body">
         <div>
         <h1>{{movie.title}}</h1>
-        <p>{{movie.shortDescription}}</p>
-        <p>{{movie.description}}</p>
-        <a href="">would you like to know more?</a>
+        <p *ngIf="!clickedMore">{{movie.shortDescription}}</p>
+        <p *ngIf="clickedMore">{{movie.description}}</p>
+        <a (click)="tellMeMore()">would you like to know more?</a>
         <div class="viewings">
-            <p *ngFor="let hour of movie.viewings">{{hour}}</p>
+            <a *ngFor="let hour of movie.viewings" href="/reservation">{{hour}}</a>
         </div>
     </div>
         <div class="single-movie--rating">
             <p>Ocena</p>
-            <h2>1</h2>
+            <h2>{{getScore(movie.score)}}</h2>
             <button>buttcheek</button>
             <button>buttocks</button>
         </div>
