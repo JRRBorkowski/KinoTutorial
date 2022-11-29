@@ -5,4 +5,5 @@ export interface Movie {
     imageSource: string,
     viewings: string[],
     premiere: boolean
+    score: number[]
 }

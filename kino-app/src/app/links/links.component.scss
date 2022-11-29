@@ -3,4 +3,27 @@
     justify-content: space-between;
     border-bottom: 5px solid burlywood;
     align-items: center;
+    .buttons {
+        display: flex;
+        align-content: center;
+        list-style: none;
+        gap: 1em;
+        .shopcart{
+            padding: 0.3em 1em;
+            border: 3px solid gray;
+            border-radius: 15px;
+        }
+        .login {
+            display: flex;
+            flex-direction: column;
+            border: 3px solid gray;
+            overflow: visible;
+            list-style: none;
+            padding: 0.3em 1em;
+            border-radius: 15px;
+            li {
+                border-top: 1px solid gray;
+            }
+        }
+    }
 }

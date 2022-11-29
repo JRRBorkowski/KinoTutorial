@@ -1,0 +1,29 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 5px solid burlywood;
+    .links {
+        display: flex;
+        gap: 1em;
+        li {
+            list-style: none;
+            padding-right: 1em;
+            border-right: 1px solid black;
+        }
+        :last-child {
+            border-right: none;
+        }
+    }
+    .media {
+        display: flex;
+        gap: 1em;
+        list-style: none;
+    }
+}
+
+.watermark {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: rgba(0, 0, 0, 0.715)
+}

@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { MoviesComponent } from './movies/movies.component';
 import { LinksComponent } from './links/links.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     LoginComponent,
     MoviesComponent,
     LinksComponent,
-    ReservationComponent
+    ReservationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

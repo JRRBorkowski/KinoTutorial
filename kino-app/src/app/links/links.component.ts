@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinksComponent implements OnInit {
 
+  isClicked: boolean = false
+
+  showList() {
+    this.isClicked === false ? this.isClicked = true : this.isClicked = false;
+  }
+
+  getUser() {
+  }
   constructor() { }
 
   ngOnInit(): void {

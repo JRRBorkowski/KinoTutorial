@@ -16,13 +16,15 @@ export class MoviesComponent implements OnInit {
     this.clickedMore === false ? this.clickedMore = true : this.clickedMore = false;
   }
   
+  weekNumber: number = 0;
 
   week: string[] = [];
 
   getSchedule(day : number) {
+    this.week = []
     let date = new Date();
-    for (let i = 0; i < day; i++){
-      let nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+i);
+    for (let i = 0; i < 7; i++){
+      let nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+(i + day));
       this.week.push(`${nextweek.getDate()}/${nextweek.getMonth()}`);
     }
   }
@@ -33,8 +35,9 @@ export class MoviesComponent implements OnInit {
   getMovies():void {
     this.moviesService.getMovies().subscribe(movies => this.movies = movies)
   }
-  selectMovie() {
-    
+  changeWeek(weekDelta: number) {
+    this.weekNumber = this.weekNumber + weekDelta;
+    this.getSchedule(this.weekNumber)
   }
 
 
@@ -43,6 +46,6 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    this.getSchedule(7);
+    this.getSchedule(this.weekNumber);
   }
 }

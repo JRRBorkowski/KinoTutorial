@@ -1,0 +1,33 @@
+.movietitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    .movieimage {
+        max-width: 10%;
+    }
+}
+
+.selector {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .tickets {
+        list-style: none;
+    }
+
+}
+
+.column{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    justify-content: center;
+    gap: 3px;
+    padding: 0;
+    .seat {
+        border: 5px solid antiquewhite;
+        font-size: large;
+        padding: 0.5em;
+    }
+}

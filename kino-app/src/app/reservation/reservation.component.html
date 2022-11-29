@@ -1,1 +1,19 @@
-<p>reservation works!</p>
+<div class="movietitle">
+    <p>Selected movie: <span>--MOVIE TITLE HERE--</span></p>
+    <img src="https://pbs.twimg.com/media/Es7QdxIXUAEbdqV.jpg" class="movieimage" />
+</div>
+
+
+<div class="selector">
+    <div class="column">
+        <div *ngFor="let seat of seats" class="seat">{{seat}}</div>
+    </div>
+    <ul class="tickets">Selected tickets:
+        <li>Ticket : <select>
+            <option>Kid</option>
+            <option>Adult</option>
+            <option>Group</option>
+        </select> to pay: --PRICE HERE--</li>
+    </ul>
+    
+</div>

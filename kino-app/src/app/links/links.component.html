@@ -1,8 +1,15 @@
 <div class="wrapper">
     <h2 class="title">Kino Fabino, my favorite!</h2>
-    <div>
-        <button>My cart</button>
-        <button>Login</button>
-    </div>
+    <ul class="buttons">
+        <li class="shopcart">Kosz</li>
+        <ul (click)="showList()" class="login">Login
+        <ng-container *ngIf="isClicked === true">
+            <li><a>My accounts</a></li>
+            <li><a href="reservation">Reservations</a></li>
+            <li>Something</li>
+            <li>More</li>
+        </ng-container>
+    </ul>
+    </ul>
 </div>
 

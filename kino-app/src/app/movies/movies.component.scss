@@ -1,8 +1,14 @@
+.movies {
+    display: flex;
+    flex-direction: column;
+}
+
 .single-movie {
     display: flex;
     margin: 30px;
     .single-movie--image {
         width: 200px;
+        padding-right: 5px;
     }
     .single-movie--body {
         display: flex;
