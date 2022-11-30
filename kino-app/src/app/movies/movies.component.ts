@@ -11,6 +11,8 @@ export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
 
+  logged: boolean = true
+
   clickedMore : boolean = false;
   tellMeMore() {
     this.clickedMore === false ? this.clickedMore = true : this.clickedMore = false;
@@ -19,6 +21,8 @@ export class MoviesComponent implements OnInit {
   weekNumber: number = 0;
 
   week: string[] = [];
+
+  selectedDay: string = '';
 
   getSchedule(day : number) {
     this.week = []
@@ -40,12 +44,24 @@ export class MoviesComponent implements OnInit {
     this.getSchedule(this.weekNumber)
   }
 
+  selectDay(newDay : string) {
+    this.selectedDay = newDay 
+  }
 
+  getSelectedDay() {
+    this.getMovies()
+    return this.selectedDay
+  }
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.getMovies();
     this.getSchedule(this.weekNumber);
+    this.selectDay(this.week[0])
+  }
+
+  onMovieSelection(e : Event) {
+    this.moviesService.selectMovie((e.target as HTMLButtonElement).value)
   }
 }

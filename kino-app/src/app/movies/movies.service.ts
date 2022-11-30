@@ -7,9 +7,20 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class MoviesService {
+  selectedMovie: string = '';
+
+  constructor() { }
+
   getMovies(): Observable<Movie[]> {
     const movies = of(Movies);
     return movies
   }
-  constructor() { }
+
+  selectMovie(newMovie: string) {
+    this.selectedMovie = newMovie;
+  }
+
+  getSelectedMovie() {
+    return this.selectedMovie;
+  }
 }
