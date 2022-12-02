@@ -1,0 +1,48 @@
+{
+    "viewing": [
+        {
+            "days": ["10/12", "11/12", "12/12"],
+            "roomId": 1,
+            "movieId": 2
+        },
+        {
+            "days": ["10/12", "11/12", "12/12"],
+            "roomId": 2,
+            "movieId": 2
+        }
+    ],
+    "rooms": [
+        {
+            "id": 1,
+            "rows": ["A","B","C","D","E","F","G","H"],
+            "columns": 10
+        },
+        {
+            "id": 2,
+            "rows": ["A","B","C","D","E","F","G","H","I"],
+            "columns": 15
+        }
+    ],
+    "movies": [
+        {   
+            "id": 1,
+            "title": "Tucker and Dale VS Evil",
+            "description": "Yeehaw pardners",
+            "shortDescription": "comedy",
+            "imageSource": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+            "viewings": ["12:30", "13:00", "14:00"],
+            "premiere": false,
+            "score": [1, 2, 2, 3, 1]
+        },
+        {
+            "id": 2,
+            "title": "Tucker and Dale VS Evil HD",
+            "description": "Yeehaw pardners, now in HD!",
+            "shortDescription": "comedy",
+            "imageSource": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+            "viewings": ["12:30", "13:00", "14:00"],
+            "premiere": true,
+            "score": [3, 3, 3, 1, 2, 6]
+        }
+    ]
+}

@@ -8,6 +8,18 @@ import { MoviesComponent } from './movies/movies.component';
 import { LinksComponent } from './links/links.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FooterComponent } from './footer/footer.component';
+import { Router, ActivatedRoute, ParamMap, RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'movies',
+    component: MoviesComponent    
+  },
+  {
+    path: 'reservation/:id',
+    component: ReservationComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -20,7 +32,7 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

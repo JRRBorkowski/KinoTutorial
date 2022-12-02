@@ -23,16 +23,17 @@
     }
     .premiere{
         position: absolute;
+        
         color: red;
         background: linear-gradient(0deg, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 100%);
         padding: 0 0.2em;
+        margin: 0;
     }
     .viewings {
         display: flex;
         justify-content: space-around;
         background-color: ghostwhite;
-        border: 3px solid black;
-        p {
+        .hour-buttons {
             padding: 0.4em 0.6em;
             border: 3px solid gainsboro;
             border-radius: 10px;

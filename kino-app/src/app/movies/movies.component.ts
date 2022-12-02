@@ -11,8 +11,6 @@ export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
 
-  logged: boolean = true
-
   clickedMore : boolean = false;
   tellMeMore() {
     this.clickedMore === false ? this.clickedMore = true : this.clickedMore = false;
@@ -59,6 +57,7 @@ export class MoviesComponent implements OnInit {
     this.getMovies();
     this.getSchedule(this.weekNumber);
     this.selectDay(this.week[0])
+    console.log("hello")
   }
 
   onMovieSelection(e : Event) {

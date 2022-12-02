@@ -23,4 +23,9 @@ export class MoviesService {
   getSelectedMovie() {
     return this.selectedMovie;
   }
+
+  getScore(scores: number[]) {
+    let score = scores.reduce((a, b) => a + b, 0) / scores.length;
+    return Math.round(score);
+  }
 }
