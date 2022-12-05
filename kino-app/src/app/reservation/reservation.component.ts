@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reservation',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationComponent implements OnInit {
 
-  selectedMovie: string = '';
+  selectedMovie?: string | null;
 
   columns: string[] = ['A','B','C','D','E','F','G','H'];
   rows: number = 8;
@@ -30,9 +31,10 @@ export class ReservationComponent implements OnInit {
   //   this.selectedSeats.push(event.target : HTMLInputElement)
   // }
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.selectedMovie = this.route.snapshot.paramMap.get("id")
     this.createSeats(this.rows, this.columns)
   }
 

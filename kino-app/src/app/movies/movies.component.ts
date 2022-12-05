@@ -27,7 +27,7 @@ export class MoviesComponent implements OnInit {
     let date = new Date();
     for (let i = 0; i < 7; i++){
       let nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+(i + day));
-      this.week.push(`${nextweek.getDate()}/${nextweek.getMonth()}`);
+      this.week.push(`${nextweek.getDate()}/${nextweek.getMonth() + 1}`);
     }
   }
   getScore(scores: number[]) {
