@@ -9,6 +9,7 @@ import { LinksComponent } from './links/links.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FooterComponent } from './footer/footer.component';
 import { Router, ActivatedRoute, ParamMap, RouterModule, Routes } from '@angular/router';
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'reservation/:id',
-    component: ReservationComponent
+    component: ReservationComponent,
+    children: [
+      {
+        path: 'form',
+        component: FormComponent
+      }
+    ]
   }
 ]
 

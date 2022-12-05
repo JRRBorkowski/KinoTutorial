@@ -17,7 +17,7 @@
                 <p *ngIf="clickedMore">{{movie.description}}</p>
                 <a (click)="tellMeMore()">would you like to know more?</a>
                 <div class="viewings">
-                    <a *ngFor="let hour of movie.viewings" href="/reservation/{{movie.id}}}" class="hour-buttons">{{hour}}</a>
+                    <a *ngFor="let hour of movie.viewings" href="/reservation/{{hour}}}{{movie.id}}" class="hour-buttons">{{hour}}</a>
                 </div>
             </div>
                 <div class="single-movie--rating">
