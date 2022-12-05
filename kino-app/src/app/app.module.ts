@@ -35,7 +35,8 @@ const routes: Routes = [
     MoviesComponent,
     LinksComponent,
     ReservationComponent,
-    FooterComponent
+    FooterComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

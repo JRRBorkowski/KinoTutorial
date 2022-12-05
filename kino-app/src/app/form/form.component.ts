@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
+import { FormBuilder, NonNullableFormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 
 
 @Component({
@@ -9,14 +9,18 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
 })
 export class FormComponent implements OnInit {
 
-  reservationForm = this.builder.group({
-    firstName: this.builder.control(''),
-    surname: this.builder.control(''),
-    phone: this.builder.control(''),
-    email: this.builder.control('')
+  reservationForm = new FormGroup({
+    firstName: new FormControl(''),
+    surname: new FormControl(''),
+    phone: new FormControl('', {
+      validators: Validators.pattern('/ \d{5} /')
+    }),
+    email: new FormControl('', {
+      validators: Validators.email
+    })
   })
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: NonNullableFormBuilder) {
     this.reservationForm.valueChanges.subscribe(console.log)
 
   }

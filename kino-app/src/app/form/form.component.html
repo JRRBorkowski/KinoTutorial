@@ -1,14 +1,15 @@
 <p>form works!</p>
 <p>Selected seats: --UL HERE--</p>
-<div class="form">
-    <form formGroupName="reservationForm">
-        <input placeholder="Name" formControl="firstName">
-        <input placeholder="Surname" formControl="surname">
-        <input placeholder="Phone number" formControl="phone">
-        <input placeholder="E-Mail" formControl="email">
-        <input placeholder="Confirm E-Mail">
+
+<form [formGroup]="reservationForm" (ngSubmit)="submitForm">
+    <div class="form">
+        <input placeholder="Name" formControlName="firstName">
+        <input placeholder="Surname" formControlName="surname">
+        <input placeholder="Phone number" formControlName="phone">
+        <input placeholder="E-Mail" formControlName="email">
+        <!-- <input placeholder="Confirm E-Mail">
         <p><input type="checkbox">I want to recieve information about sales</p>
-        <input placeholder="Promotion code">
+        <input placeholder="Promotion code"> -->
         <button type="button" (click)="submitForm()">Submit!</button>
-    </form>
-</div>
+    </div>
+</form>
