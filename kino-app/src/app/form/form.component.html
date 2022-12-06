@@ -1,15 +1,36 @@
-<p>form works!</p>
 <p>Selected seats: --UL HERE--</p>
 
 <form [formGroup]="reservationForm" (ngSubmit)="submitForm">
     <div class="form">
         <input placeholder="Name" formControlName="firstName">
+        <ng-container *ngIf="reservationCtrl.controls.firstName.errors as errors">
+          <ng-container *ngIf="reservationCtrl.touched">
+            <p *ngIf="errors['required']">Te pole jest obowiązkowe</p>
+          </ng-container>
+        </ng-container>
         <input placeholder="Surname" formControlName="surname">
+        <ng-container *ngIf="reservationCtrl.controls.surname.errors as errors">
+          <ng-container *ngIf="reservationCtrl.touched">
+            <p *ngIf="errors['required']">Te pole jest obowiązkowe</p>
+          </ng-container>
+        </ng-container>
         <input placeholder="Phone number" formControlName="phone">
+        <ng-container *ngIf="reservationCtrl.controls.phone.errors as errors">
+            <ng-container *ngIf="reservationCtrl.touched">
+              <p *ngIf="errors['required']">Te pole jest obowiązkowe</p>
+              <p *ngIf="errors['minlength'] as milLength">
+                Podałeś {{ milLength.actualLength }} znaki, minimum to
+                {{ milLength.requiredLength }}
+              </p>
+            </ng-container>
+          </ng-container>
         <input placeholder="E-Mail" formControlName="email">
-        <!-- <input placeholder="Confirm E-Mail">
+        <input placeholder="Confirm E-Mail" formControlName="confirmEmail">
+        <div *ngIf="emailsMatchValidatorError()">
+            Email error!
+        </div>
         <p><input type="checkbox">I want to recieve information about sales</p>
-        <input placeholder="Promotion code"> -->
+        <input placeholder="Promotion code">
         <button type="button" (click)="submitForm()">Submit!</button>
     </div>
 </form>

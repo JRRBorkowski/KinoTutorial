@@ -15,7 +15,7 @@
                 <h1>{{movie.title}}</h1>
                 <p *ngIf="!clickedMore">{{movie.shortDescription}}</p>
                 <p *ngIf="clickedMore">{{movie.description}}</p>
-                <a (click)="tellMeMore()">would you like to know more?</a>
+                <p (click)="tellMeMore()">would you like to know more?</p>
                 <div class="viewings">
                     <a *ngFor="let hour of movie.viewings" routerLink="/reservation/{{hour}}{{movie.id}}" class="hour-buttons">{{hour}}</a>
                 </div>
