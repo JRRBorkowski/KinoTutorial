@@ -56,6 +56,13 @@ export class FormComponent implements OnInit {
   }
 
   submitForm() {
+    this.reservationForm.markAllAsTouched();
+
+    if (this.reservationForm.invalid) {
+      return;
+    }
+
+    // handle...
     console.log(this.reservationForm.value);
   }
 
