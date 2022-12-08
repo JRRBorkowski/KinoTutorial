@@ -14,6 +14,7 @@ export class ReservationService {
         this.seats.push(`${col[i]}${j}`)
       }
     }
+    return this.seats
   }
 
   constructor() { }

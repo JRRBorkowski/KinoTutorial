@@ -14,10 +14,13 @@ export class ReservationComponent implements OnInit {
   columns: string[] = ['A','B','C','D','E','F','G','H'];
   rows: number = 8;
 
+  seats: string[] = this.reservationService.seats
+
   constructor(private route: ActivatedRoute, private reservationService: ReservationService) {}
 
   ngOnInit(): void {
     this.selectedMovie = this.route.snapshot.paramMap.get("id")
+
     this.reservationService.createSeats(this.rows, this.columns)
   }
 }
