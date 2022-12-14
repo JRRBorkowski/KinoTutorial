@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     border-top: 5px solid burlywood;
-    .links {
+    .footer--links {
         display: flex;
         gap: 1em;
         li {
@@ -14,14 +14,14 @@
             border-right: none;
         }
     }
-    .media {
+    .footer--media {
         display: flex;
         gap: 1em;
         list-style: none;
     }
 }
 
-.watermark {
+.footer--watermark {
     display: flex;
     justify-content: center;
     align-items: flex-end;
