@@ -14,9 +14,15 @@ export class ReservationComponent implements OnInit {
   columns: string[] = ['A','B','C','D','E','F','G','H'];
   rows: number = 8;
 
+  checkout?: string
+
   seats: string[] = this.reservationService.seats
 
   constructor(private route: ActivatedRoute, private reservationService: ReservationService) {}
+
+  changeCheckout(price: string) {
+    this.checkout = price
+  }
 
   ngOnInit(): void {
     this.selectedMovie = this.route.snapshot.paramMap.get("id")

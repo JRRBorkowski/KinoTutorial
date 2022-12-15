@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
+import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
 
 const customValidator = (source: string, target: string) : ValidatorFn => {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -27,7 +27,6 @@ export class FormComponent implements OnInit {
     }),
     phone: this.builder.control('', {
       validators: [
-        // Validators.pattern(/[0-9] /),
         Validators.required,
         Validators.minLength(9),
         Validators.maxLength(9)

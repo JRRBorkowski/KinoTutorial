@@ -8,12 +8,15 @@
     <div class="column">
         <div *ngFor="let seat of seats" class="seat">{{seat}}</div>
     </div>
+    <!-- TODO:Zmienić sposób generowania krzeseł -->
     <ul class="tickets">Selected tickets:
-        <li>Ticket : <select>
-            <option>Kid</option>
-            <option>Adult</option>
-            <option>Group</option>
-        </select> to pay: --PRICE HERE--</li>
+        <li>Ticket : 
+        <select #t (change)="changeCheckout(t.value)">
+            <option selected disabled hidden>Select</option>
+            <option value="30">Kid</option>
+            <option value="40">Adult</option>
+            <option value="20">Group</option>
+        </select> to pay: {{checkout}}</li>
     </ul>
     <a routerLink="form">Purchase ticket</a>
     <router-outlet></router-outlet>
