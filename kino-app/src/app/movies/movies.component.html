@@ -8,6 +8,7 @@
     <div class="movies">
         <p>Our schedule for {{selectedDay}}</p>
         <div *ngFor="let movie of movies" class="single-movie">
+            <!-- <app-single-movie [movie] = "movie"></app-single-movie> -->
             <img src="{{movie.imageSource}}" class="single-movie--image">
             <p *ngIf="movie.premiere" class="premiere">Premiere</p>
             <div class="single-movie--body">

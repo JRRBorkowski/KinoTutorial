@@ -6,7 +6,7 @@
     <div class="single-movie--body">
         <div>
         <h1>{{movie.title}}</h1>
-        <p *ngIf="!clickedMore">{{movie.shortDescription}}</p>
+        <p>{{movie.shortDescription}}</p>
         <p *ngIf="clickedMore">{{movie.description}}</p>
         <p (click)="tellMeMore()">would you like to know more?</p>
         <div class="viewings">

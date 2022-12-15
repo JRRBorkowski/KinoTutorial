@@ -13,7 +13,7 @@ export class MoviesComponent implements OnInit {
 
   clickedMore : boolean = false;
   tellMeMore() {
-    this.clickedMore === false ? this.clickedMore = true : this.clickedMore = false;
+    !this.clickedMore ? this.clickedMore = true : this.clickedMore = false;
   }
   
   weekNumber: number = 0;
@@ -36,20 +36,20 @@ export class MoviesComponent implements OnInit {
   }
   getMovies():void {
     this.moviesService.getMovies().subscribe(movies => this.movies = movies)
-  }
+  };
   changeWeek(weekDelta: number) {
     this.weekNumber = this.weekNumber + weekDelta;
     this.getSchedule(this.weekNumber)
-  }
+  };
 
   selectDay(newDay : string) {
     this.selectedDay = newDay 
-  }
+  };
 
   getSelectedDay() {
     this.getMovies()
     return this.selectedDay
-  }
+  };
 
   constructor(private moviesService: MoviesService) { }
 

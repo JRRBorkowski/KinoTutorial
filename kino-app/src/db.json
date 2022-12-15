@@ -27,21 +27,27 @@
         {   
             "id": 1,
             "title": "Tucker and Dale VS Evil",
-            "description": "Yeehaw pardners",
-            "shortDescription": "comedy",
-            "imageSource": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+            "description":{
+                 "long": "Yeehaw pardners",
+                 "shortDescription": "comedy"
+                },
+            "duration": "120 minutes",
+            "minAge": "12+",
             "viewings": ["12:30", "13:00", "14:00"],
-            "premiere": false,
+            "imgUrl": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+            "isPremiere": false,
             "score": [1, 2, 2, 3, 1]
         },
         {
             "id": 2,
             "title": "Tucker and Dale VS Evil HD",
-            "description": "Yeehaw pardners, now in HD!",
-            "shortDescription": "comedy",
+            "description":{
+                "long": "Yeehaw pardners, now in HD!",
+                "shortDescription": "comedy"
+               },
             "imageSource": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
             "viewings": ["12:30", "13:00", "14:00"],
-            "premiere": true,
+            "isPremiere": true,
             "score": [3, 3, 3, 1, 2, 6]
         }
     ]
