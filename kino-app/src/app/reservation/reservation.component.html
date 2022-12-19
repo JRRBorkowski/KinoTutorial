@@ -8,6 +8,10 @@
     <div class="column">
         <div *ngFor="let seat of seats" class="seat">{{seat}}</div>
     </div>
+
+    <div class="column" *ngFor="let column of columns">
+        <div class="column" *ngFor="let column of columns">{{column}}</div>
+    </div>
     <!-- TODO:Zmienić sposób generowania krzeseł -->
     <ul class="tickets">Selected tickets:
         <li>Ticket : 

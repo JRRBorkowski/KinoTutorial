@@ -1,4 +1,40 @@
 {
+    "users": [
+        {
+          "username": "duncan",
+          "password": "123"
+        },
+        {
+          "username": "sarah",
+          "password": "123"
+        },
+        {
+          "id": 3,
+          "username": "admin",
+          "password": "hello"
+        },
+        {
+          "username": "test2",
+          "password": "123"
+        }
+      ],
+      "profiles": [
+        {
+          "id": 1,
+          "userId": 1,
+          "job": "Plumber"
+        },
+        {
+          "id": 2,
+          "userId": 2,
+          "job": "developer"
+        },
+        {
+          "id": 3,
+          "userId": 3,
+          "job": "Manager"
+        }
+      ],
     "viewing": [
         {
             "days": ["10/12", "11/12", "12/12"],

@@ -9,26 +9,7 @@
     <div class="movies">
         <p>Our schedule for {{selectedDay}}</p>
         <div *ngFor="let movie of movies" class="single-movie">
-            <!-- <app-single-movie [movie] = "movie"></app-single-movie> -->
-            <img src="{{movie.imageSource}}" class="single-movie--image">
-            <p *ngIf="movie.premiere" class="premiere">Premiere</p>
-            <div class="single-movie--body">
-                <div>
-                <h1>{{movie.title}}</h1>
-                <p *ngIf="!clickedMore">{{movie.shortDescription}}</p>
-                <p *ngIf="clickedMore">{{movie.description}}</p>
-                <p (click)="tellMeMore()">would you like to know more?</p>
-                <div class="viewings">
-                    <a *ngFor="let hour of movie.viewings" routerLink="/reservation/{{hour}}{{movie.id}}" class="hour-buttons">{{hour}}</a>
-                </div>
-            </div>
-                <div class="single-movie--rating">
-                    <p>Ocena</p>
-                    <h2>{{getScore(movie.score)}}/10</h2>
-                        <button>buttcheek</button>
-                        <button>buttocks</button>
-            </div>
+            <app-single-movie [movie]="movie"></app-single-movie>
         </div>
         <!-- TODO: Przenieść single-movie do własnego komponentu -->
     </div>
-</div>

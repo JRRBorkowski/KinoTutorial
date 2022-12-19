@@ -11,11 +11,20 @@ import { MoviesService } from '../movies/movies.service';
 })
 export class SingleMovieComponent implements OnInit {
 
-  constructor() { }
+  @Input() movie?: Movie
 
-  @Input() movie!: Observable<Movie>
+  clickedMore : boolean = false;
+  tellMeMore() {
+    !this.clickedMore ? this.clickedMore = true : this.clickedMore = false;
+  }
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
+  getScore(scores: number[]) {
+    let score = scores.reduce((a, b) => a + b, 0) / scores.length;
+    return Math.round(score);
+  }
 }
