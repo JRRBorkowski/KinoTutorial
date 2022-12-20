@@ -1,1 +1,108 @@
-{}
+{
+    "users": [
+        {
+          "username": "duncan",
+          "password": "123"
+        },
+        {
+          "username": "sarah",
+          "password": "123"
+        },
+        {
+          "id": 3,
+          "username": "admin",
+          "password": "hello"
+        },
+        {
+          "username": "test2",
+          "password": "123"
+        }
+      ],
+      "profiles": [
+        {
+          "id": 1,
+          "userId": 1,
+          "job": "Plumber"
+        },
+        {
+          "id": 2,
+          "userId": 2,
+          "job": "developer"
+        },
+        {
+          "id": 3,
+          "userId": 3,
+          "job": "Manager"
+        }
+      ],
+    "viewing": [
+        {
+            "days": ["10/12", "11/12", "12/12"],
+            "roomId": 1,
+            "movieId": 2
+        },
+        {
+            "days": ["10/12", "11/12", "12/12"],
+            "roomId": 2,
+            "movieId": 2
+        }
+    ],
+    "rooms": [
+        {
+            "id": 1,
+            "rows": ["A","B","C","D","E","F","G","H"],
+            "columns": 10
+        },
+        {
+            "id": 2,
+            "rows": ["A","B","C","D","E","F","G","H","I"],
+            "columns": 15
+        }
+    ],
+    "movies": [
+        {   
+            "id": 1,
+            "title": "Tucker and Dale VS Evil",
+            "description":{
+                 "long": "Yeehaw pardners",
+                 "shortDescription": "comedy"
+                },
+            "duration": "120 minutes",
+            "minAge": "12+",
+            "genre": "comedy",
+            "viewings": ["12:30", "13:00", "14:00"],
+            "imgUrl": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+            "isPremiere": false,
+            "score": [1, 2, 2, 3, 1]
+        },
+        {   
+            "id": 2,
+            "title": "DUK",
+            "description":{
+                 "long": "It's nukm tim",
+                 "shortDescription": "A tearjerking odyssey"
+                },
+            "duration": "140 minutes",
+            "minAge": "18+",
+            "genre": "drama",
+            "viewings": ["10:30", "11:00", "17:00", "18:00"],
+            "imgUrl": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+            "isPremiere": true,
+            "score": [10, 9, 9, 10, 10]
+        }
+    ],
+    "tickets": [
+        {
+            "name": "kid",
+            "price": 20
+        },
+        {
+            "name": "adult",
+            "price": 30
+        },
+        {
+            "name": "senior",
+            "price": 25
+        }
+    ]
+}

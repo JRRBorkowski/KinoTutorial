@@ -18,6 +18,8 @@ export class ReservationComponent implements OnInit {
 
   seats: string[] = this.reservationService.seats
 
+  selectedSeats: string[] = []
+
   constructor(private route: ActivatedRoute, private reservationService: ReservationService) {}
 
   changeCheckout(price: string) {
