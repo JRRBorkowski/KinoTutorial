@@ -6,15 +6,16 @@
 
 <div class="selector">
     <div class="column">
-        <div *ngFor="let seat of seats" class="seat">{{seat}}</div>
+        <div *ngFor="let seat of seats" class="seat" ><a (click)="selectSeat(seat)">{{seat}}</a></div>
     </div>
 
     <div class="column" *ngFor="let column of columns">
         <div class="column" *ngFor="let column of columns">{{column}}</div>
     </div>
     <!-- TODO:Zmienić sposób generowania krzeseł -->
+
     <ul class="tickets">Selected tickets:
-        <li>Ticket : 
+        <li *ngFor="let selectedSeat of selectedSeats">{{selectedSeat}} ticket  
         <select #t (change)="changeCheckout(t.value)">
             <option selected disabled hidden>Select</option>
             <option value="30">Kid</option>
@@ -22,6 +23,7 @@
             <option value="20">Group</option>
         </select> to pay: {{checkout}}</li>
     </ul>
+    <!-- TODO: generować po wybranych krzesłach, bilety pokazują sumę -->
     <a routerLink="form">Purchase ticket</a>
     <router-outlet></router-outlet>
 </div>

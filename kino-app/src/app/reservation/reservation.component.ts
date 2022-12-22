@@ -26,6 +26,15 @@ export class ReservationComponent implements OnInit {
     this.checkout = price
   }
 
+  selectSeat(seat : string) : void {
+    if (this.selectedSeats.includes(seat)) {
+      const seatIndex= this.selectedSeats.indexOf(seat)
+      this.selectedSeats.splice(seatIndex, 1)
+    } else {
+    this.selectedSeats.push(seat)
+    }
+  }
+
   ngOnInit(): void {
     this.selectedMovie = this.route.snapshot.paramMap.get("id")
 

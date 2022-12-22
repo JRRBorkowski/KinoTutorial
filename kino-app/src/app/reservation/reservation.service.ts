@@ -10,10 +10,10 @@ export class ReservationService {
 
   checkout?: number;
 
-  addSeat(seat : string) : void {
-    if (this.seats.includes(seat)) {
-      const seatIndex= this.seats.indexOf(seat)
-      this.seats.slice(seatIndex)
+  selectSeat(seat : string) : void {
+    if (this.selectedSeats.includes(seat)) {
+      const seatIndex= this.selectedSeats.indexOf(seat)
+      this.selectedSeats.splice(seatIndex, 1)
     } else {
     this.selectedSeats.push(seat)
     }
