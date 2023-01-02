@@ -15,7 +15,7 @@ export class ReservationComponent implements OnInit {
   rows: number = 8;
 
   checkout?: string
-
+  
   seats: string[] = this.reservationService.seats
 
   selectedSeats: string[] = []
