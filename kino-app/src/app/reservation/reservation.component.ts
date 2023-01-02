@@ -16,11 +16,11 @@ export class ReservationComponent implements OnInit {
 
   checkout?: string
   
-  seats: string[] = this.reservationService.seats
+  // seats: string[] = this.reservationService.seats
 
   selectedSeats: string[] = []
 
-  constructor(private route: ActivatedRoute, private reservationService: ReservationService) {}
+  constructor(private route: ActivatedRoute, public reservationService: ReservationService) {}
 
   changeCheckout(price: string) {
     this.checkout = price

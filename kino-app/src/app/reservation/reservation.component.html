@@ -6,11 +6,11 @@
 
 <div class="selector">
     <div class="column">
-        <div *ngFor="let seat of seats" class="seat" ><a (click)="selectSeat(seat)">{{seat}}</a></div>
+        <div *ngFor="let seat of reservationService.seats" class="seat" ><a (click)="selectSeat(seat)">{{seat}}</a></div>
     </div>
 
     <div class="column" *ngFor="let column of columns">
-        <div class="column" *ngFor="let column of columns">{{column}}</div>
+        <div class="column" *ngFor="let row of columns">{{column}}{{row}}</div>
     </div>
     <!-- TODO:Zmienić sposób generowania krzeseł -->
 
