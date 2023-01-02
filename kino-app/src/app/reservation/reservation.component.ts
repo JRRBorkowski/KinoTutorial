@@ -15,10 +15,8 @@ export class ReservationComponent implements OnInit {
   rows: number = 8;
 
   checkout?: string
-  
-  // seats: string[] = this.reservationService.seats
 
-  selectedSeats: string[] = []
+  // selectedSeats: string[] = []
 
   constructor(private route: ActivatedRoute, public reservationService: ReservationService) {}
 
@@ -26,18 +24,19 @@ export class ReservationComponent implements OnInit {
     this.checkout = price
   }
 
-  selectSeat(seat : string) : void {
-    if (this.selectedSeats.includes(seat)) {
-      const seatIndex= this.selectedSeats.indexOf(seat)
-      this.selectedSeats.splice(seatIndex, 1)
-    } else {
-    this.selectedSeats.push(seat)
-    }
-  }
+  // selectSeat(seat : string) : void {
+  //   if (this.selectedSeats.includes(seat)) {
+  //     const seatIndex= this.selectedSeats.indexOf(seat)
+  //     this.selectedSeats.splice(seatIndex, 1)
+  //   } else {
+  //   this.selectedSeats.push(seat)
+  //   }
+  // }
 
   ngOnInit(): void {
     this.selectedMovie = this.route.snapshot.paramMap.get("id")
 
     this.reservationService.createSeats(this.rows, this.columns)
+    this.reservationService.createSeats2(this.rows)
   }
 }

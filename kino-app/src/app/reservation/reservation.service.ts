@@ -7,10 +7,12 @@ export class ReservationService {
 
   seats: string[] = [];
   selectedSeats: string[] = [];
+  rows: number[] = [];
 
   checkout?: number;
 
-  selectSeat(seat : string) : void {
+  selectSeat(column : string, row: number) : void {
+    const seat = `${column}${row}`;
     if (this.selectedSeats.includes(seat)) {
       const seatIndex= this.selectedSeats.indexOf(seat)
       this.selectedSeats.splice(seatIndex, 1)
@@ -26,6 +28,12 @@ export class ReservationService {
       }
     }
     return this.seats
+  }
+
+  createSeats2(row:number) {
+    for (let j = 1; j <= row; j++) {
+      this.rows.push(j)
+    }
   }
 
   constructor() { }
