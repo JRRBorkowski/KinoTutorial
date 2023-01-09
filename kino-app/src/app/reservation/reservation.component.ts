@@ -35,8 +35,6 @@ export class ReservationComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedMovie = this.route.snapshot.paramMap.get("id")
-
-    this.reservationService.createSeats(this.rows, this.columns)
-    this.reservationService.createSeats2(this.rows)
+    this.reservationService.createSeats(this.rows)
   }
 }

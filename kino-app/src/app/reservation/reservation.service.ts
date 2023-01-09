@@ -21,20 +21,10 @@ export class ReservationService {
     }
   }
 
-  createSeats(row : number, col : string[]) {
-    for (let i = 0; i < col.length; i++) {
-      for (let j = 1; j <= row; j++) {
-        this.seats.push(`${col[i]}${j}`)
-      }
-    }
-    return this.seats
-  }
-
-  createSeats2(row:number) {
+  createSeats(row:number) {
+    this.rows = [];
     for (let j = 1; j <= row; j++) {
       this.rows.push(j)
     }
   }
-
-  constructor() { }
 }
