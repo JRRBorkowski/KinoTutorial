@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MoviesComponent } from './movies/movies.component';
@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
+
 
 const routes: Routes = [
   {
@@ -43,7 +44,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
