@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1em;
+    margin: 1rem;
     .movieimage {
         max-width: 10%;
     }
@@ -24,10 +24,10 @@
     grid-template-columns: repeat(8, 1fr);
     justify-content: center;
     gap: 3px;
-    padding: 0;
+    padding: 3px;
     .seat {
         border: 5px solid antiquewhite;
         font-size: large;
-        padding: 0.5em;
+        padding: 0.5rem;
     }
 }
