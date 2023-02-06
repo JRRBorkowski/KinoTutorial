@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../movie';
+import { Subscription } from 'rxjs';
+import { Movie, MoviesFromDb } from '../movie';
 import { MoviesService } from './movies.service';
 
 @Component({
@@ -11,16 +12,15 @@ export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
 
-  clickedMore : boolean = false;
-  tellMeMore() {
-    !this.clickedMore ? this.clickedMore = true : this.clickedMore = false;
-  }
-  
+  moviesFromDb: MoviesFromDb[] = [];
+    
   weekNumber: number = 0;
 
   week: string[] = [];
 
   selectedDay: string = '';
+  
+  private subscription = new Subscription();
 
   getSchedule(day : number) {
     this.week = []
@@ -30,13 +30,26 @@ export class MoviesComponent implements OnInit {
       this.week.push(`${nextweek.getDate()}/${nextweek.getMonth() + 1}`);
     }
   }
+
   getScore(scores: number[]) {
     let score = scores.reduce((a, b) => a + b, 0) / scores.length;
     return Math.round(score);
   }
-  getMovies():void {
-    this.moviesService.getMovies().subscribe(movies => this.movies = movies)
+
+  getMovies(): void {
+    const movieSubscription = this.moviesService.getMovies().subscribe(movies => this.movies = movies)
+    this.subscription.add(movieSubscription)
   };
+
+  getMoviesFromDb(): void {
+    const movieSubscription = this.moviesService
+      .getMoviesFromId()
+      .subscribe(movies => {
+        this.moviesFromDb = movies;
+      });
+    this.subscription.add(movieSubscription);
+  }
+  
   changeWeek(weekDelta: number) {
     this.weekNumber = this.weekNumber + weekDelta;
     this.getSchedule(this.weekNumber)
@@ -54,13 +67,17 @@ export class MoviesComponent implements OnInit {
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.getMovies();
+    this.getMoviesFromDb()
     this.getSchedule(this.weekNumber);
     this.selectDay(this.week[0])
     console.log("hello")
   }
 
-  onMovieSelection(e : Event) {
-    this.moviesService.selectMovie((e.target as HTMLButtonElement).value)
+  onMovieSelection() {
+    this.moviesService.selectMovie()
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

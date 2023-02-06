@@ -1,20 +1,24 @@
 <div class="single-movie" *ngIf="movie">
-    <img src="{{movie.imageSource}}" class="single-movie--image">
+    <img src="{{movie.image}}" class="single-movie--image">
     <p *ngIf="movie.premiere" class="premiere">Premiere</p>
     <div class="single-movie--body">
         <div>
         <h1>{{movie.title}}</h1>
-        <p>{{movie.shortDescription}}</p>
+        <p>{{movie.genre}}</p>
         <p *ngIf="clickedMore">{{movie.description}}</p>
-        <p (click)="tellMeMore()">would you like to know more?</p>
+        <a (click)="tellMeMore()">would you like to know more?</a>
         <div class="viewings">
-            <a *ngFor="let hour of movie.viewings" routerLink="/reservation/{{hour}}{{movie.id}}" class="hour-buttons">{{hour}}</a>
+            <a *ngFor="let showing of showings" [routerLinkActive]="['active']" routerLink="/reservation/{{showing.hour}}{{movie.id}}" class="hour-buttons">{{showing.hour}}</a>
         </div>
     </div>
         <div class="single-movie--rating">
             <p>Ocena</p>
-            <h2>{{getScore(movie.score)}}/10</h2>
+            <h2>{{getScore(movie.score)}}</h2>
                 <button>buttcheek</button>
                 <button>buttocks</button>
     </div>
+</div>
+
+<div *ngIf="!movie">
+    Coś poszło nie tak :(
 </div>

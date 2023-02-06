@@ -189,7 +189,7 @@
         "userPostCode": "",
         "userCity": ""
       },
-      "paiedAt": "Wed Dec 21 2022 09:42:55 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "paidAt": "Wed Dec 21 2022 09:42:55 GMT+0100 (czas środkowoeuropejski standardowy)",
       "ticket": [
         {
           "id": 0.5548489620700421,
@@ -348,7 +348,7 @@
       ]
     }
   ],
-  "show": [
+  "showing": [
     {
       "id": 0,
       "hour": "12.30",
@@ -530,17 +530,17 @@
       "filmId": 1
     }
   ],
-  "films": [
+  "movies": [
     {
       "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
+      "image": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+      "title": "Duke Nukem: The Kino™",
       "genre": "Action, Super hero",
       "length": "130 min",
       "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "score": "8/10",
-      "director": "Ryan Coogler",
+      "description": "It's payback tim",
+      "score": [10, 10, 10, 1, 9],
+      "director": "Kino Fabino",
       "actors": [
         "Maciek",
         "Janek",
@@ -552,114 +552,14 @@
       "dateId": 0
     },
     {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "score": "8/10",
-      "director": "Ryan Coogler",
-      "actors": [
-        "Maciek",
-        "Janek",
-        "Ktos",
-        "Leszek"
-      ],
-      "boxOff": 200,
-      "premier": true,
-      "dateId": 1
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "score": "8/10",
-      "director": "Ryan Coogler",
-      "actors": [
-        "Maciek",
-        "Janek",
-        "Ktos",
-        "Leszek"
-      ],
-      "boxOff": 200,
-      "premier": true,
-      "dateId": 2
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "score": "8/10",
-      "director": "Ryan Coogler",
-      "actors": [
-        "Maciek",
-        "Janek",
-        "Ktos",
-        "Leszek"
-      ],
-      "boxOff": 200,
-      "premier": true,
-      "dateId": 3
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "score": "8/10",
-      "director": "Ryan Coogler",
-      "actors": [
-        "Maciek",
-        "Janek",
-        "Ktos",
-        "Leszek"
-      ],
-      "boxOff": 200,
-      "premier": true,
-      "dateId": 4
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "score": "8/10",
-      "director": "Ryan Coogler",
-      "actors": [
-        "Maciek",
-        "Janek",
-        "Ktos",
-        "Leszek"
-      ],
-      "boxOff": 200,
-      "premier": true,
-      "dateId": 6
-    },
-    {
       "id": 1,
-      "img": "assets/apokawixa_poster.jpeg",
+      "image": "https://fwcdn.pl/fpo/55/10/10015510/8029347.3.jpg",
       "title": "Apokawixa",
       "genre": "Horro",
       "length": "110 min",
       "ageRest": "PG-13",
       "description": "Whenever i have time i will add some description",
-      "score": "6/10",
+      "score": [2, 1, 3, 4, 4],
       "director": "James Cameron",
       "actors": [
         "Artut",
@@ -673,14 +573,14 @@
     },
     {
       "id": 2,
-      "img": "assets/avatar2_poster.jpg",
+      "image": "https://fwcdn.pl/fpo/81/78/558178/8047434.3.jpg",
       "title": "Avatar: Istota wody",
       "genre": "Science-Fiction",
       "length": "193 min",
       "ageRest": "PG-12",
       "description": "Whenever i have time i will add some description",
       "long-description": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
-      "score": "8/10",
+      "score": [8, 4, 5, 7, 5],
       "director": "James Cameron",
       "actors": [
         "Stephen Lang",
@@ -694,14 +594,14 @@
     },
     {
       "id": 3,
-      "img": "assets/kot_poster.jpg",
+      "image": "https://media.multikino.pl/uploads/images/films_and_events/kot-w-butach-ostatnie-zyczenie-plakat-do-netu-cut_4db55b0c55.jpg",
       "title": "Kot w butach. Ostanie życzenie",
       "genre": "Aniowany, Familijny, Przygodowy",
       "length": "100 min",
       "ageRest": "PG-6",
       "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
       "long-description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
-      "score": "8/10",
+      "score": [8, 10, 10, 7, 9],
       "director": "James Cameron",
       "actors": [
         "Stephen Lang",

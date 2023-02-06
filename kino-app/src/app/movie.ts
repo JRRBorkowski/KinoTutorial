@@ -9,38 +9,64 @@ export interface Movie {
     score: number[]
 }
 
-interface Movie2 {
+export interface MoviesFromDb {
+    id: number;
+    image: string;
+    title: string;
+    genre: string;
+    length: string;
+    ageRest: string;
+    description: string;
+    score: number[];
+    director: string;
+    actors: string[];
+    boxOff: number;
+    premiere: boolean;
+  }
+
+// export interface Movie2 {
+//     id: number,
+//     title: string,
+//     description: {
+//         short: string,
+//         long: string
+//     },
+//     isPremiere: boolean,
+//     duration: string,
+//     minAge: number|null,
+//     imgURL: string| null,
+//     genre: string,
+//     score: number[]
+// }
+
+export interface User {
     id: number,
-    title: string,
-    description: {
-        short: string,
-        long: string
-    },
-    isPremiere: boolean,
-    duration: string,
-    minAge: number|null,
-    imgURL: string| null,
-    genre: string,
-    score: number[]
+    userName: string,
+    userLastName: string,
+    userEmail: string,
+    userPassword: string,
+    role: "User" | "Admin",
+    userPhoneNumber: string,
+    userInvoiceDetails: 
+      {
+        userNIP: string,
+        userStreet: string,
+        userPostCode: string,
+        userCity: string
+      }[]
 }
 
-interface User {
-    type: "admin" | "user",
-    info: {
-        id: number
-        userName: String
-        userLastName: String
-        email:String
-        phoneNumber: String
-    } | null
-}
+export interface Prices {
+    type: string;
+    price: number;
+  }
 
-interface Repertouire {
-    // idMovie: [id],
-    showing:
-        {
-    day: string,
-    hours: string[],
-    roomId: number
-}
-}
+export interface Showing {
+    id: number;
+    hour: string;
+    screen: string;
+    reservedSeats: string[];
+    prices: Prices[];
+    filmId: number;
+  }
+

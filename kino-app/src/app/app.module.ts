@@ -8,7 +8,7 @@ import { LinksComponent } from './links/links.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './form/form.component';
+import { FormComponent } from './reservation/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
 

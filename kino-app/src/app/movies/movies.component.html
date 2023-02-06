@@ -6,9 +6,9 @@
     </div>
     <!-- TODO: Wyświetlać harmonogram po dniach tygodnia -->
 </div>
-    <div class="movies">
+    <div class="movies" *ngIf="moviesFromDb">
         <p>Our schedule for {{selectedDay}}</p>
-        <div *ngFor="let movie of movies" class="single-movie">
+        <div *ngFor="let movie of moviesFromDb" class="single-movie">
             <app-single-movie [movie]="movie"></app-single-movie>
         </div>
     </div>

@@ -16,22 +16,11 @@ export class ReservationComponent implements OnInit {
 
   checkout?: string
 
-  // selectedSeats: string[] = []
-
   constructor(private route: ActivatedRoute, public reservationService: ReservationService) {}
 
   changeCheckout(price: string) {
     this.checkout = price
   }
-
-  // selectSeat(seat : string) : void {
-  //   if (this.selectedSeats.includes(seat)) {
-  //     const seatIndex= this.selectedSeats.indexOf(seat)
-  //     this.selectedSeats.splice(seatIndex, 1)
-  //   } else {
-  //   this.selectedSeats.push(seat)
-  //   }
-  // }
 
   ngOnInit(): void {
     this.selectedMovie = this.route.snapshot.paramMap.get("id")
