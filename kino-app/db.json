@@ -2,10 +2,10 @@
   "users": [
     {
       "id": 0,
-      "userName": "Grzegorz",
-      "userLastName": "Bandyra",
-      "userEmail": "grzegorzbandyra@gmail.com",
-      "userPassword": "losowe",
+      "userName": "Billy",
+      "userLastName": "Herrington",
+      "userEmail": "aniki@gmail.com",
+      "userPassword": "asdf",
       "role": "User",
       "userPhoneNumber": "600700800",
       "userInvoiceDetails": [
@@ -34,27 +34,7 @@
           "userCity": "Warszawa"
         }
       ],
-      "userWishList": [
-        {
-          "id": 1,
-          "img": "assets/apokawixa_poster.jpeg",
-          "title": "Apokawixa",
-          "genre": "Horro",
-          "length": "110 min",
-          "ageRest": "PG-13",
-          "description": "Whenever i have time i will add some description",
-          "score": "6/10",
-          "director": "James Cameron",
-          "actors": [
-            "Artut",
-            "Ziemowit",
-            "Wiesiek",
-            "Leszek"
-          ],
-          "boxOff": 10,
-          "premier": false
-        }
-      ]
+      "userWishList": []
     }
   ],
   "orders": [

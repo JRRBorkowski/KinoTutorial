@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable, ObservedValueOf, Subscription} from 'rxjs';
 import { Movie, MoviesFromDb, Showing } from '../movie';
 import { MoviesComponent } from '../movies/movies.component';

@@ -1,1 +1,17 @@
-<p>login works!</p>
+<div class="login-container">
+    <div class="login">
+            <h1>Login</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
+                <mat-form-field>
+                    <mat-label>User mail</mat-label>
+                    <input matInput formControlName="userEmail">
+                </mat-form-field>
+
+                <input formControlName="userPassword" placeholder="Hasło" type="password">
+                <ng-container *ngIf="invalidUser">
+                    <p>Invalid name</p>
+                </ng-container>
+                <button class="login-btn">Zaloguj</button>
+            </form>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +13,9 @@ import { FormComponent } from './reservation/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 
 const routes: Routes = [
@@ -20,7 +24,11 @@ const routes: Routes = [
     component: MoviesComponent    
   },
   {
-    path: 'reservation/:id',
+    path: 'login',
+    component: LoginComponent   
+  },
+  {
+    path: 'reservation/:hour/:id',
     component: ReservationComponent,
     children: [
       {
@@ -47,7 +55,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

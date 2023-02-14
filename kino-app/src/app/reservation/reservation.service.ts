@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Showing } from '../movie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
-  seats: string[] = [];
-  selectedSeats: string[] = [];
-  rows: number[] = [];
+  seats?: string[]
+  selectedSeats: string[] = []
+  rows?: number[]
 
   checkout?: number;
 
@@ -27,4 +28,6 @@ export class ReservationService {
       this.rows.push(j)
     }
   }
+
+
 }

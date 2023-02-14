@@ -70,3 +70,10 @@ export interface Showing {
     filmId: number;
   }
 
+  export interface Screen {
+      colu: 0,
+      id: 0,
+      name: '',
+      rows: 0,
+    };
+
