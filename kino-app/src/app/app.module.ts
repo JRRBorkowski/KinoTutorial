@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './reservation/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

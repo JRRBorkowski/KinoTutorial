@@ -12,3 +12,6 @@
             <app-single-movie [movie]="movie"></app-single-movie>
         </div>
     </div>
+    <div class="movies" *ngIf="!moviesFromDb">
+        <p>Coś poszło nie tak!</p>
+    </div>
