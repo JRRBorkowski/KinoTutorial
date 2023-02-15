@@ -60,5 +60,7 @@ export class LoginComponent implements OnInit {
     private loginAuth: LoginService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('TODO: Initiate store')
+  }
 }

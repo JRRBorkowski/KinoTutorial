@@ -60,5 +60,5 @@ export interface Showing {
       id: 0,
       name: '',
       rows: 0,
-    };
+    }
 

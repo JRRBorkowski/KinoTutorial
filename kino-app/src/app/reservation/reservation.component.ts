@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Screen } from '../types';
+// import { Screen } from '../types';
 import { MoviesService } from '../movies/movies.service';
 import { ReservationService } from './reservation.service';
 
@@ -17,7 +17,7 @@ export class ReservationComponent implements OnInit {
 
 
   columns: string[] = ['A','B','C','D','E','F','G','H'];
-  rows: number = 8;
+  rows = 8;
 
   showing = this.moviesService.getSelectedShowing()
   screen = this.moviesService.getScreen(this.showing.screen)
@@ -32,14 +32,14 @@ export class ReservationComponent implements OnInit {
     this.checkout = price
   }
 
-  getStatus(seatPos: string) {
-    if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
-      return 'reserved';
-    } else if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
-      return 'selected';
-    }
-    return 'freeSeat';
-  }
+  // getStatus(seatPos: string) {
+  //   if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
+  //     return 'reserved';
+  //   } else if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
+  //     return 'selected';
+  //   }
+  //   return 'freeSeat';
+  // }
 
   ngOnInit(): void {
     this.reservationService.createSeats(this.rows)

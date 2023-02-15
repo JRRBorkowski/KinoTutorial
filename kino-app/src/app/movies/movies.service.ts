@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class MoviesService {
   private movieUrl = 'http://localhost:3000/movies';
 
-  selectedDay: string = '';
+  selectedDay = '';
 
   showing: Showing[] = []
 
@@ -54,7 +54,7 @@ export class MoviesService {
   }
 
   getScore(scores: number[]) {
-    let score = scores.reduce((a, b) => a + b, 0) / scores.length;
+    const score = scores.reduce((a, b) => a + b, 0) / scores.length;
     return Math.round(score);
   }
 

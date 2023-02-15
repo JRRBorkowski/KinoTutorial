@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable, ObservedValueOf, Subscription} from 'rxjs';
-import { Movie, MoviesFromDb, Showing } from '../types';
-import { MoviesComponent } from '../movies/movies.component';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Subscription} from 'rxjs';
+import { MoviesFromDb, Showing } from '../types';
 import { MoviesService } from '../movies/movies.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { MoviesService } from '../movies/movies.service';
   templateUrl: './single-movie.component.html',
   styleUrls: ['./single-movie.component.scss']
 })
-export class SingleMovieComponent implements OnInit {
+export class SingleMovieComponent implements OnInit, OnDestroy {
 
   @Input() movie: MoviesFromDb = {} as MoviesFromDb;
 
@@ -19,13 +18,13 @@ export class SingleMovieComponent implements OnInit {
 
   selectedMovie?: MoviesFromDb;
 
-  clickedMore : boolean = false;
+  clickedMore = false;
   tellMeMore() {
     !this.clickedMore ? this.clickedMore = true : this.clickedMore = false;
   }
 
   getScore(scores: number[]) {
-    let score = scores.reduce((a, b) => a + b, 0) / scores.length;
+    const score = scores.reduce((a, b) => a + b, 0) / scores.length;
     return Math.round(score);
   }
 
