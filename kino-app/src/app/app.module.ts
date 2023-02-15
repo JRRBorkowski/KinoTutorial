@@ -15,6 +15,8 @@ import { SingleMovieComponent } from './single-movie/single-movie.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -48,7 +50,8 @@ const routes: Routes = [
     ReservationComponent,
     FooterComponent,
     FormComponent,
-    SingleMovieComponent
+    SingleMovieComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,11 +16,9 @@
 
     <ul class="tickets">Selected tickets:
         <li *ngFor="let selectedSeat of reservationService.selectedSeats">{{selectedSeat}} ticket  
-        <select #t (change)="changeCheckout(t.value)">
+        <select #t (change)="changeCheckout(t.value)" *ngFor="let ticket of showing.prices">
             <option selected disabled hidden>Select</option>
-            <option value="30">Kid</option>
-            <option value="40">Adult</option>
-            <option value="20">Group</option>
+            <option value="ticket.price">{{ticket.type}}</option>
         </select> to pay: {{checkout}}</li>
     </ul>
     <!-- TODO: generować po wybranych krzesłach, bilety pokazują sumę -->

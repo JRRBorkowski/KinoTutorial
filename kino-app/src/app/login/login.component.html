@@ -5,9 +5,20 @@
                 <mat-form-field>
                     <mat-label>User mail</mat-label>
                     <input matInput formControlName="userEmail">
+                    <mat-error *ngIf="loginForm.controls.userEmail.hasError('email') && !loginForm.controls.userEmail.hasError('required')">
+                        Not an email!          
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls.userEmail.hasError('required')">
+                        Please fill the form          
+                    </mat-error>
                 </mat-form-field>
-
-                <input formControlName="userPassword" placeholder="Hasło" type="password">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="userPassword">
+                    <mat-error *ngIf="invalidUser ">
+                        Please fill the form          
+                    </mat-error>
+                </mat-form-field>
                 <ng-container *ngIf="invalidUser">
                     <p>Invalid name</p>
                 </ng-container>

@@ -1,17 +1,19 @@
 <div class="wrapper">
     <h2 class="title">Kino Fabino, my favorite!</h2>
     <ul class="buttons">
-        <li class="shopcart"><span class="material-icons">
-            shopping_cart
-            </span></li>
-        <ul (click)="showList()" class="login">Login
-        <ng-container *ngIf="isClicked === true">
-            <li><a href="login">Login</a></li>
-            <li><a href="reservation">Reservations</a></li>
-            <li>Something</li>
-            <li>More</li>
-        </ng-container>
-    </ul>
+        <li><button mat-flat-button color="primary" routerLink="cart">
+            <span class="material-icons">
+              shopping_cart
+            </span>
+        </button></li>
+        <li>
+            <button mat-flat-button [matMenuTriggerFor]="menu" color="primary">Menu</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="login">Login</button>
+                <button mat-menu-item routerLink="reservations">Reservations</button>
+                <button mat-menu-item>Tickets</button>
+            </mat-menu>
+        </li>
     </ul>
 </div>
 
