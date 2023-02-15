@@ -1,6 +1,6 @@
 <div class="movietitle">
-    <p>Selected movie: <span>Movie ID: {{selectedMovie}}</span></p>
-    <img src="https://pbs.twimg.com/media/Es7QdxIXUAEbdqV.jpg" class="movieimage" />
+    <p>Selected movie: {{selectedMovie.title}} <span>Movie ID: {{selectedMovie.id}}</span></p>
+    <img src={{selectedMovie.image}} class="movieimage" />
 </div>
 
 <div class="selector">
@@ -12,8 +12,6 @@
         </div>
     </div>
 
-    <!-- TODO:Zmienić sposób generowania krzeseł -->
-
     <ul class="tickets">Selected tickets:
         <li *ngFor="let selectedSeat of reservationService.selectedSeats">{{selectedSeat}} ticket  
         <select #t (change)="changeCheckout(t.value)" *ngFor="let ticket of showing.prices">
@@ -21,6 +19,7 @@
             <option value="ticket.price">{{ticket.type}}</option>
         </select> to pay: {{checkout}}</li>
     </ul>
+    
     <!-- TODO: generować po wybranych krzesłach, bilety pokazują sumę -->
     <a routerLink="form">Purchase ticket</a>
     <router-outlet></router-outlet>

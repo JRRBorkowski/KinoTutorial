@@ -8,11 +8,11 @@
         <p *ngIf="clickedMore">{{movie.description}}</p>
         <a (click)="tellMeMore()">would you like to know more?</a>
         <div class="viewings">
-            <a *ngFor="let showing of showings" [routerLinkActive]="['active']" routerLink="/reservation/{{showing.hour}}/{{movie.id}}" class="hour-buttons">{{showing.hour}}</a>
+            <button *ngFor="let showing of showings" [routerLinkActive]="['active']" routerLink="/reservation/{{showing.hour}}/{{movie.id}}" class="hour-buttons" (click)="handleSelectedMovie(showing)">{{showing.hour}}</button>
         </div>
     </div>
         <div class="single-movie--rating">
-            <p>Ocena</p>
+            <h3>Viewer's score:</h3>
             <h2>{{getScore(movie.score)}}</h2>
                 <button>buttcheek</button>
                 <button>buttocks</button>

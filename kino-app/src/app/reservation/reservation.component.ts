@@ -11,9 +11,8 @@ import { ReservationService } from './reservation.service';
 })
 export class ReservationComponent implements OnInit {
 
-  screen?: Screen
-
   selectedMovie = this.moviesService.selectMovie()
+  selected = this.moviesService.selectedSeats;
 
 
 
@@ -21,6 +20,7 @@ export class ReservationComponent implements OnInit {
   rows: number = 8;
 
   showing = this.moviesService.getSelectedShowing()
+  screen = this.moviesService.getScreen(this.showing.screen)
 
   checkout?: string
 
@@ -32,16 +32,19 @@ export class ReservationComponent implements OnInit {
     this.checkout = price
   }
 
-  // getStatus(seatPos: string) {
-  //   if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
-  //     return 'reserved';
-  //   } else if (this.selected.indexOf(seatPos) !== -1) {
-  //     return 'selected';
-  //   }
-  //   return 'freeSeat';
-  // }
+  getStatus(seatPos: string) {
+    if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
+      return 'reserved';
+    } else if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
+      return 'selected';
+    }
+    return 'freeSeat';
+  }
 
   ngOnInit(): void {
     this.reservationService.createSeats(this.rows)
+    console.log(this.showing.screen)
+    console.log(this.screen)
   }
+  
 }

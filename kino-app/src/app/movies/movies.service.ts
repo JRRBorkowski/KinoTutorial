@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movies } from '../mock-movies';
-import { Movie, Showing, Prices, MoviesFromDb } from '../movie';
+import { Movie, Showing, MoviesFromDb, Screen } from '../movie';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,6 +16,10 @@ export class MoviesService {
 
   private selectedMovie = new ReplaySubject<MoviesFromDb>(1);
   private selectedShowing = new ReplaySubject<Showing>(1);
+
+  selectedSeats: string[] = [];
+
+  screen?: Screen
 
   constructor( private http: HttpClient) { }
 
@@ -83,5 +87,21 @@ export class MoviesService {
   }
   addSubjectShow(showing: Showing) {
     this.selectedShowing.next(showing);
+  }
+
+  addSelectedSeat(seat: string) {
+    this.selectedSeats.push(seat);
+  }
+
+  getSelectedSeats(): string[] {
+    return this.selectedSeats;
+  }
+
+  deleteSelectedSeats() {
+    this.selectedSeats = []
+  }
+
+  getScreen(screen : string) {
+    return this.http.get<Screen[]>(`http://localhost:3000/screen?q=${screen}`)
   }
 }
