@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Showing } from '../movie';
+import { Showing } from '../types';
 
 @Injectable({
   providedIn: 'root'

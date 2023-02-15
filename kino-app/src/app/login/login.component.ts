@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login/login.service';
+import { User } from '../types';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,24 @@ import { LoginService } from 'src/app/login/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+
+  performLogin(user : User) {
+    switch (user.role) {
+      case "Admin":
+        this.loginAuth.userAuthentication();
+        this.loginAuth.setCurrentUser(user);
+        this.router.navigate(['admin']);
+        break;
+      case "User":
+        this.loginAuth.userAuthentication();
+        this.loginAuth.setCurrentUser(user);
+        this.router.navigate(['']);
+        break;
+      default:
+        this.invalidUser = true;
+    }
+  }
+
   invalidUser = false;
 
   onLogIn() {
@@ -18,13 +37,9 @@ export class LoginComponent implements OnInit {
     this.loginAuth.getUsers().subscribe((response) => {
       response.forEach((user) => {
         if (userEmail === user.userEmail && userPassword === user.userPassword) {
-          if (user.role === 'User') {
-            this.loginAuth.userAuthentication()
-            this.loginAuth.setCurrentUser(user)
-            this.router.navigate(['']);
-          }
+          this.performLogin(user);
         } else {
-          this.invalidUser = true
+          this.invalidUser = true;
         }
       })
     });

@@ -24,21 +24,6 @@ export interface MoviesFromDb {
     premiere: boolean;
   }
 
-// export interface Movie2 {
-//     id: number,
-//     title: string,
-//     description: {
-//         short: string,
-//         long: string
-//     },
-//     isPremiere: boolean,
-//     duration: string,
-//     minAge: number|null,
-//     imgURL: string| null,
-//     genre: string,
-//     score: number[]
-// }
-
 export interface User {
     id: number,
     userName: string,

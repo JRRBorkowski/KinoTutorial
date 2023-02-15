@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Screen } from '../movie';
+import { Screen } from '../types';
 import { MoviesService } from '../movies/movies.service';
 import { ReservationService } from './reservation.service';
 
@@ -46,5 +46,5 @@ export class ReservationComponent implements OnInit {
     console.log(this.showing.screen)
     console.log(this.screen)
   }
-  
+
 }

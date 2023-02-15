@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movies } from '../mock-movies';
-import { Movie, Showing, MoviesFromDb, Screen } from '../movie';
+import { Movie, Showing, MoviesFromDb, Screen } from '../types';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

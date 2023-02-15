@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Movie, MoviesFromDb } from '../movie';
+import { Movie, MoviesFromDb } from '../types';
 import { MoviesService } from './movies.service';
 
 @Component({

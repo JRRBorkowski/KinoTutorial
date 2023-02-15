@@ -30,6 +30,10 @@ const routes: Routes = [
     component: LoginComponent   
   },
   {
+    path: 'admin',
+    component: AdminComponent
+  },
+  {
     path: 'reservation/:hour/:id',
     component: ReservationComponent,
     children: [
