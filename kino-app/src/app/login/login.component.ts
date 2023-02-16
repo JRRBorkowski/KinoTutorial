@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { LoginService } from 'src/app/login/login.service';
 import { User } from '../types';
+import { setLoginData } from '../user-data/user-data.actions';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,7 @@ export class LoginComponent implements OnInit {
       case "Admin":
         this.loginAuth.userAuthentication();
         this.loginAuth.setCurrentUser(user);
+        this.store.dispatch(setLoginData(user));
         this.router.navigate(['admin']);
         break;
       case "User":
@@ -57,7 +60,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private builder: NonNullableFormBuilder,
     private router: Router,
-    private loginAuth: LoginService
+    private loginAuth: LoginService,
+    private store: Store<{user?: User}>
   ) {}
 
   ngOnInit(): void {

@@ -17,6 +17,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { AdminComponent } from './admin/admin.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { UserDataEffects } from './user-data/user-data.effects';
+import { userDataReducer } from './user-data/user-data.reducer';
 
 
 
@@ -66,7 +70,9 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatMenuModule
+    MatMenuModule,
+    StoreModule.forRoot({userData : userDataReducer}),
+    EffectsModule.forRoot([UserDataEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

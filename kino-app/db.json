@@ -528,7 +528,7 @@
         "Leszek"
       ],
       "boxOff": 200,
-      "premier": true,
+      "premiere": true,
       "dateId": 0
     },
     {
@@ -548,7 +548,7 @@
         "Leszek"
       ],
       "boxOff": 10,
-      "premier": false,
+      "premiere": false,
       "dateId": 3
     },
     {
@@ -569,7 +569,7 @@
         "Sigourney Weaver"
       ],
       "boxOff": 1000,
-      "premier": false,
+      "premiere": false,
       "dateId": 6
     },
     {
@@ -590,7 +590,7 @@
         "Sigourney Weaver"
       ],
       "boxOff": 1000,
-      "premier": false,
+      "premiere": false,
       "dateId": 6
     }
   ],

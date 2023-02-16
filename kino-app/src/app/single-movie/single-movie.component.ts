@@ -18,6 +18,8 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
 
   selectedMovie?: MoviesFromDb;
 
+  scores?: number[] = this.selectedMovie?.score
+
   clickedMore = false;
   tellMeMore() {
     !this.clickedMore ? this.clickedMore = true : this.clickedMore = false;
@@ -42,14 +44,19 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
 
     this.movieSubscription.add(showingSub);
   }
-  
+
+  // newScore(score : number) {
+  //   this.scores?.push(score)
+  //   this.moviesService.addScore(this.scores, this.selectedMovie?.id)
+  // }
+
   constructor (
     private moviesService: MoviesService
   ) {}
 
   
   ngOnInit(): void {
-    this.getShowings()
+    this.getShowings();
   }
 
   

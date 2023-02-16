@@ -58,6 +58,10 @@ export class MoviesService {
     return Math.round(score);
   }
 
+  addScore(score : number[], id : number) {
+    return this.http.patch<MoviesFromDb['score']>(`${this.movieUrl}/${id}/score`, score)
+  }
+
   getShowing(id: number) {
     return this.http.get<Showing[]>(`${this.movieUrl}/${id}/showing`);
   }
