@@ -56,9 +56,9 @@ export interface Showing {
   }
 
   export interface Screen {
-      colu: 0,
-      id: 0,
-      name: '',
-      rows: 0,
+      colu: string[],
+      id: number,
+      name: string,
+      rows: number,
     }
 

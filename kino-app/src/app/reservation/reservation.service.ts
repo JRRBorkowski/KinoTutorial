@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ReservationService {
 
-  seats?: string[]
   selectedSeats: string[] = []
   rows?: number[]
 

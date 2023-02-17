@@ -293,7 +293,7 @@
       "id": 0,
       "name": "A",
       "rows": 8,
-      "colu": 12,
+      "colu": ["A","B","C","D","E","F","G","H"],
       "specialSeats": [
         "F6",
         "F5",
@@ -307,7 +307,7 @@
       "id": 1,
       "name": "B",
       "rows": 5,
-      "colu": 9,
+      "colu": ["A","B","C","D","E","F","G"],
       "specialSeats": [
         "E4",
         "D4",
@@ -319,7 +319,7 @@
       "id": 2,
       "name": "C",
       "rows": 12,
-      "colu": 16,
+      "colu": ["A","B","C","D","E","F","G","H","I","J"],
       "specialSeats": [
         "J8",
         "J9",
