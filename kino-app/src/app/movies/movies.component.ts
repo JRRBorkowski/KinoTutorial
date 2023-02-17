@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Movie, MoviesFromDb } from '../types';
 import { MoviesService } from './movies.service';
@@ -8,38 +8,38 @@ import { MoviesService } from './movies.service';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
 
   movies: Movie[] = [];
 
   moviesFromDb: MoviesFromDb[] = [];
     
-  weekNumber: number = 0;
+  weekNumber = 0;
 
   week: string[] = [];
 
-  selectedDay: string = '';
+  selectedDay = '';
   
   private subscription = new Subscription();
 
   getSchedule(day : number) {
     this.week = []
-    let date = new Date();
+    const date = new Date();
     for (let i = 0; i < 7; i++){
-      let nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+(i + day));
+      const nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+(i + day));
       this.week.push(`${nextweek.getDate()}/${nextweek.getMonth() + 1}`);
     }
   }
 
   getScore(scores: number[]) {
-    let score = scores.reduce((a, b) => a + b, 0) / scores.length;
+    const score = scores.reduce((a, b) => a + b, 0) / scores.length;
     return Math.round(score);
   }
 
   getMovies(): void {
     const movieSubscription = this.moviesService.getMovies().subscribe(movies => this.movies = movies)
     this.subscription.add(movieSubscription)
-  };
+  }
 
   getMoviesFromDb(): void {
     const movieSubscription = this.moviesService
@@ -53,16 +53,16 @@ export class MoviesComponent implements OnInit {
   changeWeek(weekDelta: number) {
     this.weekNumber = this.weekNumber + weekDelta;
     this.getSchedule(this.weekNumber)
-  };
+  }
 
   selectDay(newDay : string) {
     this.selectedDay = newDay 
-  };
+  }
 
   getSelectedDay() {
     this.getMovies()
     return this.selectedDay
-  };
+  }
 
   constructor(private moviesService: MoviesService) { }
 

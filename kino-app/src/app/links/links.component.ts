@@ -1,24 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LoginService } from '../login/login.service';
+import { User } from '../types';
 
 @Component({
   selector: 'app-links',
   templateUrl: './links.component.html',
   styleUrls: ['./links.component.scss']
 })
-export class LinksComponent implements OnInit {
+export class LinksComponent implements OnInit, OnDestroy {
 
-  isClicked: boolean = false
+  isLogged = false;
 
-  showList() {
-    this.isClicked === false ? this.isClicked = true : this.isClicked = false;
+  user : string | null = null;
+
+  private subscription = new Subscription();
+
+  checkLoginStatus() {
+    const login = this.loginService.isUserLoggedIn$.subscribe((response) => {
+      this.isLogged = response
+    })
+    this.subscription.add(login)
   }
 
-  getUser() {
+  checkUser() {
+    this.user = localStorage.getItem('loginData')
+    if (this.user !== null) {
+      return this.isLogged = true
+    }
+    return this.isLogged = false
   }
-  constructor() { }
+
+  constructor(
+    private loginService : LoginService
+  ) {}
 
   ngOnInit(): void {
-    
+    this.checkUser()
+    this.checkLoginStatus()
+    console.log(this.isLogged)
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }  
 
 }

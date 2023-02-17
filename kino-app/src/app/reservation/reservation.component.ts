@@ -32,19 +32,11 @@ export class ReservationComponent implements OnInit {
     this.checkout = price
   }
 
-  // getStatus(seatPos: string) {
-  //   if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
-  //     return 'reserved';
-  //   } else if (this.showing.reservedSeats.indexOf(seatPos) !== -1) {
-  //     return 'selected';
-  //   }
-  //   return 'freeSeat';
-  // }
+  
 
   ngOnInit(): void {
     this.reservationService.createSeats(this.rows)
     console.log(this.showing.screen)
-    console.log(this.screen)
   }
 
 }
