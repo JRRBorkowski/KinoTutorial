@@ -1,19 +1,21 @@
-<p>Selected seats: --UL HERE--</p>
+<p>Selected seats:</p>
 
 <form [formGroup]="reservationForm" (ngSubmit)="submitForm()">
     <div class="form">
-        <input placeholder="Name" formControlName="firstName">
-        <ng-container *ngIf="reservationCtrl.controls.firstName.errors as errors">
-          <ng-container *ngIf="reservationCtrl.controls.firstName.touched">
-            <p *ngIf="errors['required']">Te pole jest obowiązkowe</p>
-          </ng-container>
-        </ng-container>
-        <input placeholder="Surname" formControlName="surname">
-        <ng-container *ngIf="reservationCtrl.controls.surname.errors as errors">
-          <ng-container *ngIf="reservationCtrl.controls.surname.touched">
-            <p *ngIf="errors['required']">Te pole jest obowiązkowe</p>
-          </ng-container>
-        </ng-container>
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="firstName">
+        <mat-error *ngIf="reservationCtrl.controls.firstName.hasError('required')">To pole jest obowiązkowe</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Surname" formControlName="surname">
+        <mat-error *ngIf="reservationCtrl.controls.surname.hasError('required')">To pole jest obowiązkowe</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone number" formControlName="phone">
+        <mat-error *ngIf="reservationCtrl.controls.phone.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.phone.hasError('minlength')">Too short!</mat-error>
+      </mat-form-field>
+      
         <input placeholder="Phone number" formControlName="phone">
         <ng-container *ngIf="reservationCtrl.controls.phone.errors as errors">
             <ng-container *ngIf="reservationCtrl.controls.phone.touched">

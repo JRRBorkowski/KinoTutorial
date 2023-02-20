@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subscription} from 'rxjs';
-import { MoviesFromDb, Showing } from '../types';
-import { MoviesService } from '../movies/movies.service';
+import { MoviesFromDb, Showing } from '../../types';
+import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-single-movie[movie]',

@@ -13,26 +13,25 @@ export class ReservationComponent implements OnInit {
 
   selectedMovie = this.moviesService.selectMovie()
   selected = this.moviesService.selectedSeats;
-
-
-
   columns: string[] = ['A','B','C','D','E','F','G','H'];
   rows = 8;
 
   showing = this.moviesService.getSelectedShowing()
   screen = this.moviesService.getScreen(this.showing.screen)
 
-  checkout?: string
+  checkout?: string[]
 
   constructor(private route: ActivatedRoute, 
     public reservationService: ReservationService, 
     private moviesService: MoviesService) {}
 
   changeCheckout(price: string) {
-    this.checkout = price
+    return this.checkout?.push(price)
   }
 
-  
+  // generateSeats() {
+  //   this.screen.pipe()
+  // }
 
   ngOnInit(): void {
     this.reservationService.createSeats(this.rows)

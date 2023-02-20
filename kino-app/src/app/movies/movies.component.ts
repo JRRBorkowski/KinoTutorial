@@ -12,7 +12,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   movies: Movie[] = [];
 
-  moviesFromDb: MoviesFromDb[] = [];
+  moviesFromDb$ = this.moviesService.getMoviesFromId()
     
   weekNumber = 0;
 
@@ -35,20 +35,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
     const score = scores.reduce((a, b) => a + b, 0) / scores.length;
     return Math.round(score);
   }
-
-  getMovies(): void {
-    const movieSubscription = this.moviesService.getMovies().subscribe(movies => this.movies = movies)
-    this.subscription.add(movieSubscription)
-  }
-
-  getMoviesFromDb(): void {
-    const movieSubscription = this.moviesService
-      .getMoviesFromId()
-      .subscribe(movies => {
-        this.moviesFromDb = movies;
-      });
-    this.subscription.add(movieSubscription);
-  }
   
   changeWeek(weekDelta: number) {
     this.weekNumber = this.weekNumber + weekDelta;
@@ -60,17 +46,17 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   getSelectedDay() {
-    this.getMovies()
+    // this.getMoviesFromDb()
     return this.selectedDay
   }
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.getMoviesFromDb()
+    // this.getMoviesFromDb()
     this.getSchedule(this.weekNumber);
     this.selectDay(this.week[0])
-    console.log("hello")
+    console.log()
   }
 
   onMovieSelection() {

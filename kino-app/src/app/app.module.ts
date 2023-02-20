@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './reservation/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SingleMovieComponent } from './single-movie/single-movie.component';
+import { SingleMovieComponent } from './movies/single-movie/single-movie.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Movies } from '../mock-movies';
-import { Movie, Showing, MoviesFromDb, Screen } from '../types';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Showing, MoviesFromDb, Screen } from '../types';
+import { ReplaySubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -22,11 +21,6 @@ export class MoviesService {
   screen?: Screen
 
   constructor( private http: HttpClient) { }
-
-  getMovies(): Observable<Movie[]> {
-    const movies = of(Movies);
-    return movies
-  }
 
   getMoviesFromId() {
     return this.http.get<MoviesFromDb[]>(this.movieUrl)

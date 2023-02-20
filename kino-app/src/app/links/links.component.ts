@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { User } from '../types';
+import { resetLoginData } from '../user-data/user-data.actions';
 
 @Component({
   selector: 'app-links',
@@ -31,8 +34,15 @@ export class LinksComponent implements OnInit, OnDestroy {
     return this.isLogged = false
   }
 
+  logoutUser() {
+    this.store.dispatch(resetLoginData())
+    this.router.navigate(['']);
+  }
+
   constructor(
-    private loginService : LoginService
+    private router: Router,
+    private loginService : LoginService,
+    private store: Store<{user?: User}>
   ) {}
 
   ngOnInit(): void {
