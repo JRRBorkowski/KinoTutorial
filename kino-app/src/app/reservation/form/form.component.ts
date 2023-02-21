@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
 
 const customValidator = (source: string, target: string) : ValidatorFn => {
@@ -16,7 +16,7 @@ const customValidator = (source: string, target: string) : ValidatorFn => {
   styleUrls: ['./form.component.scss']
 })
 
-export class FormComponent implements OnInit {
+export class FormComponent {
 
   reservationForm = this.builder.group({
     firstName: this.builder.control('', {
@@ -63,9 +63,6 @@ export class FormComponent implements OnInit {
 
 
     console.log(this.reservationForm.value);
-  }
-
-  ngOnInit(): void {
   }
 
 }

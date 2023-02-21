@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Movie, MoviesFromDb } from '../types';
 import { MoviesService } from './movies.service';
 
 @Component({
@@ -9,8 +8,6 @@ import { MoviesService } from './movies.service';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit, OnDestroy {
-
-  movies: Movie[] = [];
 
   moviesFromDb$ = this.moviesService.getMoviesFromId()
     

@@ -39,6 +39,7 @@ export interface User {
         userPostCode: string,
         userCity: string
       }[]
+    userWatchlist: []
 }
 
 export interface Prices {

@@ -21,6 +21,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserDataEffects } from './user-data/user-data.effects';
 import { userDataReducer } from './user-data/user-data.reducer';
+import { WatchlistComponent } from './movies/watchlist/watchlist.component';
 
 
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent
+  },
+  {
+    path: 'watchlist',
+    component: WatchlistComponent
   },
   {
     path: 'reservation/:hour/:id',
@@ -59,7 +64,8 @@ const routes: Routes = [
     FooterComponent,
     FormComponent,
     SingleMovieComponent,
-    AdminComponent
+    AdminComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,

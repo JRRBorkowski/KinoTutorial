@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { User } from '../types';
 import { resetLoginData } from '../user-data/user-data.actions';
@@ -12,6 +12,10 @@ import { resetLoginData } from '../user-data/user-data.actions';
   styleUrls: ['./links.component.scss']
 })
 export class LinksComponent implements OnInit, OnDestroy {
+
+  private auth$$ = new BehaviorSubject<{ hasAuth: boolean }>({
+    hasAuth: false,
+  });
 
   isLogged = false;
 
@@ -26,16 +30,23 @@ export class LinksComponent implements OnInit, OnDestroy {
     this.subscription.add(login)
   }
 
+  getAuth() {
+    return this.auth$$.asObservable()
+  }
+
   checkUser() {
     this.user = localStorage.getItem('loginData')
     if (this.user !== null) {
-      return this.isLogged = true
+      this.isLogged = true
+      return this.auth$$.next({hasAuth : true })
     }
     return this.isLogged = false
   }
 
   logoutUser() {
-    this.store.dispatch(resetLoginData())
+    this.store.dispatch(resetLoginData());
+    this.isLogged = false;
+    this.auth$$.next({ hasAuth: false });
     this.router.navigate(['']);
   }
 
@@ -43,12 +54,13 @@ export class LinksComponent implements OnInit, OnDestroy {
     private router: Router,
     private loginService : LoginService,
     private store: Store<{user?: User}>
-  ) {}
+  ) {
+    this.checkUser();
+  }
 
   ngOnInit(): void {
     this.checkUser()
     this.checkLoginStatus()
-    console.log(this.isLogged)
   }
 
   ngOnDestroy() {
