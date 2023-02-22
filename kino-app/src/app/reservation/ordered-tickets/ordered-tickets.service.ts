@@ -11,7 +11,7 @@ export class CartService {
     private http: HttpClient
   ) { }
 
-  getCart(id : number) {
+  getOrders(id : number) {
     return this.http.get<UserOrders[]>(`http://localhost:3000/users/${id}/orders`);
   }
 }

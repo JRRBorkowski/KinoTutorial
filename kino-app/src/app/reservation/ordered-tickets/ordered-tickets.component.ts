@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserOrders } from 'src/app/types';
 import { CartService } from './ordered-tickets.service';
@@ -21,15 +20,15 @@ export class OrdersComponent implements OnInit, OnDestroy {
   userOrders: UserOrders[] = [];
 
   getOrders() {
-    const sub = this.service.getCart(this.userId).subscribe(
+    const sub = this.service.getOrders(this.userId).subscribe(
       (response) => {
         this.userOrders = response;
       });
     this.subscriptions.add(sub);
   }
 
-  ngOnInit(): void {
-    this.service.getCart(this.userId)
+ngOnInit(): void {
+    this.getOrders()
 }
 
 ngOnDestroy() {

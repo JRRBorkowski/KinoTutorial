@@ -3,8 +3,7 @@
 <button>
     Create new movie
 </button>
-<ng-component>
-    <form>
+    <form [formGroup]="newMovieForm">
         <h1>Add movie</h1>
         <mat-form-field>
             <mat-label>Title</mat-label>
@@ -42,6 +41,6 @@
             <mat-label>Premiere</mat-label>
             <input matInput>
         </mat-form-field>
+        <button>add new movie</button>
     </form>
-</ng-component>
 </div>

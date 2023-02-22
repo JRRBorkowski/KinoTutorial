@@ -24,6 +24,7 @@ import { userDataReducer } from './user-data/store/user-data.reducer';
 import { WatchlistComponent } from './movies/watchlist/watchlist.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { OrdersComponent } from './reservation/ordered-tickets/ordered-tickets.component';
+import { CartComponent } from './reservation/cart/cart.component';
 
 
 
@@ -73,7 +74,8 @@ const routes: Routes = [
     SingleMovieComponent,
     AdminComponent,
     WatchlistComponent,
-    OrdersComponent
+    OrdersComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -109,7 +109,7 @@
         "userPostCode": "",
         "userCity": ""
       },
-      "paiedAt": "Tue Dec 13 2022 12:09:18 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "paidAt": "Tue Dec 13 2022 12:09:18 GMT+0100 (czas środkowoeuropejski standardowy)",
       "ticket": [
         {
           "id": 0.9981165037595541,
