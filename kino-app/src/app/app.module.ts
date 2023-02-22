@@ -23,6 +23,7 @@ import { UserDataEffects } from './user-data/user-data.effects';
 import { userDataReducer } from './user-data/user-data.reducer';
 import { WatchlistComponent } from './movies/watchlist/watchlist.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -67,7 +68,8 @@ const routes: Routes = [
     FormComponent,
     SingleMovieComponent,
     AdminComponent,
-    WatchlistComponent
+    WatchlistComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
