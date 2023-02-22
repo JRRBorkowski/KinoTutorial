@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -5,7 +6,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/login/login.service';
 import { User } from '../types';
-import { setLoginData } from '../user-data/user-data.actions';
+import { setLoginData } from '../user-data/store/user-data.actions';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,8 @@ export class LoginComponent implements OnInit {
         this.loginAuth.setCurrentUser(user);
         this.store.dispatch(setLoginData(user));
         // this.router.navigate(['admin']);
+        console.log("logged")
+        this.user$.subscribe(user => console.log(user.id))
         break;
       case "User":
         this.loginAuth.userAuthentication();
@@ -46,7 +49,7 @@ export class LoginComponent implements OnInit {
         if (userEmail === user.userEmail && userPassword === user.userPassword) {
           this.performLogin(user);
         } else {
-          this.invalidUser = true;
+          return
         }
       })
     });
@@ -67,7 +70,7 @@ export class LoginComponent implements OnInit {
     private loginAuth: LoginService,
     private store: Store<{userData: User}>
   ) {
-    this.user$ = this.store.select('userData');
+    this.user$ = this.store.select(state => state.userData);
   }
 
   ngOnInit(): void {

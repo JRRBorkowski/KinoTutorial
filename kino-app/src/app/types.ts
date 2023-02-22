@@ -63,3 +63,30 @@ export interface Showing {
       rows: number,
     }
 
+    export interface UserOrders {
+      id: number;
+      userName: string;
+      userLastName: string;
+      userMail: string;
+      discountCode: string;
+      userPhoneNumber: string;
+      paidAt: string;
+      ticket: UserOrdersTicket[];
+      userId: number;
+    }
+    
+    export interface UserOrdersTicket {
+      id: number;
+      showId: number;
+      title: string;
+      date: string;
+      hour: string;
+      seat: UserOrdersSeat;
+    }
+    
+    export interface UserOrdersSeat {
+      positon: string;
+      type: string;
+      price: number;
+      special: boolean;
+    }

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { User } from '../types';
-import { resetLoginData } from '../user-data/user-data.actions';
+import { resetLoginData } from '../user-data/store/user-data.actions';
 
 @Component({
   selector: 'app-links',

@@ -19,11 +19,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AdminComponent } from './admin/admin.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { UserDataEffects } from './user-data/user-data.effects';
-import { userDataReducer } from './user-data/user-data.reducer';
+import { UserDataEffects } from './user-data/store/user-data.effects';
+import { userDataReducer } from './user-data/store/user-data.reducer';
 import { WatchlistComponent } from './movies/watchlist/watchlist.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CartComponent } from './cart/cart.component';
+import { OrdersComponent } from './reservation/ordered-tickets/ordered-tickets.component';
 
 
 
@@ -44,6 +44,10 @@ const routes: Routes = [
   {
     path: 'watchlist',
     component: WatchlistComponent
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent
   },
   {
     path: 'reservation/:hour/:id',
@@ -69,7 +73,7 @@ const routes: Routes = [
     SingleMovieComponent,
     AdminComponent,
     WatchlistComponent,
-    CartComponent
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

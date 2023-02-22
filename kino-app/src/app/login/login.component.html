@@ -1,8 +1,8 @@
 <div class="login-container">
     <div class="login">
-        <!-- <ng-component *ngIf="user$ | async as unpackedUser"> -->
-            <h1>User id: {{(user$ | async)?.userEmail}}</h1>
-        <!-- </ng-component> -->
+        <ng-component *ngIf="user$ | async as unpackedUser">
+            <h1>User id: {{unpackedUser.id}}</h1>
+        </ng-component>
         <!-- TODO: Wyświetlanie tego gówna -->
             <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
                 <mat-form-field>
