@@ -38,8 +38,8 @@ export interface User {
         userStreet: string,
         userPostCode: string,
         userCity: string
-      }[]
-    userWatchlist: []
+      }[],
+    userWatchlist: MoviesFromDb[]
 }
 
 export interface Prices {

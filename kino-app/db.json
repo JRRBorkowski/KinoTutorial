@@ -16,7 +16,7 @@
           "userCity": ""
         }
       ],
-      "userWishList": []
+      "userWatchlist": []
     },
     {
       "id": 1,
@@ -32,6 +32,34 @@
           "userStreet": "Losowa Ulica 5/15",
           "userPostCode": "12-123",
           "userCity": "Warszawa"
+        }
+      ],
+      "userWatchlist": [
+        {
+          "id": 0,
+          "image": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+          "title": "Duke Nukem: The Kino™",
+          "genre": "Action, Super hero",
+          "length": "130 min",
+          "ageRest": "PG-13",
+          "description": "It's payback tim",
+          "score": [
+            10,
+            10,
+            10,
+            1,
+            9
+          ],
+          "director": "Kino Fabino",
+          "actors": [
+            "Maciek",
+            "Janek",
+            "Ktos",
+            "Leszek"
+          ],
+          "boxOff": 200,
+          "premiere": true,
+          "dateId": 0
         }
       ],
       "userWishList": []
@@ -293,7 +321,16 @@
       "id": 0,
       "name": "A",
       "rows": 8,
-      "colu": ["A","B","C","D","E","F","G","H"],
+      "colu": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
       "specialSeats": [
         "F6",
         "F5",
@@ -307,7 +344,15 @@
       "id": 1,
       "name": "B",
       "rows": 5,
-      "colu": ["A","B","C","D","E","F","G"],
+      "colu": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
       "specialSeats": [
         "E4",
         "D4",
@@ -319,7 +364,18 @@
       "id": 2,
       "name": "C",
       "rows": 12,
-      "colu": ["A","B","C","D","E","F","G","H","I","J"],
+      "colu": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ],
       "specialSeats": [
         "J8",
         "J9",
@@ -519,7 +575,13 @@
       "length": "130 min",
       "ageRest": "PG-13",
       "description": "It's payback tim",
-      "score": [10, 10, 10, 1, 9],
+      "score": [
+        10,
+        10,
+        10,
+        1,
+        9
+      ],
       "director": "Kino Fabino",
       "actors": [
         "Maciek",
@@ -539,7 +601,13 @@
       "length": "110 min",
       "ageRest": "PG-13",
       "description": "Whenever i have time i will add some description",
-      "score": [2, 1, 3, 4, 4],
+      "score": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
       "director": "James Cameron",
       "actors": [
         "Artut",
@@ -560,7 +628,13 @@
       "ageRest": "PG-12",
       "description": "Whenever i have time i will add some description",
       "long-description": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
-      "score": [8, 4, 5, 7, 5],
+      "score": [
+        8,
+        4,
+        5,
+        7,
+        5
+      ],
       "director": "James Cameron",
       "actors": [
         "Stephen Lang",
@@ -581,7 +655,13 @@
       "ageRest": "PG-6",
       "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
       "long-description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
-      "score": [8, 10, 10, 7, 9],
+      "score": [
+        8,
+        10,
+        10,
+        7,
+        9
+      ],
       "director": "James Cameron",
       "actors": [
         "Stephen Lang",

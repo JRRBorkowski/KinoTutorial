@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/login/login.service';
 import { User } from '../types';
 import { setLoginData } from '../user-data/user-data.actions';
@@ -9,9 +10,11 @@ import { setLoginData } from '../user-data/user-data.actions';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  user$: Observable<User>;
 
   performLogin(user : User) {
     switch (user.role) {
@@ -19,12 +22,13 @@ export class LoginComponent implements OnInit {
         this.loginAuth.userAuthentication();
         this.loginAuth.setCurrentUser(user);
         this.store.dispatch(setLoginData(user));
-        this.router.navigate(['admin']);
+        // this.router.navigate(['admin']);
         break;
       case "User":
         this.loginAuth.userAuthentication();
         this.loginAuth.setCurrentUser(user);
-        this.router.navigate(['']);
+        this.store.dispatch(setLoginData(user));
+        // this.router.navigate(['']);
         break;
       default:
         this.invalidUser = true;
@@ -61,8 +65,10 @@ export class LoginComponent implements OnInit {
     private builder: NonNullableFormBuilder,
     private router: Router,
     private loginAuth: LoginService,
-    private store: Store<{user?: User}>
-  ) {}
+    private store: Store<{userData: User}>
+  ) {
+    this.user$ = this.store.select('userData');
+  }
 
   ngOnInit(): void {
     console.log('TODO: Initiate store')

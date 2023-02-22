@@ -19,9 +19,23 @@ export class WatchlistService {
     return this.http.get<User>(`http://localhost:3000/users/${id}`);
   }
 
-  getWishlistMovies(id: number){
+  getWatchlistMovies(id: number){
     this.getUser(id).subscribe(({ userWatchlist }) => {
       this.userWatchlist$$.next(userWatchlist);
+    });
+  }
+
+  removeFromWatchlist(userId: number, movieId: number) {
+    this.getUser(userId).subscribe(({ userWatchlist }) => {
+      const newWatchlist = userWatchlist.filter((movie) => {
+        return movie.id !== movieId;
+      });
+      console.log(newWatchlist);
+      this.http
+        .patch(`http://localhost:3000/users/${userId}`, { userWishList: [...newWatchlist] })
+        .subscribe(() => {
+          this.userWatchlist$$.next(newWatchlist)
+        });
     });
   }
 

@@ -11,7 +11,7 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item *ngIf="!isLogged" routerLink="login">Login</button>
                 <button mat-menu-item routerLink="">Homepage</button>
-                <button mat-menu-item routerLink="watchlist">Reservations</button>
+                <button mat-menu-item routerLink="watchlist">Watchlist</button>
                 <button mat-menu-item>Tickets</button>
                 <button mat-menu-item *ngIf="isLogged" (click)="logoutUser()">Logout</button>
             </mat-menu>
