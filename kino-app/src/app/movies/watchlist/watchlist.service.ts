@@ -19,10 +19,14 @@ export class WatchlistService {
     return this.http.get<User>(`http://localhost:3000/users/${id}`);
   }
 
-  getWatchlistMovies(id: number){
-    this.getUser(id).subscribe(({ userWatchlist }) => {
-      this.userWatchlist$$.next(userWatchlist);
-    });
+  getWatchlistMovies(id: number | undefined){
+    if (id) {
+      this.getUser(id).subscribe(({ userWatchlist }) => {
+        this.userWatchlist$$.next(userWatchlist);
+      });
+    } else {
+      this.userWatchlist$$.next([])
+    }
   }
 
   removeFromWatchlist(userId: number, movieId: number) {

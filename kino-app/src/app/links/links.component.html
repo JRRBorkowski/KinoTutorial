@@ -7,13 +7,13 @@
             </span>
         </button></li>
         <li>
-            <button mat-flat-button [matMenuTriggerFor]="menu" color="primary">Menu</button>
+            <button mat-flat-button color="primary" *ngIf="!isLogged" routerLink="login">Login</button>
+            <button mat-flat-button *ngIf="isLogged" [matMenuTriggerFor]="menu" color="primary">Menu</button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item *ngIf="!isLogged" routerLink="login">Login</button>
                 <button mat-menu-item routerLink="">Homepage</button>
                 <button mat-menu-item routerLink="watchlist">Watchlist</button>
                 <button mat-menu-item routerLink="orders">Tickets</button>
-                <button mat-menu-item *ngIf="isLogged" (click)="logoutUser()">Logout</button>
+                <button mat-menu-item (click)="logoutUser()">Logout</button>
             </mat-menu>
         </li>
     </ul>

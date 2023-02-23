@@ -1,8 +1,7 @@
-import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder, Validators} from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/login/login.service';
 import { User } from '../types';
@@ -15,23 +14,23 @@ import { setLoginData } from '../user-data/store/user-data.actions';
 })
 export class LoginComponent implements OnInit {
 
-  user$: Observable<User>;
+  user$: Observable<User | undefined>;
 
-  performLogin(user : User) {
+  performLogin(user: User) {
     switch (user.role) {
       case "Admin":
         this.loginAuth.userAuthentication();
         this.loginAuth.setCurrentUser(user);
         this.store.dispatch(setLoginData(user));
-        // this.router.navigate(['admin']);
-        console.log("logged")
-        this.user$.subscribe(user => console.log(user.id))
+        this.router.navigate(['admin']);
+        console.log("logged");
+        this.user$.subscribe(console.log);
         break;
       case "User":
         this.loginAuth.userAuthentication();
         this.loginAuth.setCurrentUser(user);
         this.store.dispatch(setLoginData(user));
-        // this.router.navigate(['']);
+        this.router.navigate(['']);
         break;
       default:
         this.invalidUser = true;
@@ -68,9 +67,11 @@ export class LoginComponent implements OnInit {
     private builder: NonNullableFormBuilder,
     private router: Router,
     private loginAuth: LoginService,
-    private store: Store<{userData: User}>
+    private store: Store<{ userData: { user?: User } }>
   ) {
-    this.user$ = this.store.select(state => state.userData);
+    this.user$ = this.store.select(state => state.userData.user);
+    this.store.subscribe(state => console.log({ state }));
+    this.user$.subscribe(console.log)
   }
 
   ngOnInit(): void {
