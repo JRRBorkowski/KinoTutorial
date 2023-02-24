@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AdminComponent } from './admin/admin.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -25,6 +26,8 @@ import { WatchlistComponent } from './movies/watchlist/watchlist.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { OrdersComponent } from './reservation/ordered-tickets/ordered-tickets.component';
 import { CartComponent } from './reservation/cart/cart.component';
+import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
+import { AdminShowingsComponent } from './admin/admin-showings/admin-showings.component';
 
 
 
@@ -40,7 +43,13 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    children: [
+      {
+      path: 'admin-movie',
+      component: AdminMovieComponent
+    }
+    ]
   },
   {
     path: 'watchlist',
@@ -75,7 +84,9 @@ const routes: Routes = [
     AdminComponent,
     WatchlistComponent,
     OrdersComponent,
-    CartComponent
+    CartComponent,
+    AdminMovieComponent,
+    AdminShowingsComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +98,7 @@ const routes: Routes = [
     MatInputModule,
     BrowserAnimationsModule,
     MatMenuModule,
+    MatCheckboxModule,
     StoreModule.forRoot({userData : userDataReducer}),
     EffectsModule.forRoot([UserDataEffects]),
     StoreDevtoolsModule.instrument({

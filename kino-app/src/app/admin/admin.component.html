@@ -1,46 +1,13 @@
-<p>admin works!</p>
 <div>
-<button>
-    Create new movie
-</button>
-    <form [formGroup]="newMovieForm">
-        <h1>Add movie</h1>
-        <mat-form-field>
-            <mat-label>Title</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Genre</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Length</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Age restriction</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Description</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Director</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Actors</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Box office</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Premiere</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <button>add new movie</button>
-    </form>
+    <button routerLink="admin-movie">
+        Add movie
+    </button>
+    <button>
+        Add showing
+    </button>
+    <div>
+        Current movies list:
+    </div>
+    <router-outlet></router-outlet>
 </div>
+

@@ -14,9 +14,9 @@
 
     <ul class="tickets">Selected tickets:
         <li *ngFor="let selectedSeat of reservationService.selectedSeats">{{selectedSeat}} ticket  
-        <select #t (change)="changeCheckout(t.value)" *ngFor="let ticket of showing.prices">
+        <select *ngFor="let ticket of showing.prices">
             <option selected disabled hidden>Select</option>
-            <option value="ticket.price">{{ticket.type}}</option>
+            <option value="ticket.price">{{ticket.price}}</option>
         </select> to pay: {{checkout}}</li>
     </ul>
     
