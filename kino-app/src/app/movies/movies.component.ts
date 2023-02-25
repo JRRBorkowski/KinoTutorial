@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { Movie } from '../types';
 import { MoviesService } from './movies.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { MoviesService } from './movies.service';
 })
 export class MoviesComponent implements OnInit, OnDestroy {
 
-  moviesFromDb$ = this.moviesService.getMoviesFromId()
+  moviesFromDb$: Observable<Movie[]>
     
   weekNumber = 0;
 
@@ -47,10 +48,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
     return this.selectedDay
   }
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService) {
+    this.moviesFromDb$ = this.moviesService.moviesList$
+   }
 
   ngOnInit(): void {
-    // this.getMoviesFromDb()
+    this.moviesService.getMoviesFromId();
     this.getSchedule(this.weekNumber);
     this.selectDay(this.week[0])
   }

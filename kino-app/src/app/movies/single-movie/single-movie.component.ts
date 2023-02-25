@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription} from 'rxjs';
-import { Movie, Showing, User } from '../../types';
+import { Movie, Score, Showing, User } from '../../types';
 import { MoviesService } from '../movies.service';
 import { WatchlistService } from '../watchlist/watchlist.service';
 
@@ -24,7 +24,7 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
 
   selectedMovie?: Movie;
 
-  scores?: number[] = this.selectedMovie?.score;
+  scores?: Score[] = this.selectedMovie?.scores;
 
   clickedMore = false;
   tellMeMore() {
@@ -46,13 +46,8 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
       }) ) {
         return false;
     } 
-    return true
+    return true;
 }
-
-  getScore(scores: number[]) {
-    const score = scores.reduce((a, b) => a + b, 0) / scores.length;
-    return Math.round(score);
-  }
 
   handleSelectedMovie(showing: Showing) {
     this.moviesService.addSubjectMovie(this.movie);
@@ -79,7 +74,7 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
       this.userId = userData?.id;
       this.watchlistService.getWatchlistMovies(this.userId);
     })
-    this.userWatchlist$ = this.watchlistService.userWatchlist$
+    this.userWatchlist$ = this.watchlistService.userWatchlist$;
   }
 
   

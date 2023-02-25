@@ -627,12 +627,27 @@
       "length": "130 min",
       "ageRest": "PG-13",
       "description": "It's payback tim",
-      "score": [
-        10,
-        10,
-        10,
-        1,
-        9
+      "scores": [
+        {
+          "userId": 0,
+          "score": 10
+        },
+        {
+          "userId": 2,
+          "score": 10
+        },
+        {
+          "userId": 3,
+          "score": 1
+        },
+        {
+          "userId": 4,
+          "score": 10
+        },
+        {
+          "score": 10,
+          "userId": 1
+        }
       ],
       "director": "Kino Fabino",
       "actors": [
@@ -653,12 +668,27 @@
       "length": "110 min",
       "ageRest": "PG-13",
       "description": "Whenever i have time i will add some description",
-      "score": [
-        2,
-        1,
-        3,
-        4,
-        4
+      "scores": [
+        {
+          "userId": 0,
+          "score": 10
+        },
+        {
+          "userId": 4,
+          "score": 6
+        },
+        {
+          "userId": 3,
+          "score": 2
+        },
+        {
+          "userId": 5,
+          "score": 1
+        },
+        {
+          "userId": 6,
+          "score": 4
+        }
       ],
       "director": "James Cameron",
       "actors": [
@@ -680,12 +710,31 @@
       "ageRest": "PG-12",
       "description": "Whenever i have time i will add some description",
       "long-description": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
-      "score": [
-        8,
-        4,
-        5,
-        7,
-        5
+      "scores": [
+        {
+          "userId": 0,
+          "score": 10
+        },
+        {
+          "userId": 2,
+          "score": 1
+        },
+        {
+          "userId": 7,
+          "score": 1
+        },
+        {
+          "userId": 2,
+          "score": 1
+        },
+        {
+          "userId": 3,
+          "score": 1
+        },
+        {
+          "userId": 5,
+          "score": 10
+        }
       ],
       "director": "James Cameron",
       "actors": [
@@ -707,12 +756,19 @@
       "ageRest": "PG-6",
       "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
       "long-description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
-      "score": [
-        8,
-        10,
-        10,
-        7,
-        9
+      "scores": [
+        {
+          "userId": 0,
+          "score": 10
+        },
+        {
+          "userId": 1,
+          "score": 10
+        },
+        {
+          "userId": 2,
+          "score": 10
+        }
       ],
       "director": "James Cameron",
       "actors": [

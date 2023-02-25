@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Showing, Movie, Screen } from '../types';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject,BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -20,11 +20,23 @@ export class MoviesService {
 
   screen?: Screen
 
+  private moviesList$$ = new BehaviorSubject<Movie[]>([]);
+
+  get moviesList$() {
+    return this.moviesList$$.asObservable();
+  }
+
   constructor( private http: HttpClient) { }
 
   getMoviesFromId() {
-    return this.http.get<Movie[]>(this.movieUrl)
+    this.http.get<Movie[]>(this.movieUrl).subscribe((movies) => {
+        this.moviesList$$.next(movies);
+    })
   } 
+
+  getMovie(movieId : number) {
+    return this.http.get<Movie>(`${this.movieUrl}/${movieId}`)
+  }
 
   selectMovie() : Movie {
     let movie = {
@@ -35,7 +47,10 @@ export class MoviesService {
       length: '',
       ageRest: '',
       description: '',
-      score: [0],
+      scores: [{
+        userId: 0,
+        score: 0
+      }],
       director: '',
       actors: [''],
       boxOff: 0,
@@ -47,17 +62,29 @@ export class MoviesService {
     return movie;
   }
 
-  getScore(scores: number[]) {
-    const score = scores.reduce((a, b) => a + b, 0) / scores.length;
-    return Math.round(score);
+  addScore(score : number, userId: number, movieId : number) {
+    const scoreObject = {
+      score: score,
+      userId: userId
+    };
+    this.getMovie(movieId).subscribe((movie => {
+        const filteredMovieScores = movie.scores.filter((movieScore) => {
+          return movieScore.userId !== userId;
+        })
+        console.log(filteredMovieScores)
+        const newScores = [...filteredMovieScores, scoreObject];
+        this.http.patch<Movie>(`${this.movieUrl}/${movieId}`, {scores: [...newScores]})
+          .subscribe(()=>{
+            this.getMoviesFromId();
+          });
+        }
+      )
+    );
   }
+  // TODO: dokończyć komponent
 
-  addScore(score : number[], id : number) {
-    return this.http.patch<Movie['score']>(`${this.movieUrl}/${id}/score`, score)
-  }
-
-  getShowing(id: number) {
-    return this.http.get<Showing[]>(`${this.movieUrl}/${id}/showing`);
+  getShowing(movieId: number) {
+    return this.http.get<Showing[]>(`${this.movieUrl}/${movieId}/showing`);
   }
   
   getSelectedShowing(): Showing {

@@ -1,0 +1,16 @@
+<h3>Viewer's score:</h3>
+<h2>{{getScore(movie?.scores)}}</h2>
+<div *ngIf="userId">
+    <button>Score movie</button>
+    <mat-slider
+        [max]="10" 
+        [min]="1" 
+        [step]="1" 
+        [discrete]="true"
+        color="primary">
+        <input matSliderThumb #t>
+    </mat-slider>
+    <p>{{t.value}}</p>
+    <button (click)="submitScore(t.value)">Submit score</button>
+</div>
+

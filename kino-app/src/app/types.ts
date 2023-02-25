@@ -6,12 +6,17 @@ export interface Movie {
     length: string;
     ageRest: string;
     description: string;
-    score: number[];
+    scores: Score[];
     director: string;
     actors: string[];
     boxOff: number;
     premiere: boolean;
   }
+
+export interface Score {
+  userId: number,
+  score: number
+}
 
 export interface User {
     id: number,

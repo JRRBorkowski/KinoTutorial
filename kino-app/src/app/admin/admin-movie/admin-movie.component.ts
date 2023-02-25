@@ -34,7 +34,10 @@ export class AdminMovieComponent {
     description: this.builder.control('', {
       validators: Validators.required
     }),
-    score: this.builder.control([10]),
+    scores: this.builder.control([{
+      userId: 0,
+      score: 10
+    }]),
     director: this.builder.control('', {
       validators: Validators.required
     }),

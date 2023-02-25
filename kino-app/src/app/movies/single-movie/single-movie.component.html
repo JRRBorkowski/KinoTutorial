@@ -12,9 +12,7 @@
         </div>
     </div>
         <div class="single-movie--rating">
-            <h3>Viewer's score:</h3>
-            <h2>{{getScore(movie.score)}}</h2>
-                <button>Score movie</button>
+                <app-score [movie]="movie" [userId]="userId"></app-score>
                 <ng-container *ngIf="userId">
                     <button (click)="addToWatchlist(userId, movie)" [disabled]="!canAddToWatchlist(userWatchlist$ | async)">Add to watchlist</button>
                 </ng-container>
