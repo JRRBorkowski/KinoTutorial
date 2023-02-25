@@ -34,34 +34,7 @@
           "userCity": "Warszawa"
         }
       ],
-      "userWatchlist": [
-        {
-          "id": 0,
-          "image": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
-          "title": "Duke Nukem: The Kino™",
-          "genre": "Action, Super hero",
-          "length": "130 min",
-          "ageRest": "PG-13",
-          "description": "It's payback tim",
-          "score": [
-            10,
-            10,
-            10,
-            1,
-            9
-          ],
-          "director": "Kino Fabino",
-          "actors": [
-            "Maciek",
-            "Janek",
-            "Ktos",
-            "Leszek"
-          ],
-          "boxOff": 200,
-          "premiere": true,
-          "dateId": 0
-        }
-      ],
+      "userWatchlist": [],
       "userWishList": []
     }
   ],

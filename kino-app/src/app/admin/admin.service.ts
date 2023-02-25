@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MoviesFromDb } from '../types';
+import { Movie } from '../types';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AdminPanelService {
     private http: HttpClient
   ){}
 
-  createMovie(movie: MoviesFromDb) {
+  createMovie(movie: Movie) {
     return this.http.post(`${this.url}/movies`, movie);
   }
 

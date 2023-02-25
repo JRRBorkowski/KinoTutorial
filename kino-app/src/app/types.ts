@@ -1,15 +1,4 @@
 export interface Movie {
-    id: number,
-    title: string,
-    description: string,
-    shortDescription: string,
-    imageSource: string,
-    viewings: string[],
-    premiere: boolean
-    score: number[]
-}
-
-export interface MoviesFromDb {
     id: number;
     image: string;
     title: string;
@@ -39,7 +28,7 @@ export interface User {
         userPostCode: string,
         userCity: string
       }[],
-    userWatchlist: MoviesFromDb[]
+    userWatchlist: Movie[]
 }
 
 export interface Prices {

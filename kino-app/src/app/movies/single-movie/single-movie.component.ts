@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription} from 'rxjs';
-import { MoviesFromDb, Showing, User } from '../../types';
+import { Movie, Showing, User } from '../../types';
 import { MoviesService } from '../movies.service';
 import { WatchlistService } from '../watchlist/watchlist.service';
 
@@ -12,7 +12,7 @@ import { WatchlistService } from '../watchlist/watchlist.service';
 })
 export class SingleMovieComponent implements OnInit, OnDestroy {
 
-  @Input() movie: MoviesFromDb = {} as MoviesFromDb;
+  @Input() movie: Movie = {} as Movie;
 
   user$: Observable<User | undefined>;
   userId: number | undefined = undefined;
@@ -21,7 +21,7 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
 
   private movieSubscription = new Subscription();
 
-  selectedMovie?: MoviesFromDb;
+  selectedMovie?: Movie;
 
   scores?: number[] = this.selectedMovie?.score
 
@@ -30,9 +30,9 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
     !this.clickedMore ? this.clickedMore = true : this.clickedMore = false;
   }
 
-  addToWatchlist(id : number, movie : MoviesFromDb) {
-    if (this.userId && this.selectedMovie) {
-      this.watchlistService.addWatchlist(id, movie)
+  addToWatchlist(id : number, movie : Movie) {
+    if (id && movie) {
+      this.watchlistService.addToWatchlist(id, movie)
     }
   }
 

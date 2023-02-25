@@ -62,7 +62,6 @@ export class FormComponent {
     }
 
 
-    console.log(this.reservationForm.value);
   }
 
 }

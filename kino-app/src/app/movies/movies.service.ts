@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Showing, MoviesFromDb, Screen } from '../types';
+import { Showing, Movie, Screen } from '../types';
 import { ReplaySubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,7 +13,7 @@ export class MoviesService {
 
   showing: Showing[] = []
 
-  private selectedMovie = new ReplaySubject<MoviesFromDb>(1);
+  private selectedMovie = new ReplaySubject<Movie>(1);
   private selectedShowing = new ReplaySubject<Showing>(1);
 
   selectedSeats: string[] = [];
@@ -23,10 +23,10 @@ export class MoviesService {
   constructor( private http: HttpClient) { }
 
   getMoviesFromId() {
-    return this.http.get<MoviesFromDb[]>(this.movieUrl)
+    return this.http.get<Movie[]>(this.movieUrl)
   } 
 
-  selectMovie() : MoviesFromDb {
+  selectMovie() : Movie {
     let movie = {
       id: 0,
       image: '',
@@ -53,7 +53,7 @@ export class MoviesService {
   }
 
   addScore(score : number[], id : number) {
-    return this.http.patch<MoviesFromDb['score']>(`${this.movieUrl}/${id}/score`, score)
+    return this.http.patch<Movie['score']>(`${this.movieUrl}/${id}/score`, score)
   }
 
   getShowing(id: number) {
@@ -80,7 +80,7 @@ export class MoviesService {
     return showing;
   }
 
-  addSubjectMovie(movie: MoviesFromDb) {
+  addSubjectMovie(movie: Movie) {
     this.selectedMovie.next(movie);
   }
   addSubjectShow(showing: Showing) {

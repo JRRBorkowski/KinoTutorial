@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
         this.loginAuth.setCurrentUser(user);
         this.store.dispatch(setLoginData(user));
         this.router.navigate(['admin']);
-        console.log("logged");
-        this.user$.subscribe(console.log);
         break;
       case "User":
         this.loginAuth.userAuthentication();
@@ -70,8 +68,6 @@ export class LoginComponent implements OnInit {
     private store: Store<{ userData: { user?: User } }>
   ) {
     this.user$ = this.store.select(state => state.userData.user);
-    this.store.subscribe(state => console.log({ state }));
-    this.user$.subscribe(console.log)
   }
 
   ngOnInit(): void {

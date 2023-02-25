@@ -53,7 +53,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
     // this.getMoviesFromDb()
     this.getSchedule(this.weekNumber);
     this.selectDay(this.week[0])
-    console.log()
   }
 
   onMovieSelection() {

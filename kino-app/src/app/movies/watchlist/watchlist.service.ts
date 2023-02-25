@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject} from 'rxjs';
-import { MoviesFromDb, User } from 'src/app/types';
+import { Movie, User } from 'src/app/types';
 
+//todo DB_PATH as an env variable http://localhost...
 
 @Injectable({
   providedIn: 'root'
 })
 export class WatchlistService {
 
-  private userWatchlist$$ = new BehaviorSubject<MoviesFromDb[]>([]);
+  private userWatchlist$$ = new BehaviorSubject<Movie[]>([]);
 
   get userWatchlist$() {
     return this.userWatchlist$$.asObservable();
@@ -19,6 +20,8 @@ export class WatchlistService {
     return this.http.get<User>(`http://localhost:3000/users/${id}`);
   }
 
+
+  //todo maybe add a "DeleteWatchlistMovies" function instead of trigerring such behaviour with undefined argument.
   getWatchlistMovies(id: number | undefined){
     if (id) {
       this.getUser(id).subscribe(({ userWatchlist }) => {
@@ -29,8 +32,8 @@ export class WatchlistService {
     }
   }
 
-  addWatchlist(id : number ,movie : MoviesFromDb) {
-    return this.http.post<User>(`http://localhost:3000/users/${id}/userWatchlist`, movie);
+  addToWatchlist(id : number ,movie : Movie) {
+    return this.http.post<Movie>(`http://localhost:3000/users/${id}/userWatchlist`, movie);
   }
 
   removeFromWatchlist(userId: number, movieId: number) {
@@ -40,7 +43,7 @@ export class WatchlistService {
       });
       console.log(newWatchlist);
       this.http
-        .patch(`http://localhost:3000/users/${userId}`, { userWishList: [...newWatchlist] })
+        .patch(`http://localhost:3000/users/${userId}`, { userWatchlist: [...newWatchlist] })
         .subscribe(() => {
           this.userWatchlist$$.next(newWatchlist)
         });

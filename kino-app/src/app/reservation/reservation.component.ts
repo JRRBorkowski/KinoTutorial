@@ -35,7 +35,6 @@ export class ReservationComponent implements OnInit {
 
   ngOnInit(): void {
     this.reservationService.createSeats(this.rows)
-    console.log(this.showing.screen)
   }
 
 }
