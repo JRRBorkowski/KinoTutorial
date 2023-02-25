@@ -52,7 +52,6 @@ export class AdminMovieComponent {
       return;
     }
 
-    console.log(this.newMovieForm.value);
     this.service.createMovie(this.newMovieForm.getRawValue()).subscribe(()=> {
       this.newMovieForm.reset
     })

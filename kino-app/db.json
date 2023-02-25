@@ -34,8 +34,87 @@
           "userCity": "Warszawa"
         }
       ],
-      "userWatchlist": [],
-      "userWishList": []
+      "userWatchlist": [
+        {
+          "id": 0,
+          "image": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+          "title": "Duke Nukem: The Kino™",
+          "genre": "Action, Super hero",
+          "length": "130 min",
+          "ageRest": "PG-13",
+          "description": "It's payback tim",
+          "score": [
+            10,
+            10,
+            10,
+            1,
+            9
+          ],
+          "director": "Kino Fabino",
+          "actors": [
+            "Maciek",
+            "Janek",
+            "Ktos",
+            "Leszek"
+          ],
+          "boxOff": 200,
+          "premiere": true,
+          "dateId": 0
+        },
+        {
+          "id": 1,
+          "image": "https://fwcdn.pl/fpo/55/10/10015510/8029347.3.jpg",
+          "title": "Apokawixa",
+          "genre": "Horror",
+          "length": "110 min",
+          "ageRest": "PG-13",
+          "description": "Whenever i have time i will add some description",
+          "score": [
+            2,
+            1,
+            3,
+            4,
+            4
+          ],
+          "director": "James Cameron",
+          "actors": [
+            "Artut",
+            "Ziemowit",
+            "Wiesiek",
+            "Leszek"
+          ],
+          "boxOff": 10,
+          "premiere": false,
+          "dateId": 3
+        },
+        {
+          "id": 2,
+          "image": "https://fwcdn.pl/fpo/81/78/558178/8047434.3.jpg",
+          "title": "Avatar: Istota wody",
+          "genre": "Science-Fiction",
+          "length": "193 min",
+          "ageRest": "PG-12",
+          "description": "Whenever i have time i will add some description",
+          "long-description": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+          "score": [
+            8,
+            4,
+            5,
+            7,
+            5
+          ],
+          "director": "James Cameron",
+          "actors": [
+            "Stephen Lang",
+            "Zoe Saldana",
+            "Sam Worthington",
+            "Sigourney Weaver"
+          ],
+          "boxOff": 1000,
+          "premiere": false,
+          "dateId": 6
+        }
+      ]
     }
   ],
   "orders": [

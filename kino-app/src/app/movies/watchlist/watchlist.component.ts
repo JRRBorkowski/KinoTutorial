@@ -26,7 +26,6 @@ export class WatchlistComponent implements OnInit, OnDestroy {
     this.user$.subscribe(userData => {
       this.userId = userData?.id
     });
-    this.userWatchlist$.subscribe(console.log)
   }
 
   userWatchlist$ = this.service.userWatchlist$

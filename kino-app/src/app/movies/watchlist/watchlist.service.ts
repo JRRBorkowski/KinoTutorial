@@ -28,12 +28,25 @@ export class WatchlistService {
         this.userWatchlist$$.next(userWatchlist);
       });
     } else {
-      this.userWatchlist$$.next([])
+      this.userWatchlist$$.next([]);
     }
   }
 
-  addToWatchlist(id : number ,movie : Movie) {
-    return this.http.post<Movie>(`http://localhost:3000/users/${id}/userWatchlist`, movie);
+  addToWatchlist(userId : number ,movie : Movie) {
+    this.getUser(userId).subscribe(({ userWatchlist }) => {
+      if ( userWatchlist.some(watchlistMovie => {
+        return watchlistMovie.id === movie.id;
+      }) ) {
+        return;
+      }
+      const newWatchlist = [...userWatchlist, movie];
+      this.http
+        .patch(`http://localhost:3000/users/${userId}`, { userWatchlist: [...newWatchlist]})
+        .subscribe(() => {
+          this.userWatchlist$$.next(newWatchlist);
+        });
+    })
+
   }
 
   removeFromWatchlist(userId: number, movieId: number) {
@@ -41,11 +54,10 @@ export class WatchlistService {
       const newWatchlist = userWatchlist.filter((movie) => {
         return movie.id !== movieId;
       });
-      console.log(newWatchlist);
       this.http
         .patch(`http://localhost:3000/users/${userId}`, { userWatchlist: [...newWatchlist] })
         .subscribe(() => {
-          this.userWatchlist$$.next(newWatchlist)
+          this.userWatchlist$$.next(newWatchlist);
         });
     });
   }

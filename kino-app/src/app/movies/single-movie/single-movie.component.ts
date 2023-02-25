@@ -14,16 +14,17 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
 
   @Input() movie: Movie = {} as Movie;
 
+  userWatchlist$: Observable<Movie[] | undefined>;
   user$: Observable<User | undefined>;
   userId: number | undefined = undefined;
 
-  showings?: Showing[] = []
+  showings?: Showing[] = [];
 
   private movieSubscription = new Subscription();
 
   selectedMovie?: Movie;
 
-  scores?: number[] = this.selectedMovie?.score
+  scores?: number[] = this.selectedMovie?.score;
 
   clickedMore = false;
   tellMeMore() {
@@ -32,9 +33,21 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
 
   addToWatchlist(id : number, movie : Movie) {
     if (id && movie) {
-      this.watchlistService.addToWatchlist(id, movie)
+      this.watchlistService.addToWatchlist(id, movie);
     }
   }
+
+  canAddToWatchlist(userWatchlist?: Movie[] | null) {
+    if (!userWatchlist) {
+      return true
+    }
+    if ( userWatchlist.some(watchlistMovie => {
+        return watchlistMovie.id === this.movie.id;
+      }) ) {
+        return false;
+    } 
+    return true
+}
 
   getScore(scores: number[]) {
     const score = scores.reduce((a, b) => a + b, 0) / scores.length;
@@ -63,8 +76,10 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
   ) {
     this.user$ = this.store.select(state => state.userData.user);
     this.user$.subscribe(userData => {
-      this.userId = userData?.id
-    });
+      this.userId = userData?.id;
+      this.watchlistService.getWatchlistMovies(this.userId);
+    })
+    this.userWatchlist$ = this.watchlistService.userWatchlist$
   }
 
   
