@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Subscription} from 'rxjs';
-import { MoviesFromDb, Showing } from '../../types';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription} from 'rxjs';
+import { MoviesFromDb, Showing, User } from '../../types';
 import { MoviesService } from '../movies.service';
+import { WatchlistService } from '../watchlist/watchlist.service';
 
 @Component({
   selector: 'app-single-movie[movie]',
@@ -11,6 +13,9 @@ import { MoviesService } from '../movies.service';
 export class SingleMovieComponent implements OnInit, OnDestroy {
 
   @Input() movie: MoviesFromDb = {} as MoviesFromDb;
+
+  user$: Observable<User | undefined>;
+  userId: number | undefined = undefined;
 
   showings?: Showing[] = []
 
@@ -23,6 +28,12 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
   clickedMore = false;
   tellMeMore() {
     !this.clickedMore ? this.clickedMore = true : this.clickedMore = false;
+  }
+
+  addToWatchlist(id : number, movie : MoviesFromDb) {
+    if (this.userId && this.selectedMovie) {
+      this.watchlistService.addWatchlist(id, movie)
+    }
   }
 
   getScore(scores: number[]) {
@@ -45,14 +56,16 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
     this.movieSubscription.add(showingSub);
   }
 
-  // newScore(score : number) {
-  //   this.scores?.push(score)
-  //   this.moviesService.addScore(this.scores, this.selectedMovie?.id)
-  // }
-
   constructor (
-    private moviesService: MoviesService
-  ) {}
+    private moviesService: MoviesService,
+    private watchlistService: WatchlistService,
+    private store : Store<{ userData: { user?: User } }>
+  ) {
+    this.user$ = this.store.select(state => state.userData.user);
+    this.user$.subscribe(userData => {
+      this.userId = userData?.id
+    });
+  }
 
   
   ngOnInit(): void {

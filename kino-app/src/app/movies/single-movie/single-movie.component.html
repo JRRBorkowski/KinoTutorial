@@ -15,7 +15,9 @@
             <h3>Viewer's score:</h3>
             <h2>{{getScore(movie.score)}}</h2>
                 <button>Score movie</button>
-                <button>Add to wishlist</button>
+                <ng-container *ngIf="userId">
+                    <button (click)="addToWatchlist(userId, movie)">Add to wishlist</button>
+                </ng-container>
     </div>
 </div>
 

@@ -29,6 +29,10 @@ export class WatchlistService {
     }
   }
 
+  addWatchlist(id : number ,movie : MoviesFromDb) {
+    return this.http.post<User>(`http://localhost:3000/users/${id}/userWatchlist`, movie);
+  }
+
   removeFromWatchlist(userId: number, movieId: number) {
     this.getUser(userId).subscribe(({ userWatchlist }) => {
       const newWatchlist = userWatchlist.filter((movie) => {
