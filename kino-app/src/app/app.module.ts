@@ -18,6 +18,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AdminComponent } from './admin/admin.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -30,6 +33,7 @@ import { CartComponent } from './reservation/cart/cart.component';
 import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
 import { AdminShowingsComponent } from './admin/admin-showings/admin-showings.component';
 import { ScoreComponent } from './movies/single-movie/score/score.component';
+import { AdminShowingFormComponent } from './admin/admin-showings/admin-showing-form/admin-showing-form.component';
 
 
 
@@ -50,6 +54,10 @@ const routes: Routes = [
       {
       path: 'admin-movie',
       component: AdminMovieComponent
+    },
+    {
+      path: 'admin-showing',
+      component: AdminShowingsComponent
     }
     ]
   },
@@ -89,7 +97,8 @@ const routes: Routes = [
     CartComponent,
     AdminMovieComponent,
     AdminShowingsComponent,
-    ScoreComponent
+    ScoreComponent,
+    AdminShowingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +112,9 @@ const routes: Routes = [
     MatMenuModule,
     MatCheckboxModule,
     MatSliderModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     StoreModule.forRoot({userData : userDataReducer}),
     EffectsModule.forRoot([UserDataEffects]),
     StoreDevtoolsModule.instrument({

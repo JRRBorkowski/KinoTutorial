@@ -11,6 +11,7 @@ export interface Movie {
     actors: string[];
     boxOff: number;
     premiere: boolean;
+    dateIds: number[];
   }
 
 export interface Score {
@@ -47,7 +48,7 @@ export interface Showing {
     screen: string;
     reservedSeats: string[];
     prices: Prices[];
-    filmId: number;
+    movieId: number;
   }
 
   export interface Screen {

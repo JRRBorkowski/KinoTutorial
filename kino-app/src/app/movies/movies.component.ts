@@ -1,65 +1,85 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, Observable, map } from 'rxjs';
 import { Movie } from '../types';
 import { MoviesService } from './movies.service';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent implements OnInit, OnDestroy {
 
-  moviesFromDb$: Observable<Movie[]>
-    
+  availableMovies$: Observable<Movie[]>;
+
   weekNumber = 0;
 
-  week: string[] = [];
+  week: Date[] = [];
 
-  selectedDay = '';
-  
+  selectedDay = new Date();
+
   private subscription = new Subscription();
 
-  getSchedule(day : number) {
-    this.week = []
-    const date = new Date();
-    for (let i = 0; i < 7; i++){
-      const nextweek = new Date(date.getFullYear(), date.getMonth(), date.getDate()+(i + day));
-      this.week.push(`${nextweek.getDate()}/${nextweek.getMonth() + 1}`);
-    }
-  }
-
-  getScore(scores: number[]) {
-    const score = scores.reduce((a, b) => a + b, 0) / scores.length;
-    return Math.round(score);
-  }
-  
-  changeWeek(weekDelta: number) {
-    this.weekNumber = this.weekNumber + weekDelta;
-    this.getSchedule(this.weekNumber)
-  }
-
-  selectDay(newDay : string) {
-    this.selectedDay = newDay 
-  }
-
-  getSelectedDay() {
-    // this.getMoviesFromDb()
-    return this.selectedDay
-  }
-
   constructor(private moviesService: MoviesService) {
-    this.moviesFromDb$ = this.moviesService.moviesList$
-   }
+    this.availableMovies$ = this.getAvailableMovies();
+  }
 
   ngOnInit(): void {
     this.moviesService.getMoviesFromId();
+    this.getSchedule(0);
+    this.selectDay(new Date());
+  }
+
+  getAvailableMovies() {
+    return this.moviesService.moviesList$.pipe(
+      map((moviesArray) =>
+        moviesArray.filter((movie) =>{
+        console.log(movie);
+          return movie.dateIds.includes(this.selectedDay?.getDay())}
+        )
+      )
+    );
+  }
+
+  getSchedule(dayOffset: number) {
+    this.week = [];
+    const date = new Date();
+    const currentFirstDayOfWeek = this.getFirstDayOfWeek(date);
+    for (let i = 0; i < 7; i++) {
+      const nextWeek = new Date(
+        currentFirstDayOfWeek.getFullYear(),
+        currentFirstDayOfWeek.getMonth(),
+        currentFirstDayOfWeek.getDate() + (i + dayOffset)
+      );
+      this.week.push(nextWeek);
+    }
+  }
+
+  getFirstDayOfWeek(dateObject: Date) {
+    const currentDayOfWeek = dateObject.getDay();
+    const firstDayOfWeek = new Date(dateObject),
+      diff = currentDayOfWeek >= 0 ?
+        currentDayOfWeek  :
+        6 - currentDayOfWeek
+
+    firstDayOfWeek.setDate(dateObject.getDate() - diff)
+    firstDayOfWeek.setHours(0,0,0,0)
+
+    return firstDayOfWeek
+  }
+
+  changeWeek(weekDelta: number) {
+    this.weekNumber = this.weekNumber + weekDelta;
     this.getSchedule(this.weekNumber);
-    this.selectDay(this.week[0])
+  }
+
+  selectDay(newDay: Date) {
+    this.selectedDay = newDay;
+    this.availableMovies$ = this.getAvailableMovies();
   }
 
   onMovieSelection() {
-    this.moviesService.selectMovie()
+    this.moviesService.selectMovie();
   }
 
   ngOnDestroy() {

@@ -59,7 +59,7 @@
           ],
           "boxOff": 200,
           "premiere": true,
-          "dateId": 0
+          "dateIds": 0
         },
         {
           "id": 1,
@@ -85,7 +85,7 @@
           ],
           "boxOff": 10,
           "premiere": false,
-          "dateId": 3
+          "dateIds": 3
         },
         {
           "id": 2,
@@ -112,7 +112,7 @@
           ],
           "boxOff": 1000,
           "premiere": false,
-          "dateId": 6
+          "dateIds": 6
         }
       ]
     }
@@ -658,7 +658,15 @@
       ],
       "boxOff": 200,
       "premiere": true,
-      "dateId": 0
+      "dateIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
     },
     {
       "id": 1,
@@ -699,7 +707,12 @@
       ],
       "boxOff": 10,
       "premiere": false,
-      "dateId": 3
+      "dateIds": [
+        0,
+        3,
+        5,
+        6
+      ]
     },
     {
       "id": 2,
@@ -745,7 +758,10 @@
       ],
       "boxOff": 1000,
       "premiere": false,
-      "dateId": 6
+      "dateIds": [
+        5,
+        6
+      ]
     },
     {
       "id": 3,
@@ -779,7 +795,33 @@
       ],
       "boxOff": 1000,
       "premiere": false,
-      "dateId": 6
+      "dateIds": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Duke 2",
+      "image": "https://i.kym-cdn.com/photos/images/original/001/897/450/f68",
+      "genre": "Kino",
+      "length": "120min",
+      "ageRest": "13+PG",
+      "description": "KINO",
+      "scores": [
+        {
+          "userId": 0,
+          "score": 10
+        }
+      ],
+      "director": "Me",
+      "actors": "You",
+      "boxOff": "10000000",
+      "premiere": true,
+      "dateIds": [
+        0,
+        1
+      ]
     }
   ],
   "dates": [

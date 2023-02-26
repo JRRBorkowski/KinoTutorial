@@ -38,7 +38,7 @@ export class MoviesService {
     return this.http.get<Movie>(`${this.movieUrl}/${movieId}`)
   }
 
-  selectMovie() : Movie {
+  selectMovie(): Movie {
     let movie = {
       id: 0,
       image: '',
@@ -47,16 +47,14 @@ export class MoviesService {
       length: '',
       ageRest: '',
       description: '',
-      scores: [{
-        userId: 0,
-        score: 0
-      }],
+      scores: [],
       director: '',
-      actors: [''],
+      actors: [],
       boxOff: 0,
       premiere: false,
-    }
-    this.selectedMovie.subscribe( movieResponse => {
+      dateIds: [],
+    } as Movie;
+    this.selectedMovie.subscribe(movieResponse => {
       movie = movieResponse;
     });
     return movie;
@@ -89,7 +87,7 @@ export class MoviesService {
   
   getSelectedShowing(): Showing {
     let showing = {
-      filmId: 0,
+      movieId: 0,
       hour: '',
       screen: '',
       id: 0,
@@ -128,5 +126,9 @@ export class MoviesService {
 
   getScreen(screen : string) {
     return this.http.get<Screen[]>(`http://localhost:3000/screen?q=${screen}`)
+  }
+
+  getAllScreens() {
+    return this.http.get<Screen[]>(`http://localhost:3000/screen`)
   }
 }

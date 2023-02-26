@@ -1,0 +1,148 @@
+<form
+    [formGroup]="showingForm"
+    (submit)="submitShowingForm"
+  >
+    <div>
+      <mat-form-field>
+        <mat-label>Select movie</mat-label>
+        <mat-select
+            [(ngModel)]="selectedMovieId"
+            name="movie"
+            [formControl]="movieIdCtrl"
+        >
+          <mat-option>Clear</mat-option>
+          <mat-option *ngFor="let movie of (movies$ | async) " [value]="movie.id">
+            {{ movie.title }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="screenCtrl.hasError('required')">
+            Select screen
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select screen</mat-label>
+        <mat-select
+          [(ngModel)]="selectedScreen"
+          name="screen"
+          [formControl]="screenCtrl"
+        >
+          <mat-option>Clear</mat-option>
+          <mat-option *ngFor="let screen of (screens$ | async)" [value]="screen.name">
+            {{ screen.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="screenCtrl.hasError('required')">
+            Select screen
+        </mat-error>
+      </mat-form-field>
+    </div>
+  
+    <div class="add-show-form__time">
+      <mat-form-field color="primary" class="fieldset__input">
+        <mat-label>Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [min]="minimumDate"
+          [max]="lastDate"
+          formControlName="dateId"
+        />
+        <mat-error *ngIf="dateIdCtrl.errors as errors">
+        <ng-container *ngIf="errors['required']">
+            To pole jest wymagane.
+        </ng-container>
+        </mat-error>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field class="add-movie-form__input">
+        <mat-label>Godzina</mat-label>
+        <input
+          matInput
+          type="time"
+          formControlName="hour"
+          placeholder="Movie hour"
+        />
+        <mat-error *ngIf="hourCtrl.errors as errors">
+          <ng-container *ngIf="errors['required']"
+            >To pole jest wymagane.</ng-container>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <h3>Select tickets type</h3>
+    <button
+      type="button"
+      (click)="addPriceListItem()"
+      mat-flat-button
+      color="primary"
+    >
+      Dodaj kolejny rodzaj biletu
+    </button>
+    <ol>
+      <li
+        *ngFor="
+          let priceListForm of showingForm.controls.prices.controls;
+          let index = index
+        "
+      >
+        <div [formGroup]="priceListForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Wybierz rodzaj biletu</mat-label>
+            <mat-select
+              name="type"
+              [formControl]="priceListForm.controls.type"
+                          >
+              <mat-option>Wyczyść</mat-option>
+              <mat-option *ngFor="let type of ticketTypes" [value]="type.type">
+                {{ type.type }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="priceListForm.controls.type.hasError('required')"
+              >Wybierz rodzaj biletu</mat-error
+            >
+            <mat-error
+              *ngIf="
+                priceListForm.controls.type.hasError('pattern') &&
+                !priceListForm.controls.type.hasError('required')
+              "
+            >
+              Wybierz rodzaj biletu
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="add-movie-form__input">
+            <mat-label>Cena biletu</mat-label>
+            <input
+              matInput
+              numbersOnly
+              formControlName="price"
+              placeholder="Ticket price"
+            />
+            <mat-error *ngIf="priceListForm.controls.price.errors as errors">
+              <ng-container *ngIf="errors['required']"
+                >To pole jest wymagane.</ng-container
+              >
+              <ng-container *ngIf="errors['min']">Minimum 10 PLN</ng-container>
+              <ng-container *ngIf="errors['max']"
+                >Maksymalnie 50 PLN</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+          <button
+            class="add-show-form__trash"
+            type="button"
+            (click)="removePriceListItem(index)"
+            mat-flat-button
+          >
+            X
+          </button>
+        </div>
+      </li>
+    </ol>
+    <button (click)="submitShowingForm()">SUBMIT TO ME</button>
+  </form>

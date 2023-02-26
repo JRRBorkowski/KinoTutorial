@@ -1,17 +1,13 @@
 <div>
     <div class="schedule">
         <button (click)="changeWeek(-7)">previous week</button>
-        <button *ngFor="let day of week" (click) = 'selectDay(day)'>{{day}}</button>
+        <button *ngFor="let day of week" (click) = 'selectDay(day)'>{{day.getDate()}}/{{day.getMonth() + 1}}</button>
         <button (click)="changeWeek(7)">next week</button>
     </div>
-    <!-- TODO: Wyświetlać harmonogram po dniach tygodnia -->
 </div>
-    <div class="movies" *ngIf="moviesFromDb$ | async as movies">
+    <div class="movies" *ngIf="availableMovies$ | async as movies">
         <p>Our schedule for {{selectedDay}}</p>
         <div *ngFor="let movie of movies" class="single-movie">
             <app-single-movie [movie]="movie"></app-single-movie>
-        </div>
-        <div class="movies" *ngIf="!moviesFromDb$">
-            <p>Something went wrong!</p>
         </div>
     </div>
