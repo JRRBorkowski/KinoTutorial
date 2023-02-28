@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Showing, Movie, Screen } from '../types';
+import { Showing, Movie, Screen, DbDate } from '../types';
 import { ReplaySubject,BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -79,7 +79,6 @@ export class MoviesService {
       )
     );
   }
-  // TODO: dokończyć komponent
 
   getShowing(movieId: number) {
     return this.http.get<Showing[]>(`${this.movieUrl}/${movieId}/showing`);
@@ -92,7 +91,7 @@ export class MoviesService {
       screen: '',
       id: 0,
       reservedSeats: [''],
-      prices: [
+      priceList: [
         {
           type: '',
           price: 0,
@@ -130,5 +129,9 @@ export class MoviesService {
 
   getAllScreens() {
     return this.http.get<Screen[]>(`http://localhost:3000/screen`)
+  }
+
+  patchDates(dates: DbDate[]) {
+    return this.http.patch<DbDate[]>(`http://localhost:3000/dates`, dates)
   }
 }

@@ -31,6 +31,13 @@
             padding: 0.4em 0.6em;
             border: 3px solid gainsboro;
             border-radius: 10px;
+            cursor: pointer;
+            background-color: whitesmoke;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: gainsboro;
+            }
         }
     }
 }

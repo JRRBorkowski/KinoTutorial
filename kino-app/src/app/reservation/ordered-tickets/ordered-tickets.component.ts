@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UserOrders } from 'src/app/types';
+import { UserOrder } from 'src/app/types';
 import { CartService } from './ordered-tickets.service';
 
 
@@ -17,7 +17,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   
   private userId = 1;
   private subscriptions = new Subscription();
-  userOrders: UserOrders[] = [];
+  userOrders: UserOrder[] = [];
 
   getOrders() {
     const sub = this.service.getOrders(this.userId).subscribe(

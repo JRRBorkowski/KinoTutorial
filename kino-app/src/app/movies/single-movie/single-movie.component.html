@@ -8,7 +8,10 @@
         <p *ngIf="clickedMore">{{movie.description}}</p>
         <a (click)="tellMeMore()">would you like to know more?</a>
         <div class="viewings">
-            <button *ngFor="let showing of showings" [routerLinkActive]="['active']" routerLink="/reservation/{{showing.hour}}/{{movie.id}}" class="hour-buttons" (click)="handleSelectedMovie(showing)">{{showing.hour}}</button>
+                            <!-- TODO: unmock day index -->
+            <button *ngFor="let showing of showings" [routerLinkActive]="['active']"
+            [routerLink]="['/reservation', showing.hour, movie.id, day]" class="hour-buttons"
+            (click)="handleSelectedMovie(showing)">{{showing.hour}}</button>
         </div>
     </div>
         <div class="single-movie--rating">

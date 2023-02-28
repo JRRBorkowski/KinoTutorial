@@ -47,7 +47,7 @@ export interface Showing {
     hour: string;
     screen: string;
     reservedSeats: string[];
-    prices: Prices[];
+    priceList: Prices[];
     movieId: number;
   }
 
@@ -58,7 +58,7 @@ export interface Showing {
       rows: number,
     }
 
-    export interface UserOrders {
+    export interface UserOrder {
       id: number;
       userName: string;
       userLastName: string;
@@ -66,22 +66,27 @@ export interface Showing {
       discountCode: string;
       userPhoneNumber: string;
       paidAt: string;
-      ticket: UserOrdersTicket[];
+      ticket: UserOrderTicket[];
       userId: number;
     }
     
-    export interface UserOrdersTicket {
+    export interface UserOrderTicket {
       id: number;
       showId: number;
       title: string;
       date: string;
       hour: string;
-      seat: UserOrdersSeat;
+      seat: UserOrderSeat;
     }
     
-    export interface UserOrdersSeat {
+    export interface UserOrderSeat {
       positon: string;
       type: string;
       price: number;
       special: boolean;
+    }
+
+    export interface DbDate {
+      id: number;
+      date: string;
     }

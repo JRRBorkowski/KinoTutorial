@@ -13,6 +13,7 @@ import { FormComponent } from './reservation/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleMovieComponent } from './movies/single-movie/single-movie.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
@@ -34,9 +35,8 @@ import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
 import { AdminShowingsComponent } from './admin/admin-showings/admin-showings.component';
 import { ScoreComponent } from './movies/single-movie/score/score.component';
 import { AdminShowingFormComponent } from './admin/admin-showings/admin-showing-form/admin-showing-form.component';
-
-
-
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { AdminGuard } from './login/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -59,7 +59,8 @@ const routes: Routes = [
       path: 'admin-showing',
       component: AdminShowingsComponent
     }
-    ]
+    ],
+    canMatch: [AdminGuard]
   },
   {
     path: 'watchlist',
@@ -70,15 +71,14 @@ const routes: Routes = [
     component: OrdersComponent
   },
   {
-    path: 'reservation/:hour/:id',
-    component: ReservationComponent,
-    children: [
-      {
-        path: 'form',
-        component: FormComponent
-      }
-    ]
-  }
+    path: 'reservation/:hour/:id/:dayIndex',
+    component: ReservationComponent
+  },
+  {
+    path: 'reservation/:hour/:id/:dayIndex/form',
+    component: FormComponent
+  },
+  { path: 'orderDetails/:id', component: OrderDetailsComponent }
 ]
 
 @NgModule({
@@ -98,7 +98,8 @@ const routes: Routes = [
     AdminMovieComponent,
     AdminShowingsComponent,
     ScoreComponent,
-    AdminShowingFormComponent
+    AdminShowingFormComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,6 +107,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,

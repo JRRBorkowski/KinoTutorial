@@ -13,6 +13,7 @@ import { WatchlistService } from '../watchlist/watchlist.service';
 export class SingleMovieComponent implements OnInit, OnDestroy {
 
   @Input() movie: Movie = {} as Movie;
+  @Input() day = '';
 
   userWatchlist$: Observable<Movie[] | undefined>;
   user$: Observable<User | undefined>;

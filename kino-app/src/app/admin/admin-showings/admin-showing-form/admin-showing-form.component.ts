@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MoviesService } from 'src/app/movies/movies.service';
-import { Movie, Screen } from 'src/app/types';
+import { Movie } from 'src/app/types';
 import { AdminPanelService } from '../../admin.service';
 
 @Component({

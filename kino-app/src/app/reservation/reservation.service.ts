@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class ReservationService {
 
-  selectedSeats: string[] = []
-  rows?: number[]
+  selectedSeats: string[] = [];
+  rows?: number[];
+  seatSelectionLimit = 10;
 
   checkout?: number;
 
@@ -16,6 +17,9 @@ export class ReservationService {
       const seatIndex= this.selectedSeats.indexOf(seat)
       this.selectedSeats.splice(seatIndex, 1)
     } else {
+      if (this.selectedSeats.length >= this.seatSelectionLimit) {
+        return;
+      }
     this.selectedSeats.push(seat)
     }
   }

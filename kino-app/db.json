@@ -315,7 +315,7 @@
           "hour": "20.30",
           "seat": {
             "positon": "G11",
-            "type": "Senior",
+            "type": "Voucher",
             "price": 15,
             "special": false
           }
@@ -524,7 +524,7 @@
           "price": 20
         },
         {
-          "type": "Senior",
+          "type": "Voucher",
           "price": 15
         },
         {
@@ -550,7 +550,7 @@
           "price": 20
         },
         {
-          "type": "Senior",
+          "type": "Voucher",
           "price": 15
         },
         {

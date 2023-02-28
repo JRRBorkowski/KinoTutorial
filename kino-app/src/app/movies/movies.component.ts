@@ -18,6 +18,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   selectedDay = new Date();
 
+  selectedDayDate = `${this.selectedDay.getDate()}/${this.selectedDay.getMonth() + 1}/${this.selectedDay.getFullYear()}`
+
   private subscription = new Subscription();
 
   constructor(private moviesService: MoviesService) {
@@ -75,6 +77,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   selectDay(newDay: Date) {
     this.selectedDay = newDay;
+    this.selectedDayDate = `${newDay.getDate()}/${newDay.getMonth() + 1}/${newDay.getFullYear()}`
     this.availableMovies$ = this.getAvailableMovies();
   }
 

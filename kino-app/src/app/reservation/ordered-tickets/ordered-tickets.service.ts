@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserOrders } from 'src/app/types';
+import { UserOrder } from 'src/app/types';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,6 @@ export class CartService {
   ) { }
 
   getOrders(id : number) {
-    return this.http.get<UserOrders[]>(`http://localhost:3000/users/${id}/orders`);
+    return this.http.get<UserOrder[]>(`http://localhost:3000/users/${id}/orders`);
   }
 }

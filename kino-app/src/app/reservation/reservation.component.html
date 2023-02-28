@@ -1,26 +1,30 @@
 <div class="movietitle">
-    <p>Selected movie: {{selectedMovie.title}} <span>Movie ID: {{selectedMovie.id}}</span></p>
-    <img src={{selectedMovie.image}} class="movieimage" />
+    <ng-container *ngIf="selectedMovie">
+        <p>Selected movie: {{selectedMovie.title}}</p>
+        <img src={{selectedMovie.image}} class="movieimage" />
+    </ng-container>
 </div>
 
-<div class="selector">
-    <div class="seatings">
-        <div *ngFor="let column of columns" class="column">
-            <div class="seat" *ngFor="let row of reservationService.rows">
-                <a (click)="reservationService.selectSeat(column, row)">{{column}}{{row}}</a>
+<ng-template [ngIf]="showing" [ngIfElse]="noShowing">
+    <div class="selector">
+        <div *ngIf="reservationService.selectedSeats.length >= reservationService.seatSelectionLimit">
+            <div class="error-message">You can buy at most 10 tickets!</div>
+        </div>
+        <div class="seatings">
+            <div *ngFor="let column of columns" class="column">
+                <div *ngFor="let row of reservationService.rows">
+                    <button mat-stroked-button [color]="this.isSeatSelected(column, row) ? 'accent' : 'primary'"
+                        [disabled]="this.isSeatReserved(column, row)"
+                        (click)="reservationService.selectSeat(column, row)">
+                        {{column}}{{row}}
+                    </button>
+                </div>
             </div>
         </div>
+        <button mat-raised-button color="primary" [disabled]="reservationService.selectedSeats.length <= 0"
+            [routerLink]="['./form']">Purchase</button>
     </div>
-
-    <ul class="tickets">Selected tickets:
-        <li *ngFor="let selectedSeat of reservationService.selectedSeats">{{selectedSeat}} ticket  
-        <select *ngFor="let ticket of showing.prices">
-            <option selected disabled hidden>Select</option>
-            <option value="ticket.price">{{ticket.price}}</option>
-        </select> to pay: {{checkout}}</li>
-    </ul>
-    
-    <!-- TODO: generować po wybranych krzesłach, bilety pokazują sumę -->
-    <a routerLink="form">Purchase ticket</a>
-    <router-outlet></router-outlet>
-</div>
+</ng-template>
+<ng-template #noShowing>
+    <div class="error-message">Couldn't find that show!</div>
+</ng-template>
