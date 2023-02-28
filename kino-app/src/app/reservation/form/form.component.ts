@@ -3,8 +3,11 @@ import { Router } from '@angular/router'
 import { ReservationService } from '../reservation.service';
 import { MoviesService } from 'src/app/movies/movies.service';
 import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
-import { Prices } from 'src/app/types';
+import { Prices, User, UserOrder } from 'src/app/types';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { selectUserId } from 'src/app/user-data/store/user-data.selectors';
 
 const customValidator = (source: string, target: string): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -29,30 +32,40 @@ function isAllowedTicketType(value: string): value is AllowedTicketTypes {
 export class FormComponent {
 
   reservationForm = this.builder.group({
-    firstName: this.builder.control('', {
+    userName: this.builder.control('', {
       validators: Validators.required
     }),
-    surname: this.builder.control('', {
+    userLastName: this.builder.control('', {
       validators: Validators.required
     }),
-    phone: this.builder.control('', {
+    discountCode: this.builder.control('', {
+      validators: Validators.required
+    }),
+    userPhoneNumber: this.builder.control('', {
       validators: [
         Validators.required,
         Validators.minLength(9),
         Validators.maxLength(9)
       ]
     }),
-    email: this.builder.control('', {
+    userMail: this.builder.control('', {
       validators: [Validators.required, Validators.email]
     }),
     confirmEmail: this.builder.control('', {
       validators: [Validators.required, Validators.email]
+    }),
+    userInvoiceForm: this.builder.group({
+      userNIP: '',
+      userStreet: '',
+      userPostCode: "",
+      userCity: ""
     })
+
   }, {
     validators: customValidator('email', 'confirmEmail')
   });
 
-
+  userId?: number;
   pricePerTicketType: Record<AllowedTicketTypes, number>;
   tickets: { seat: string, price: number }[];
 
@@ -81,10 +94,13 @@ export class FormComponent {
   }
 
   constructor(
+    private http: HttpClient,
     private builder: NonNullableFormBuilder,
     public reservationService: ReservationService,
     public moviesService: MoviesService,
-    private router: Router) {
+    private router: Router,
+    private store : Store<{ userData: { user?: User } }>)
+     {
     if (!this.reservationService.selectedSeats.length) {
       this.router.navigate([".."]);
     }
@@ -95,6 +111,7 @@ export class FormComponent {
       voucher: this.getPricing("Voucher", priceList),
     }
     this.tickets = reservationService.selectedSeats.map(seat => ({ seat: seat, price: this.pricePerTicketType.normal }));
+    this.store.select(selectUserId).subscribe(userId => this.userId = userId);
   }
 
   emailsMatchValidatorError() {
@@ -109,6 +126,52 @@ export class FormComponent {
     if (this.reservationForm.invalid) {
       return;
     }
+    
+    const formData = this.reservationForm.getRawValue();
+    const showing = this.moviesService.getSelectedShowing();
+    const currentDate = new Date();
+    const currentDayIndex = currentDate.getDay();
+    const ticketDayIndex = this.reservationService.selectedDay;
+    const dayDifference = Number(ticketDayIndex) - currentDayIndex;
+    const ticketDate = new Date(currentDate.setDate(currentDate.getDate() + dayDifference));
+    const ticketDateString = `${ticketDate.getDay()+1}/${ticketDate.getMonth()+1}/${ticketDate.getFullYear()}`;
+
+    const tickets = this.reservationService.selectedSeats.map((seat, index) => {
+      return {
+        id: index,
+        title: this.reservationService.selectedReservationMovie?.title,
+        date: ticketDateString,
+        hour: showing.hour,
+        seat: {
+          positon: seat,
+          type: "Normalny", //TODO: unmock by using ticket type toggle
+          price: this.pricePerTicketType.normal, //TODO: unmock
+          special: false //TODO: unmock
+        }
+      }
+    });
+    
+    const reqBody = {
+      userName: formData.userName,
+      userLastName: formData.userLastName,
+      userMail: formData.userMail,
+      discountCode: formData.discountCode,
+      userPhoneNumber: formData.userPhoneNumber,
+      userInvoiceForm: {
+        userNIP: formData.userInvoiceForm.userNIP,
+        userStreet: formData.userInvoiceForm.userStreet,
+        userPostCode: formData.userInvoiceForm.userPostCode,
+        userCity: formData.userInvoiceForm.userCity
+      },
+      paidAt: Date.now(),
+      ticket: tickets,
+      userId: this.userId
+    };
+    
+
+    this.http.post<UserOrder>('http://localhost:3000/orders', reqBody).subscribe(response => {
+      this.router.navigate([`/successpage/${response.id}`]);
+    })
   }
 
 }

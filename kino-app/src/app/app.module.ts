@@ -37,6 +37,7 @@ import { ScoreComponent } from './movies/single-movie/score/score.component';
 import { AdminShowingFormComponent } from './admin/admin-showings/admin-showing-form/admin-showing-form.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { AdminGuard } from './login/guards/admin.guard';
+import { SuccesspageComponent } from './reservation/successpage/successpage.component';
 
 const routes: Routes = [
   {
@@ -78,7 +79,12 @@ const routes: Routes = [
     path: 'reservation/:hour/:id/:dayIndex/form',
     component: FormComponent
   },
-  { path: 'orderDetails/:id', component: OrderDetailsComponent }
+  { path: 'orderDetails/:id', component: OrderDetailsComponent },
+  {
+    path: 'successpage/:orderId',
+    component: SuccesspageComponent
+  }
+
 ]
 
 @NgModule({
@@ -100,6 +106,7 @@ const routes: Routes = [
     ScoreComponent,
     AdminShowingFormComponent,
     OrderDetailsComponent,
+    SuccesspageComponent,
   ],
   imports: [
     BrowserModule,

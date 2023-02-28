@@ -16,36 +16,47 @@
 <form [formGroup]="reservationForm" (ngSubmit)="submitForm()">
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Name" formControlName="firstName">
-        <mat-error *ngIf="reservationCtrl.controls.firstName.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <input matInput placeholder="Name" formControlName="userName">
+        <mat-error *ngIf="reservationCtrl.controls.userName.hasError('required')">To pole jest obowiązkowe</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Surname" formControlName="surname">
-        <mat-error *ngIf="reservationCtrl.controls.surname.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <input matInput placeholder="Surname" formControlName="userLastName">
+        <mat-error *ngIf="reservationCtrl.controls.userLastName.hasError('required')">To pole jest obowiązkowe</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Phone number" formControlName="phone">
-        <mat-error *ngIf="reservationCtrl.controls.phone.hasError('required')">To pole jest obowiązkowe</mat-error>
-        <mat-error *ngIf="reservationCtrl.controls.phone.hasError('minlength')">Too short!</mat-error>
+        <input matInput placeholder="Phone number" formControlName="userPhoneNumber">
+        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('minlength')">Too short!</mat-error>
       </mat-form-field>
-      
-        <input placeholder="Phone number" formControlName="phone">
-        <ng-container *ngIf="reservationCtrl.controls.phone.errors as errors">
-            <ng-container *ngIf="reservationCtrl.controls.phone.touched">
-              <p *ngIf="errors['required']">This is required</p>
-              <p *ngIf="errors['minlength'] as milLength">
-                Podałeś {{ milLength.actualLength }} znaki, minimum to
-                {{ milLength.requiredLength }}
-              </p>
-            </ng-container>
-          </ng-container>
-        <input placeholder="E-Mail" formControlName="email">
-        <input placeholder="Confirm E-Mail" formControlName="confirmEmail">
+
+      <div class="form__invoice" formGroupName="userInvoiceForm">
+        <mat-form-field>
+          <input matInput placeholder="NIP" formControlName="userNIP">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Street" formControlName="userStreet">
+          </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Post code" formControlName="userPostCode">
+          </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="City" formControlName="userCity">
+          </mat-form-field>
+      </div>
+
+      <mat-form-field>
+        <input matInput placeholder="E-Mail" formControlName="userMail">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Confirm E-Mail" formControlName="confirmEmail">
         <div *ngIf="emailsMatchValidatorError()">
             Email error!
         </div>
+      </mat-form-field>
         <p><input type="checkbox">I want to recieve information about sales</p>
-        <input placeholder="Promotion code">
+        <mat-form-field>
+          <input matInput placeholder="Promotion code" formControlName='discountCode'>
+        </mat-form-field>
         <button>Submit!</button>
     </div>
 </form>

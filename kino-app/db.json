@@ -348,6 +348,259 @@
         }
       ],
       "userId": 1
+    },
+    {
+      "userName": "aaaaaa",
+      "userLastName": "aaa",
+      "userMail": "asasd@sas",
+      "discountCode": "aaaaa",
+      "userPhoneNumber": "345634563",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": "asdas"
+      },
+      "paidAt": 1677615029167,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "2/1/2023",
+          "hour": "14.30",
+          "seat": {
+            "positon": "E4",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ],
+      "id": 6
+    },
+    {
+      "userName": "aaaa",
+      "userLastName": "aaaa",
+      "userMail": "aaa@aAA",
+      "discountCode": "aaaaaa",
+      "userPhoneNumber": "123124322",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1677615252903,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "B2",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 1,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "C3",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 2,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "C4",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 3,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "C5",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 4,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "C6",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 5,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "C7",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 6,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "C8",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 7,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "D8",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 8,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "D7",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 9,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "D6",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        }
+      ],
+      "id": 7
+    },
+    {
+      "userName": "ASAA",
+      "userLastName": "AAAAAAA",
+      "userMail": "aaa@aaa",
+      "discountCode": "aaaa",
+      "userPhoneNumber": "123123111",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1677616381955,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "F5",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        }
+      ],
+      "id": 8
+    },
+    {
+      "userName": "aaa",
+      "userLastName": "aa",
+      "userMail": "aa@AA",
+      "discountCode": "aaaa",
+      "userPhoneNumber": "123123122",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1677616500235,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "14.30",
+          "seat": {
+            "positon": "B5",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ],
+      "id": 9
+    },
+    {
+      "userName": "aaaa",
+      "userLastName": "aaaa",
+      "userMail": "aaa@aaa",
+      "discountCode": "aaa",
+      "userPhoneNumber": "123125511",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1677616574866,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/2/2023",
+          "hour": "18.30",
+          "seat": {
+            "positon": "E5",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ],
+      "id": 10
     }
   ],
   "blik": [

@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Movie } from '../types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
+
+  selectedReservationMovie?: Movie;
   selectedSeats: string[] = [];
   rows?: number[];
   seatSelectionLimit = 10;
+  selectedDay = 0;
 
   checkout?: number;
 
@@ -24,12 +28,19 @@ export class ReservationService {
     }
   }
 
+  selectDay(dayIndex: number) : void {
+    this.selectedDay = dayIndex;
+  }
+
+  selectReservationMovie(movie: Movie) {
+    this.selectedReservationMovie = movie
+  }
+
   createSeats(row:number) {
     this.rows = [];
     for (let j = 1; j <= row; j++) {
       this.rows.push(j)
     }
   }
-
 
 }

@@ -37,10 +37,13 @@ export class ReservationComponent implements OnInit {
     this.movieId = Number(this.route.snapshot.paramMap.get('id'));
     this.showHour = this.route.snapshot.paramMap.get('hour');
     this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));
+    this.reservationService.selectDay(this.dayIndex);
+
     this.moviesService.getMovie(this.movieId).subscribe(movie => {
       this.moviesService.addSubjectMovie(movie);
-      this.selectedMovie = this.moviesService.selectMovie();
-      
+      this.reservationService.selectReservationMovie(movie);
+      this.selectedMovie = this.reservationService.selectedReservationMovie;
+
       this.moviesService.getShowing(this.movieId).subscribe(showings => {
         const targetShow = showings.find(show => show.hour === this.showHour && this.selectedMovie?.dateIds.includes(this.dayIndex));
         if (targetShow) {
