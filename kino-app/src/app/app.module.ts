@@ -50,6 +50,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canMatch: [AdminGuard],
     children: [
       {
       path: 'admin-movie',
@@ -59,8 +60,7 @@ const routes: Routes = [
       path: 'admin-showing',
       component: AdminShowingsComponent
     }
-    ],
-    canMatch: [AdminGuard]
+    ]
   },
   {
     path: 'watchlist',

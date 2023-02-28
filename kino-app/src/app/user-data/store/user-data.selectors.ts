@@ -1,14 +1,7 @@
-import { createSelector } from "@ngrx/store";
 import { User } from "src/app/types";
 
-export const selectUser = (state: User) => state
+export const selectUser = (state : { userData: { user?: User } }) => state.userData.user;
 
-export const selectUserId = createSelector(
-    selectUser,
-    (state: User) => state.id
-)
+export const selectUserId = (state : { userData: { user?: User } }) => state.userData.user?.id;
 
-export const selectUserRole = createSelector(
-    selectUser,
-    (state: User) => state.role
-    )
+export const selectUserRole = (state : { userData: { user?: User } }) => state.userData.user?.role;

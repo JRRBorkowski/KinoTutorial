@@ -19,6 +19,7 @@ export class ReservationComponent implements OnInit {
   reservedSeats?: string[];
   columns: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   rows = 8;
+  dayIndex: number;
 
   isSeatReserved(column: string, row: number) {
     return this.reservedSeats?.some(seat => seat === `${column}${row}`);
@@ -28,26 +29,28 @@ export class ReservationComponent implements OnInit {
     return this.reservationService.selectedSeats.some(seat => seat === `${column}${row}`);
   }
 
-  checkout?: string[]
+  checkout?: string[];
 
   constructor(private route: ActivatedRoute,
     public reservationService: ReservationService,
     private moviesService: MoviesService) {
     this.movieId = Number(this.route.snapshot.paramMap.get('id'));
     this.showHour = this.route.snapshot.paramMap.get('hour');
+    this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));
     this.moviesService.getMovie(this.movieId).subscribe(movie => {
       this.moviesService.addSubjectMovie(movie);
       this.selectedMovie = this.moviesService.selectMovie();
+      
+      this.moviesService.getShowing(this.movieId).subscribe(showings => {
+        const targetShow = showings.find(show => show.hour === this.showHour && this.selectedMovie?.dateIds.includes(this.dayIndex));
+        if (targetShow) {
+          this.moviesService.addSubjectShow(targetShow);
+          this.showing = this.moviesService.getSelectedShowing();
+          this.reservedSeats = this.showing.reservedSeats;
+        }
+      });
     });
-    this.moviesService.getShowing(this.movieId).subscribe(showings => {
-      //zawężyć do dnia i godziny
-      const targetShow = showings.find(show => show.hour === this.showHour);
-      if (targetShow) {
-        this.moviesService.addSubjectShow(targetShow);
-        this.showing = this.moviesService.getSelectedShowing();
-        this.reservedSeats = this.showing.reservedSeats;
-      }
-    });
+    
   }
 
   changeCheckout(price: string) {
