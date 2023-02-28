@@ -7,7 +7,7 @@ import { Prices, User, UserOrder } from 'src/app/types';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { selectUserId } from 'src/app/user-data/store/user-data.selectors';
+import { selectUser } from 'src/app/user-data/store/user-data.selectors';
 
 const customValidator = (source: string, target: string): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -33,7 +33,7 @@ export class FormComponent {
 
   reservationForm = this.builder.group({
     userName: this.builder.control('', {
-      validators: Validators.required
+      validators: Validators.required,
     }),
     userLastName: this.builder.control('', {
       validators: Validators.required
@@ -65,7 +65,7 @@ export class FormComponent {
     validators: customValidator('email', 'confirmEmail')
   });
 
-  userId?: number;
+  user?: User;
   pricePerTicketType: Record<AllowedTicketTypes, number>;
   tickets: { seat: string, price: number }[];
 
@@ -111,7 +111,7 @@ export class FormComponent {
       voucher: this.getPricing("Voucher", priceList),
     }
     this.tickets = reservationService.selectedSeats.map(seat => ({ seat: seat, price: this.pricePerTicketType.normal }));
-    this.store.select(selectUserId).subscribe(userId => this.userId = userId);
+    this.store.select(selectUser).subscribe(user => this.user = user);
   }
 
   emailsMatchValidatorError() {
@@ -153,7 +153,7 @@ export class FormComponent {
     
     const reqBody = {
       userName: formData.userName,
-      userLastName: formData.userLastName,
+      userLastName:  formData.userLastName,
       userMail: formData.userMail,
       discountCode: formData.discountCode,
       userPhoneNumber: formData.userPhoneNumber,
@@ -165,7 +165,7 @@ export class FormComponent {
       },
       paidAt: Date.now(),
       ticket: tickets,
-      userId: this.userId
+      userId: this.user?.id
     };
     
 

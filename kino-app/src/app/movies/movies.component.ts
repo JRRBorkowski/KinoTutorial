@@ -16,6 +16,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   week: Date[] = [];
 
+  //todo set initial date
   selectedDay = new Date();
 
   selectedDayDate = `${this.selectedDay.getDate()}/${this.selectedDay.getMonth() + 1}/${this.selectedDay.getFullYear()}`
@@ -29,6 +30,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.moviesService.getMoviesFromId();
     this.getSchedule(0);
+    //todo set initial date
     this.selectDay(new Date());
   }
 
@@ -45,6 +47,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   getSchedule(dayOffset: number) {
     this.week = [];
+    //todo set initial date
     const date = new Date();
     const currentFirstDayOfWeek = this.getFirstDayOfWeek(date);
     for (let i = 0; i < 7; i++) {

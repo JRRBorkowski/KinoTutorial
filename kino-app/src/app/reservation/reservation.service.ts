@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Movie } from '../types';
+import { Movie, Showing } from '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +44,15 @@ export class ReservationService {
     }
   }
 
+  reserveSeats(showingId: number, onReservationComplete: () => void) : void {
+    this.http.get<Showing>(`http://localhost:3000/showing/${showingId}`).subscribe((showing) => {
+      const reservedSeats = Array.from(new Set<string>([...showing.reservedSeats, ...this.selectedSeats]));
+      this.http.patch<Showing>(`http://localhost:3000/showing/${showingId}`, {reservedSeats})
+        .subscribe(onReservationComplete);
+    });  
+  }
+
+  constructor(
+    private http: HttpClient,
+  ) { }
 }

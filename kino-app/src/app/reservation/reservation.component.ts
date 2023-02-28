@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../movies/movies.service';
 import { Movie, Showing } from '../types';
 import { ReservationService } from './reservation.service';
@@ -25,13 +25,23 @@ export class ReservationComponent implements OnInit {
     return this.reservedSeats?.some(seat => seat === `${column}${row}`);
   }
 
+  handleReservation() {
+    if (this.showing) {
+      this.reservationService.reserveSeats(this.showing?.id, ()=>{
+        this.router.navigate(['form'], {relativeTo: this.route})
+      })
+    }
+  }
+
   isSeatSelected(column: string, row: number) {
     return this.reservationService.selectedSeats.some(seat => seat === `${column}${row}`);
   }
 
   checkout?: string[];
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     public reservationService: ReservationService,
     private moviesService: MoviesService) {
     this.movieId = Number(this.route.snapshot.paramMap.get('id'));
