@@ -15,12 +15,12 @@ export class AdminShowingFormComponent {
   screens$ = this.movieService.getAllScreens();
   
   ticketTypes = [
-    {type: 'Kid',
+    {type: 'Normal',
     price: 20},
-    {type: 'Adult',
-    price: 30}, 
-    {type: 'Special',
-    price: 25
+    {type: 'Reduced',
+    price: 10}, 
+    {type: 'Voucher',
+    price: 15
     }];
 
   selectedMovie!: Movie;

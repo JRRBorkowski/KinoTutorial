@@ -38,11 +38,13 @@ import { AdminShowingFormComponent } from './admin/admin-showings/admin-showing-
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { AdminGuard } from './login/guards/admin.guard';
 import { SuccesspageComponent } from './reservation/successpage/successpage.component';
+import { UserGuard } from './login/guards/user.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: MoviesComponent    
+    component: MoviesComponent,
+    canMatch: [UserGuard]    
   },
   {
     path: 'login',
@@ -65,24 +67,34 @@ const routes: Routes = [
   },
   {
     path: 'watchlist',
-    component: WatchlistComponent
+    component: WatchlistComponent,
+    canMatch: [UserGuard]    
+
   },
   {
     path: 'orders',
-    component: OrdersComponent
+    component: OrdersComponent,
+    canMatch: [UserGuard]    
+
   },
   {
     path: 'reservation/:hour/:id/:dayIndex',
-    component: ReservationComponent
+    component: ReservationComponent,
+    canMatch: [UserGuard]    
   },
   {
     path: 'reservation/:hour/:id/:dayIndex/form',
-    component: FormComponent
+    component: FormComponent,
+    canMatch: [UserGuard]    
   },
-  { path: 'orderDetails/:id', component: OrderDetailsComponent },
+  { path: 'orderDetails/:id', 
+    component: OrderDetailsComponent,
+    canMatch: [UserGuard]
+  },
   {
     path: 'successpage/:orderId',
-    component: SuccesspageComponent
+    component: SuccesspageComponent,
+    canMatch: [UserGuard]
   }
 
 ]

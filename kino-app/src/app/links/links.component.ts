@@ -43,6 +43,10 @@ export class LinksComponent implements OnInit, OnDestroy {
     return this.isLogged = false
   }
 
+  getMeBack() {
+    this.router.navigate([''])
+  }
+
   logoutUser() {
     this.store.dispatch(resetLoginData());
     this.isLogged = false;

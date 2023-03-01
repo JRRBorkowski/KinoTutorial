@@ -38,9 +38,7 @@ export class FormComponent {
     userLastName: this.builder.control('', {
       validators: Validators.required
     }),
-    discountCode: this.builder.control('', {
-      validators: Validators.required
-    }),
+    discountCode: this.builder.control(''),
     userPhoneNumber: this.builder.control('', {
       validators: [
         Validators.required,
@@ -55,13 +53,13 @@ export class FormComponent {
       validators: [Validators.required, Validators.email]
     }),
     userInvoiceForm: this.builder.group({
-      userNIP: '',
-      userStreet: '',
-      userPostCode: "",
-      userCity: ""
+      userNIP: this.builder.control(''),
+      userStreet: this.builder.control(''),
+      userPostCode: this.builder.control(''),
+      userCity: this.builder.control('')
     })
-
-  }, {
+  }, 
+  {
     validators: customValidator('email', 'confirmEmail')
   });
 

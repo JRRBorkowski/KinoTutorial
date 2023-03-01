@@ -14,7 +14,6 @@ export class AdminGuard implements CanMatch {
     return this.store.select(selectUserRole).pipe(
       filter((userType) => userType !== null),
       switchMap((result) => {
-        console.log(result)
         return of(result === "Admin")
       })
     )

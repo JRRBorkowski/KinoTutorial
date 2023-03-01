@@ -69,7 +69,6 @@ export class MoviesService {
         const filteredMovieScores = movie.scores.filter((movieScore) => {
           return movieScore.userId !== userId;
         })
-        console.log(filteredMovieScores)
         const newScores = [...filteredMovieScores, scoreObject];
         this.http.patch<Movie>(`${this.movieUrl}/${movieId}`, {scores: [...newScores]})
           .subscribe(()=>{

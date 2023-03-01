@@ -38,7 +38,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
     return this.moviesService.moviesList$.pipe(
       map((moviesArray) =>
         moviesArray.filter((movie) =>{
-        console.log(movie);
           return movie.dateIds.includes(this.selectedDay?.getDay())}
         )
       )

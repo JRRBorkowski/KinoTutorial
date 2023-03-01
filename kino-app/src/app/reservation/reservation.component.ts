@@ -27,9 +27,8 @@ export class ReservationComponent implements OnInit {
 
   handleReservation() {
     if (this.showing) {
-      this.reservationService.reserveSeats(this.showing?.id, ()=>{
-        this.router.navigate(['form'], {relativeTo: this.route})
-      })
+      this.reservationService.reserveSeats(this.showing?.id).subscribe()
+      this.router.navigate(['form'], {relativeTo: this.route})
     }
   }
 

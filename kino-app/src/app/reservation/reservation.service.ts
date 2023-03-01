@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs';
 import { Movie, Showing } from '../types';
 
 @Injectable({
@@ -44,12 +45,13 @@ export class ReservationService {
     }
   }
 
-  reserveSeats(showingId: number, onReservationComplete: () => void) : void {
-    this.http.get<Showing>(`http://localhost:3000/showing/${showingId}`).subscribe((showing) => {
-      const reservedSeats = Array.from(new Set<string>([...showing.reservedSeats, ...this.selectedSeats]));
-      this.http.patch<Showing>(`http://localhost:3000/showing/${showingId}`, {reservedSeats})
-        .subscribe(onReservationComplete);
-    });  
+  reserveSeats(showingId: number) {
+    return this.http.get<Showing>(`http://localhost:3000/showing/${showingId}`).pipe(
+      switchMap(result => {
+        const reservedSeats = Array.from(new Set<string>([...result.reservedSeats, ...this.selectedSeats]));
+        return this.http.patch<Showing>(`http://localhost:3000/showing/${showingId}`, {reservedSeats})
+      })
+    )
   }
 
   constructor(

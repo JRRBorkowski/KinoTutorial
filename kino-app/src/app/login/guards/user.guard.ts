@@ -13,7 +13,6 @@ export class UserGuard implements CanMatch {
   canMatch(): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return this.store.select(selectUserRole).pipe(
       switchMap((result) => {
-        console.log(result)
         return of(result === "User" || result === undefined)
       })
     )
