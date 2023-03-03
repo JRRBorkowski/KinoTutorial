@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MoviesComponent } from './movies/movies.component';
@@ -35,7 +35,7 @@ import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
 import { AdminShowingsComponent } from './admin/admin-showings/admin-showings.component';
 import { ScoreComponent } from './movies/single-movie/score/score.component';
 import { AdminShowingFormComponent } from './admin/admin-showings/admin-showing-form/admin-showing-form.component';
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { OrderDetailsComponent } from './reservation/order-details/order-details.component';
 import { AdminGuard } from './login/guards/admin.guard';
 import { SuccesspageComponent } from './reservation/successpage/successpage.component';
 import { UserGuard } from './login/guards/user.guard';
@@ -44,11 +44,11 @@ const routes: Routes = [
   {
     path: '',
     component: MoviesComponent,
-    canMatch: [UserGuard]    
+    canMatch: [UserGuard],
   },
   {
     path: 'login',
-    component: LoginComponent   
+    component: LoginComponent,
   },
   {
     path: 'admin',
@@ -56,48 +56,46 @@ const routes: Routes = [
     canMatch: [AdminGuard],
     children: [
       {
-      path: 'admin-movie',
-      component: AdminMovieComponent
-    },
-    {
-      path: 'admin-showing',
-      component: AdminShowingsComponent
-    }
-    ]
+        path: 'admin-movie',
+        component: AdminMovieComponent,
+      },
+      {
+        path: 'admin-showing',
+        component: AdminShowingsComponent,
+      },
+    ],
   },
   {
     path: 'watchlist',
     component: WatchlistComponent,
-    canMatch: [UserGuard]    
-
+    canMatch: [UserGuard],
   },
   {
     path: 'orders',
     component: OrdersComponent,
-    canMatch: [UserGuard]    
-
+    canMatch: [UserGuard],
   },
   {
     path: 'reservation/:hour/:id/:dayIndex',
     component: ReservationComponent,
-    canMatch: [UserGuard]    
+    canMatch: [UserGuard],
   },
   {
     path: 'reservation/:hour/:id/:dayIndex/form',
     component: FormComponent,
-    canMatch: [UserGuard]    
+    canMatch: [UserGuard],
   },
-  { path: 'orderDetails/:id', 
+  {
+    path: 'orderdetails/:id',
     component: OrderDetailsComponent,
-    canMatch: [UserGuard]
+    canMatch: [UserGuard],
   },
   {
     path: 'successpage/:orderId',
     component: SuccesspageComponent,
-    canMatch: [UserGuard]
-  }
-
-]
+    canMatch: [UserGuard],
+  },
+];
 
 @NgModule({
   declarations: [
@@ -136,7 +134,7 @@ const routes: Routes = [
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    StoreModule.forRoot({userData : userDataReducer}),
+    StoreModule.forRoot({ userData: userDataReducer }),
     EffectsModule.forRoot([UserDataEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -147,6 +145,6 @@ const routes: Routes = [
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

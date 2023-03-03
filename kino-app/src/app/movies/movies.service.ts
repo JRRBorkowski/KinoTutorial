@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Showing, Movie, Screen, DbDate } from '../types';
-import { ReplaySubject,BehaviorSubject } from 'rxjs';
+import { ReplaySubject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoviesService {
   private movieUrl = 'http://localhost:3000/movies';
 
   selectedDay = '';
 
-  showing: Showing[] = []
+  showing: Showing[] = [];
 
   private selectedMovie = new ReplaySubject<Movie>(1);
   private selectedShowing = new ReplaySubject<Showing>(1);
 
   selectedSeats: string[] = [];
 
-  screen?: Screen
+  screen?: Screen;
 
   private moviesList$$ = new BehaviorSubject<Movie[]>([]);
 
@@ -26,16 +26,16 @@ export class MoviesService {
     return this.moviesList$$.asObservable();
   }
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getMoviesFromId() {
     this.http.get<Movie[]>(this.movieUrl).subscribe((movies) => {
-        this.moviesList$$.next(movies);
-    })
-  } 
+      this.moviesList$$.next(movies);
+    });
+  }
 
-  getMovie(movieId : number) {
-    return this.http.get<Movie>(`${this.movieUrl}/${movieId}`)
+  getMovie(movieId: number) {
+    return this.http.get<Movie>(`${this.movieUrl}/${movieId}`);
   }
 
   selectMovie(): Movie {
@@ -54,35 +54,34 @@ export class MoviesService {
       premiere: false,
       dateIds: [],
     } as Movie;
-    this.selectedMovie.subscribe(movieResponse => {
+    this.selectedMovie.subscribe((movieResponse) => {
       movie = movieResponse;
     });
     return movie;
   }
 
-  addScore(score : number, userId: number, movieId : number) {
+  addScore(score: number, userId: number, movieId: number) {
     const scoreObject = {
       score: score,
-      userId: userId
+      userId: userId,
     };
-    this.getMovie(movieId).subscribe((movie => {
-        const filteredMovieScores = movie.scores.filter((movieScore) => {
-          return movieScore.userId !== userId;
-        })
-        const newScores = [...filteredMovieScores, scoreObject];
-        this.http.patch<Movie>(`${this.movieUrl}/${movieId}`, {scores: [...newScores]})
-          .subscribe(()=>{
-            this.getMoviesFromId();
-          });
-        }
-      )
-    );
+    this.getMovie(movieId).subscribe((movie) => {
+      const filteredMovieScores = movie.scores.filter((movieScore) => {
+        return movieScore.userId !== userId;
+      });
+      const newScores = [...filteredMovieScores, scoreObject];
+      this.http
+        .patch<Movie>(`${this.movieUrl}/${movieId}`, { scores: [...newScores] })
+        .subscribe(() => {
+          this.getMoviesFromId();
+        });
+    });
   }
 
   getShowing(movieId: number) {
     return this.http.get<Showing[]>(`${this.movieUrl}/${movieId}/showing`);
   }
-  
+
   getSelectedShowing(): Showing {
     let showing = {
       movieId: 0,
@@ -119,18 +118,18 @@ export class MoviesService {
   }
 
   deleteSelectedSeats() {
-    this.selectedSeats = []
+    this.selectedSeats = [];
   }
 
-  getScreen(screen : string) {
-    return this.http.get<Screen[]>(`http://localhost:3000/screen?q=${screen}`)
+  getScreen(screen: string) {
+    return this.http.get<Screen[]>(`http://localhost:3000/screen?q=${screen}`);
   }
 
   getAllScreens() {
-    return this.http.get<Screen[]>(`http://localhost:3000/screen`)
+    return this.http.get<Screen[]>(`http://localhost:3000/screen`);
   }
 
   patchDates(dates: DbDate[]) {
-    return this.http.patch<DbDate[]>(`http://localhost:3000/dates`, dates)
+    return this.http.patch<DbDate[]>(`http://localhost:3000/dates`, dates);
   }
 }

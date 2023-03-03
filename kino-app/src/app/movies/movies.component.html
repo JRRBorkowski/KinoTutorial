@@ -1,13 +1,27 @@
 <div>
-    <div class="schedule">
-        <button (click)="changeWeek(-7)">previous week</button>
-        <button *ngFor="let day of week" (click) = 'selectDay(day)'>{{day.getDate()}}/{{day.getMonth() + 1}}</button>
-        <button (click)="changeWeek(7)">next week</button>
-    </div>
+  <div class="schedule">
+    <button mat-button color="primary" (click)="changeWeek(-7)">
+      previous week
+    </button>
+    <button
+      mat-button
+      color="primary"
+      *ngFor="let day of week"
+      (click)="selectDay(day)"
+    >
+      {{ day.getDate() }}/{{ day.getMonth() + 1 }}
+    </button>
+    <button mat-button color="primary" (click)="changeWeek(7)">
+      next week
+    </button>
+  </div>
 </div>
-    <div class="movies" *ngIf="availableMovies$ | async as movies">
-        <p>Our schedule for {{selectedDayDate}}</p>
-        <div *ngFor="let movie of movies" class="single-movie">
-            <app-single-movie [movie]="movie" [day]="selectedDay.getDay().toString()"></app-single-movie>
-        </div>
-    </div>
+<div class="movies" *ngIf="availableMovies$ | async as movies">
+  <p class="movies--date">Our schedule for {{ selectedDayDate }}</p>
+  <div *ngFor="let movie of movies" class="movies--single-movie">
+    <app-single-movie
+      [movie]="movie"
+      [day]="selectedDay.getDay().toString()"
+    ></app-single-movie>
+  </div>
+</div>

@@ -1,21 +1,34 @@
 <div class="wrapper">
-    <h2 class="title" (click)="getMeBack()">Kino Fabino, my favorite!</h2>
-    <ul class="buttons">
-        <!-- <li><button mat-flat-button color="primary" routerLink="cart">
+  <h2 class="title" (click)="getMeBack()">Kino Fabino, my favorite!</h2>
+  <ul class="buttons">
+    <!-- <li><button mat-flat-button color="primary" routerLink="cart">
             <span class="material-icons">
               shopping_cart
             </span>
         </button></li> -->
-        <li>
-            <button mat-flat-button color="primary" *ngIf="!isLogged" routerLink="login">Login</button>
-            <button mat-flat-button *ngIf="isLogged" [matMenuTriggerFor]="menu" color="primary">Menu</button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item routerLink="">Homepage</button>
-                <button mat-menu-item routerLink="watchlist">Watchlist</button>
-                <button mat-menu-item routerLink="orders">Tickets</button>
-                <button mat-menu-item (click)="logoutUser()">Logout</button>
-            </mat-menu>
-        </li>
-    </ul>
+    <li>
+      <button
+        mat-flat-button
+        color="primary"
+        *ngIf="!isLogged"
+        routerLink="login"
+      >
+        Login
+      </button>
+      <button
+        mat-flat-button
+        *ngIf="isLogged"
+        [matMenuTriggerFor]="menu"
+        color="primary"
+      >
+        Menu
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="">Homepage</button>
+        <button mat-menu-item routerLink="watchlist">Watchlist</button>
+        <button mat-menu-item routerLink="orders">Tickets</button>
+        <button mat-menu-item (click)="logoutUser()">Logout</button>
+      </mat-menu>
+    </li>
+  </ul>
 </div>
-

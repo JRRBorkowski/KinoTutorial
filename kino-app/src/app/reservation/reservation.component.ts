@@ -7,10 +7,9 @@ import { ReservationService } from './reservation.service';
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
-  styleUrls: ['./reservation.component.scss']
+  styleUrls: ['./reservation.component.scss'],
 })
 export class ReservationComponent implements OnInit {
-
   movieId: number;
   showHour: string | null;
   showing?: Showing;
@@ -22,18 +21,20 @@ export class ReservationComponent implements OnInit {
   dayIndex: number;
 
   isSeatReserved(column: string, row: number) {
-    return this.reservedSeats?.some(seat => seat === `${column}${row}`);
+    return this.reservedSeats?.some((seat) => seat === `${column}${row}`);
   }
 
   handleReservation() {
     if (this.showing) {
-      this.reservationService.reserveSeats(this.showing?.id).subscribe()
-      this.router.navigate(['form'], {relativeTo: this.route})
+      this.reservationService.reserveSeats(this.showing?.id).subscribe();
+      this.router.navigate(['form'], { relativeTo: this.route });
     }
   }
 
   isSeatSelected(column: string, row: number) {
-    return this.reservationService.selectedSeats.some(seat => seat === `${column}${row}`);
+    return this.reservationService.selectedSeats.some(
+      (seat) => seat === `${column}${row}`
+    );
   }
 
   checkout?: string[];
@@ -42,19 +43,24 @@ export class ReservationComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public reservationService: ReservationService,
-    private moviesService: MoviesService) {
+    private moviesService: MoviesService
+  ) {
     this.movieId = Number(this.route.snapshot.paramMap.get('id'));
     this.showHour = this.route.snapshot.paramMap.get('hour');
     this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));
     this.reservationService.selectDay(this.dayIndex);
 
-    this.moviesService.getMovie(this.movieId).subscribe(movie => {
+    this.moviesService.getMovie(this.movieId).subscribe((movie) => {
       this.moviesService.addSubjectMovie(movie);
       this.reservationService.selectReservationMovie(movie);
       this.selectedMovie = this.reservationService.selectedReservationMovie;
 
-      this.moviesService.getShowing(this.movieId).subscribe(showings => {
-        const targetShow = showings.find(show => show.hour === this.showHour && this.selectedMovie?.dateIds.includes(this.dayIndex));
+      this.moviesService.getShowing(this.movieId).subscribe((showings) => {
+        const targetShow = showings.find(
+          (show) =>
+            show.hour === this.showHour &&
+            this.selectedMovie?.dateIds.includes(this.dayIndex)
+        );
         if (targetShow) {
           this.moviesService.addSubjectShow(targetShow);
           this.showing = this.moviesService.getSelectedShowing();
@@ -62,15 +68,13 @@ export class ReservationComponent implements OnInit {
         }
       });
     });
-    
   }
 
   changeCheckout(price: string) {
-    return this.checkout?.push(price)
+    return this.checkout?.push(price);
   }
 
   ngOnInit(): void {
     this.reservationService.createSeats(this.rows);
   }
-
 }

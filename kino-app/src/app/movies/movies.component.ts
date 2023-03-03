@@ -9,7 +9,6 @@ import { MoviesService } from './movies.service';
   styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent implements OnInit, OnDestroy {
-
   availableMovies$: Observable<Movie[]>;
 
   weekNumber = 0;
@@ -19,7 +18,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
   //todo set initial date
   selectedDay = new Date();
 
-  selectedDayDate = `${this.selectedDay.getDate()}/${this.selectedDay.getMonth() + 1}/${this.selectedDay.getFullYear()}`
+  selectedDayDate = `${this.selectedDay.getDate()}/${
+    this.selectedDay.getMonth() + 1
+  }/${this.selectedDay.getFullYear()}`;
 
   private subscription = new Subscription();
 
@@ -37,9 +38,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
   getAvailableMovies() {
     return this.moviesService.moviesList$.pipe(
       map((moviesArray) =>
-        moviesArray.filter((movie) =>{
-          return movie.dateIds.includes(this.selectedDay?.getDay())}
-        )
+        moviesArray.filter((movie) => {
+          return movie.dateIds.includes(this.selectedDay?.getDay());
+        })
       )
     );
   }
@@ -62,14 +63,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
   getFirstDayOfWeek(dateObject: Date) {
     const currentDayOfWeek = dateObject.getDay();
     const firstDayOfWeek = new Date(dateObject),
-      diff = currentDayOfWeek >= 0 ?
-        currentDayOfWeek  :
-        6 - currentDayOfWeek
+      diff = currentDayOfWeek >= 0 ? currentDayOfWeek : 6 - currentDayOfWeek;
 
-    firstDayOfWeek.setDate(dateObject.getDate() - diff)
-    firstDayOfWeek.setHours(0,0,0,0)
+    firstDayOfWeek.setDate(dateObject.getDate() - diff);
+    firstDayOfWeek.setHours(0, 0, 0, 0);
 
-    return firstDayOfWeek
+    return firstDayOfWeek;
   }
 
   changeWeek(weekDelta: number) {
@@ -79,7 +78,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   selectDay(newDay: Date) {
     this.selectedDay = newDay;
-    this.selectedDayDate = `${newDay.getDate()}/${newDay.getMonth() + 1}/${newDay.getFullYear()}`
+    this.selectedDayDate = `${newDay.getDate()}/${
+      newDay.getMonth() + 1
+    }/${newDay.getFullYear()}`;
     this.availableMovies$ = this.getAvailableMovies();
   }
 

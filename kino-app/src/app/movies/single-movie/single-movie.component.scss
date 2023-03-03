@@ -1,10 +1,22 @@
 .single-movie {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    border: 5px solid burlywood;
+    border-radius: 10px;
     margin: 30px;
+    padding: 1em;
+    width: 760px;
+    height: 300px;
+    .single-movie--info {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        padding: 0.5em;
+    }
     .single-movie--image {
         width: 200px;
-        padding-right: 5px;
+        margin-right: 1em;
+        border: 2px solid burlywood;
     }
     .single-movie--body {
         display: flex;
@@ -15,13 +27,9 @@
         flex-direction: column;
         align-items: center;
     }
-    .premiere{
-        position: absolute;
-        
+    &--premiere{
+        font-size: 1.2em;        
         color: red;
-        background: linear-gradient(0deg, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 100%);
-        padding: 0 0.2em;
-        margin: 0;
     }
     .viewings {
         display: flex;

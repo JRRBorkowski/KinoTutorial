@@ -1,0 +1,17 @@
+.success-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid burlywood;
+    border-radius: 5px;
+    margin: 8px;
+    &__img {
+        max-width: 200px;
+    }
+}

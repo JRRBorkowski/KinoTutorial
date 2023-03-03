@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from './order.service';
-import { UserOrder } from '../types';
+import { UserOrder, UserOrderTicket } from '../../types';
 
 @Component({
   selector: 'app-order-details',
@@ -10,6 +10,7 @@ import { UserOrder } from '../types';
 })
 export class OrderDetailsComponent implements OnInit {
   orderDetails?: UserOrder;
+  ticket?: UserOrderTicket;
 
   constructor(
     private route: ActivatedRoute,

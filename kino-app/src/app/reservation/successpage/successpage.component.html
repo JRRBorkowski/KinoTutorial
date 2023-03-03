@@ -1,3 +1,12 @@
-<h1>Order completed!</h1>
-<a [routerLink]="['/orderDetails', orderId]">order details here</a>
-
+<div class="success-wrapper">
+  <div class="success">
+    <img
+      src="https://i.pinimg.com/736x/cb/3e/01/cb3e014d6122af3b43933bb571859ae7.jpg"
+      class="success__img"
+    />
+    <h1 class="success__message">Order completed!</h1>
+    <a [routerLink]="['/orderdetails', orderId]" class="success__link"
+      >order details here</a
+    >
+  </div>
+</div>

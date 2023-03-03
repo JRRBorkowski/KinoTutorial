@@ -1,26 +1,46 @@
 <div class="single-movie" *ngIf="movie">
-    <img src="{{movie.image}}" class="single-movie--image">
-    <p *ngIf="movie.premiere" class="premiere">Premiere</p>
-    <div class="single-movie--body">
-        <div>
-        <h1>{{movie.title}}</h1>
-        <p>{{movie.genre}}</p>
-        <p *ngIf="clickedMore">{{movie.description}}</p>
-        <a (click)="tellMeMore()">would you like to know more?</a>
-        <div class="viewings">
-            <button *ngFor="let showing of showings" [routerLinkActive]="['active']"
-            [routerLink]="['/reservation', showing.hour, movie.id, day]" class="hour-buttons"
-            (click)="handleSelectedMovie(showing)">{{showing.hour}}</button>
+  <img src="{{ movie.image }}" class="single-movie--image" />
+  <div class="single-movie--body">
+    <div>
+      <div class="single-movie--info">
+        <div class="single-movie--title">
+          <h1>{{ movie.title }}</h1>
+          <ng-container *ngIf="movie.premiere"
+            ><span class="single-movie--premiere">Premiere!</span></ng-container
+          >
         </div>
+        <p>Genre: {{ movie.genre }}</p>
+        <p>Rating: {{ movie.ageRest }}</p>
+        <p>Director: {{ movie.director }}</p>
+        <p *ngIf="clickedMore">{{ movie.description }}</p>
+        <button mat-button color="primary" (click)="tellMeMore()">
+          Would you like to know more?
+        </button>
+      </div>
+      <div class="viewings">
+        <button
+          *ngFor="let showing of showings"
+          [routerLinkActive]="['active']"
+          [routerLink]="['/reservation', showing.hour, movie.id, day]"
+          class="hour-buttons"
+          (click)="handleSelectedMovie(showing)"
+        >
+          {{ showing.hour }}
+        </button>
+      </div>
     </div>
-        <div class="single-movie--rating">
-                <app-score [movie]="movie" [userId]="userId"></app-score>
-                <ng-container *ngIf="userId">
-                    <button (click)="addToWatchlist(userId, movie)" [disabled]="!canAddToWatchlist(userWatchlist$ | async)">Add to watchlist</button>
-                </ng-container>
+    <div class="single-movie--rating">
+      <app-score [movie]="movie" [userId]="userId"></app-score>
+      <ng-container *ngIf="userId">
+        <button
+          (click)="addToWatchlist(userId, movie)"
+          [disabled]="!canAddToWatchlist(userWatchlist$ | async)"
+        >
+          Add to watchlist
+        </button>
+      </ng-container>
     </div>
-</div>
+  </div>
 
-<div *ngIf="!movie">
-    Shit's fucked brah
+  <div *ngIf="!movie">Shit's fucked brah</div>
 </div>

@@ -5,17 +5,20 @@ import { Observable, of, switchMap } from 'rxjs';
 import { selectUserRole } from 'src/app/user-data/store/user-data.selectors';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserGuard implements CanMatch {
-  private store = inject(Store)
-  
-  canMatch(): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  private store = inject(Store);
+
+  canMatch():
+    | boolean
+    | UrlTree
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree> {
     return this.store.select(selectUserRole).pipe(
       switchMap((result) => {
-        return of(result === "User" || result === undefined)
+        return of(result === 'User' || result === undefined);
       })
-    )
+    );
   }
-
 }

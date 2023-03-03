@@ -10,21 +10,22 @@ import { setLoginData } from '../user-data/store/user-data.actions';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  //TODO: nie wyjebuje sesji na reload
 
   user$: Observable<User | undefined>;
 
   performLogin(user: User) {
     switch (user.role) {
-      case "Admin":
+      case 'Admin':
         this.loginAuth.userAuthentication();
         this.loginAuth.setCurrentUser(user);
         this.store.dispatch(setLoginData(user));
         this.router.navigate(['admin']);
         break;
-      case "User":
+      case 'User':
         this.loginAuth.userAuthentication();
         this.loginAuth.setCurrentUser(user);
         this.store.dispatch(setLoginData(user));
@@ -43,12 +44,15 @@ export class LoginComponent implements OnInit {
 
     this.loginAuth.getUsers().subscribe((response) => {
       response.forEach((user) => {
-        if (userEmail === user.userEmail && userPassword === user.userPassword) {
+        if (
+          userEmail === user.userEmail &&
+          userPassword === user.userPassword
+        ) {
           this.performLogin(user);
         } else {
-          return
+          return;
         }
-      })
+      });
     });
   }
 
@@ -67,10 +71,10 @@ export class LoginComponent implements OnInit {
     private loginAuth: LoginService,
     private store: Store<{ userData: { user?: User } }>
   ) {
-    this.user$ = this.store.select(state => state.userData.user);
+    this.user$ = this.store.select((state) => state.userData.user);
   }
 
   ngOnInit(): void {
-    console.log('TODO: Initiate store')
+    console.log('TODO: Initiate store');
   }
 }

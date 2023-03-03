@@ -1,0 +1,12 @@
+<p>Order details</p>
+<ng-container *ngIf="orderDetails">
+  <div>User mail:</div>
+  <div>{{ orderDetails.userMail }}</div>
+  <div>User name:</div>
+  <div>{{orderDetails.userName}} {{orderDetails.userLastName}}</div>
+  <div *ngFor="let ticket of orderDetails.ticket">
+    <div>{{ticket.title}}</div>
+    <div>{{ticket.date}}</div>
+    <div>{{ticket.hour}}</div>
+  </div>
+</ng-container>

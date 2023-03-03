@@ -1,9 +1,11 @@
 <div class="user-orders-container">
-    <h1>Your tickets</h1>
-    <div class="user-orders" *ngFor="let order of userOrders" >
-        <div class="user-order">
-            <p>Order nr {{ order.id }}</p>
-            <p>{{order.userMail}}</p>
-        </div>
+  <h1>Your tickets</h1>
+  <div class="user-orders" *ngFor="let order of userOrders">
+    <div class="user-order">
+      <p>Order nr {{ order.id }}</p>
+      <p>{{ order.userMail }}</p>
+      <p>{{ order.userName }} {{ order.userLastName }}</p>
+      <a [routerLink]="['/orderdetails', order.id]">order details here</a>
     </div>
+  </div>
 </div>

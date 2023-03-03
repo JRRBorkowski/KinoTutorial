@@ -6,12 +6,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AdminPanelService {
+  private url = 'http://localhost:3000';
 
-  private url = 'http://localhost:3000'
-
-  constructor(
-    private http: HttpClient
-  ){}
+  constructor(private http: HttpClient) {}
 
   createMovie(movie: Movie) {
     return this.http.post(`${this.url}/movies`, movie);
@@ -20,5 +17,4 @@ export class AdminPanelService {
   createShowing(showing: Showing) {
     return this.http.post(`${this.url}/showing`, showing);
   }
-
 }

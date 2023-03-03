@@ -1,10 +1,12 @@
 <div class="movies" *ngIf="userWatchlist$ | async as movies">
-    <div *ngFor="let movie of movies" class="single-movie">
-        <p>{{movie.title}}</p>
-        <p>{{movie.description}}</p>
-        <button (click)="remove(this.userId, movie.id)">Remove from watchlist</button>
-    </div>
-    <div class="movies" *ngIf="!userWatchlist$">
-        <p>No movies on your watchlist!</p>
-    </div>
+  <div *ngFor="let movie of movies" class="single-movie">
+    <p>{{ movie.title }}</p>
+    <p>{{ movie.description }}</p>
+    <button (click)="remove(this.userId, movie.id)">
+      Remove from watchlist
+    </button>
+  </div>
+  <div class="movies" *ngIf="!userWatchlist$">
+    <p>No movies on your watchlist!</p>
+  </div>
 </div>

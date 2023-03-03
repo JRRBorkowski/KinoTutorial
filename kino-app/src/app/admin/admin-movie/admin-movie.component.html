@@ -1,52 +1,51 @@
 <div>
-    <form [formGroup]="newMovieForm" (submit)="submitForm()">
-      <h1>Add movie</h1>
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput formControlName="title" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Image url</mat-label>
-        <input matInput formControlName="image" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Genre</mat-label>
-        <input matInput formControlName="genre" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Length</mat-label>
-        <input matInput formControlName="length" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Age restriction</mat-label>
-        <input matInput formControlName="ageRest" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Director</mat-label>
-        <input matInput formControlName="director" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Actors</mat-label>
-        <input matInput formControlName="actors" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Box office</mat-label>
-        <input matInput formControlName="boxOff" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Days shown</mat-label>
-        <mat-select formControlName="dateIds" multiple>
-          <mat-option *ngFor="let day of dayNames" [value]="day.id">{{
-            day.name
-          }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-checkbox formControlName="premiere">Premiere</mat-checkbox>
-      <button>add new movie</button>
-    </form>
-  </div>
-  
+  <form [formGroup]="newMovieForm" (submit)="submitForm()">
+    <h1>Add movie</h1>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Image url</mat-label>
+      <input matInput formControlName="image" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Genre</mat-label>
+      <input matInput formControlName="genre" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Length</mat-label>
+      <input matInput formControlName="length" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Age restriction</mat-label>
+      <input matInput formControlName="ageRest" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Director</mat-label>
+      <input matInput formControlName="director" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Actors</mat-label>
+      <input matInput formControlName="actors" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Box office</mat-label>
+      <input matInput formControlName="boxOff" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Days shown</mat-label>
+      <mat-select formControlName="dateIds" multiple>
+        <mat-option *ngFor="let day of dayNames" [value]="day.id">{{
+          day.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox formControlName="premiere">Premiere</mat-checkbox>
+    <button>add new movie</button>
+  </form>
+</div>

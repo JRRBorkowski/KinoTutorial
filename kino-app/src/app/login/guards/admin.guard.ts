@@ -5,19 +5,21 @@ import { Observable, filter, switchMap, of } from 'rxjs';
 import { selectUserRole } from 'src/app/user-data/store/user-data.selectors';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminGuard implements CanMatch {
-  private store = inject(Store)
-  
-  canMatch(): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  private store = inject(Store);
+
+  canMatch():
+    | boolean
+    | UrlTree
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree> {
     return this.store.select(selectUserRole).pipe(
       filter((userType) => userType !== null),
       switchMap((result) => {
-        return of(result === "Admin")
+        return of(result === 'Admin');
       })
-    )
+    );
   }
-
 }
-  
