@@ -1,12 +1,20 @@
-<p>Order details</p>
-<ng-container *ngIf="orderDetails">
-  <div>User mail:</div>
-  <div>{{ orderDetails.userMail }}</div>
-  <div>User name:</div>
-  <div>{{orderDetails.userName}} {{orderDetails.userLastName}}</div>
-  <div *ngFor="let ticket of orderDetails.ticket">
-    <div>{{ticket.title}}</div>
-    <div>{{ticket.date}}</div>
-    <div>{{ticket.hour}}</div>
-  </div>
-</ng-container>
+<div class="order-wrapper">
+  <h1>Your order:</h1>
+  <ng-container *ngIf="orderDetails">
+    <div class="order">
+      <p>E-mail: {{ orderDetails.userMail }}</p>
+      <p>
+        Name and surname: {{ orderDetails.userName }}
+        {{ orderDetails.userLastName }}
+      </p>
+      <p>Your tickets:</p>
+      <div *ngFor="let ticket of orderDetails.ticket" class="order--tickets">
+        <p>Ticket type: {{ ticket.seat.type }}</p>
+        <p>{{ ticket.title }}</p>
+        <p>{{ ticket.date }}</p>
+        <p>{{ ticket.hour }}</p>
+        <p>Seat: {{ ticket.seat.positon }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>

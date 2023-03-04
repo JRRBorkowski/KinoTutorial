@@ -1,33 +1,29 @@
 <div class="login-container">
-  <div class="login">
-    <ng-container *ngIf="user$ | async as user">
-      <h1>User id: {{ user.id }}</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogIn()" class="login">
+    <p>Please log in</p>
+    <mat-form-field>
+      <mat-label>User mail</mat-label>
+      <input matInput formControlName="userEmail" />
+      <mat-error
+        *ngIf="
+          loginForm.controls.userEmail.hasError('email') &&
+          !loginForm.controls.userEmail.hasError('required')
+        "
+      >
+        Not an email!
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls.userEmail.hasError('required')">
+        Please fill the form
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="userPassword" />
+      <mat-error *ngIf="invalidUser"> Please fill the form </mat-error>
+    </mat-form-field>
+    <ng-container *ngIf="invalidUser">
+      <p>Invalid name</p>
     </ng-container>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
-      <mat-form-field>
-        <mat-label>User mail</mat-label>
-        <input matInput formControlName="userEmail" />
-        <mat-error
-          *ngIf="
-            loginForm.controls.userEmail.hasError('email') &&
-            !loginForm.controls.userEmail.hasError('required')
-          "
-        >
-          Not an email!
-        </mat-error>
-        <mat-error *ngIf="loginForm.controls.userEmail.hasError('required')">
-          Please fill the form
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="userPassword" />
-        <mat-error *ngIf="invalidUser"> Please fill the form </mat-error>
-      </mat-form-field>
-      <ng-container *ngIf="invalidUser">
-        <p>Invalid name</p>
-      </ng-container>
-      <button class="login-btn">Zaloguj</button>
-    </form>
-  </div>
+    <button mat-raised-button class="login-btn">Zaloguj</button>
+  </form>
 </div>

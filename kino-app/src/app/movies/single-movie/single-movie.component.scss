@@ -1,8 +1,8 @@
 .single-movie {
     display: flex;
     justify-content: center;
-    border: 5px solid burlywood;
-    border-radius: 10px;
+    border-bottom: 5px solid #ffcc99;
+    // border-radius: 10px;
     margin: 30px;
     padding: 1em;
     width: 760px;
@@ -16,7 +16,8 @@
     .single-movie--image {
         width: 200px;
         margin-right: 1em;
-        border: 2px solid burlywood;
+        border: 3px solid #996633;
+        border-radius: 5px;
     }
     .single-movie--body {
         display: flex;
@@ -29,7 +30,7 @@
     }
     &--premiere{
         font-size: 1.2em;        
-        color: red;
+        color: rgb(255, 41, 41);
     }
     .viewings {
         display: flex;

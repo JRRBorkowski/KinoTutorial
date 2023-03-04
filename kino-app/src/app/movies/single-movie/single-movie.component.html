@@ -4,10 +4,12 @@
     <div>
       <div class="single-movie--info">
         <div class="single-movie--title">
-          <h1>{{ movie.title }}</h1>
-          <ng-container *ngIf="movie.premiere"
-            ><span class="single-movie--premiere">Premiere!</span></ng-container
-          >
+          <h1>
+            {{ movie.title }}
+            <span *ngIf="movie.premiere" class="single-movie--premiere"
+              >- Premiere!</span
+            >
+          </h1>
         </div>
         <p>Genre: {{ movie.genre }}</p>
         <p>Rating: {{ movie.ageRest }}</p>

@@ -2,12 +2,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    &--date {
+        font-size: 1.4em;
+        margin: 1em;
+    }
 }
 
 
 .schedule {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     border-bottom: 5px solid blanchedalmond;
     padding: 1em;
 }
