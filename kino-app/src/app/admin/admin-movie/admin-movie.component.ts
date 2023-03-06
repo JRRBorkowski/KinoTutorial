@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import {
+  NonNullableFormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { AdminPanelService } from '../admin.service';
 
 @Component({
@@ -8,6 +12,12 @@ import { AdminPanelService } from '../admin.service';
   styleUrls: ['./admin-movie.component.scss'],
 })
 export class AdminMovieComponent {
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { whitespace: true };
+  }
+
   dayNames = [
     { id: 0, name: 'Sunday' },
     { id: 1, name: 'Monday' },
@@ -18,21 +28,23 @@ export class AdminMovieComponent {
     { id: 6, name: 'Saturday' },
   ];
 
+  ages = ['E', 'PG+13', 'PG+16', 'PG+18', 'R'];
+
   newMovieForm = this.builder.group({
     id: this.builder.control(0, {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator],
     }),
     title: this.builder.control('', {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator],
     }),
     image: this.builder.control('', {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator],
     }),
     genre: this.builder.control('', {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator],
     }),
     length: this.builder.control('', {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator],
     }),
     ageRest: this.builder.control('', {
       validators: Validators.required,

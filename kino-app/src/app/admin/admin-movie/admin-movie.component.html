@@ -1,5 +1,5 @@
-<div>
-  <form [formGroup]="newMovieForm" (submit)="submitForm()">
+<div class="wrapper">
+  <form [formGroup]="newMovieForm" (submit)="submitForm()" class="movie-form">
     <h1>Add movie</h1>
     <mat-form-field>
       <mat-label>Title</mat-label>
@@ -19,11 +19,15 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Age restriction</mat-label>
-      <input matInput formControlName="ageRest" />
+      <mat-select formControlName="ageRest">
+        <mat-option *ngFor="let age of ages" [value]="age">{{
+          age
+        }}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Description</mat-label>
-      <input matInput formControlName="description" />
+      <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Director</mat-label>

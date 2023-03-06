@@ -1,12 +1,17 @@
 <div class="movies" *ngIf="userWatchlist$ | async as movies">
+  <h1>Movies on your watchlist:</h1>
   <div *ngFor="let movie of movies" class="single-movie">
-    <p>{{ movie.title }}</p>
-    <p>{{ movie.description }}</p>
+    <img src="{{ movie.image }}" class="single-movie--image" />
+    <div class="single-movie--body">
+      <p>{{ movie.title }}</p>
+      <p>{{ movie.director }}</p>
+      <p>{{ movie.description }}</p>
+    </div>
     <button (click)="remove(this.userId, movie.id)">
       Remove from watchlist
     </button>
   </div>
-  <div class="movies" *ngIf="!userWatchlist$">
-    <p>No movies on your watchlist!</p>
-  </div>
+</div>
+<div class="movies" *ngIf="!userWatchlist$">
+  <h1 class="movies--warn">No movies on your watchlist!</h1>
 </div>
