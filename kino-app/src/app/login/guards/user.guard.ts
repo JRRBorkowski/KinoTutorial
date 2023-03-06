@@ -18,8 +18,6 @@ export class UserGuard implements CanMatch {
     | Promise<boolean | UrlTree> {
     return this.store.select(selectUserRole).pipe(
       switchMap((result) => {
-        if (result === 'User' || result === undefined)
-          this.router.navigate(['admin']);
         return of(result === 'User' || result === undefined);
       })
     );

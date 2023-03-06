@@ -7,7 +7,7 @@
   </ng-container>
 </div>
 
-<ng-template *ngIf="showing; else noShowing">
+<ng-template [ngIf]="showing" [ngIfElse]="noShowing">
   <div class="selector">
     <div
       *ngIf="
