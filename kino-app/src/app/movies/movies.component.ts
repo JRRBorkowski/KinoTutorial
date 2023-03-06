@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable, map } from 'rxjs';
 import { Movie } from '../types';
 import { MoviesService } from './movies.service';
@@ -24,7 +25,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
 
-  constructor(private moviesService: MoviesService) {
+  constructor(private moviesService: MoviesService,
+    private route: ActivatedRoute) {
     this.availableMovies$ = this.getAvailableMovies();
   }
 
@@ -33,6 +35,16 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.getSchedule(0);
     //todo set initial date
     this.selectDay(new Date());
+    this.route.queryParamMap.subscribe(
+      (params) => {
+        const dayOfMonth = params.get('day');
+        if (dayOfMonth) {
+          const initialDate = new Date();
+          initialDate.setDate(Number(dayOfMonth));
+          this.selectDay(initialDate);
+        }
+      }
+    )
   }
 
   getAvailableMovies() {
@@ -58,6 +70,10 @@ export class MoviesComponent implements OnInit, OnDestroy {
       );
       this.week.push(nextWeek);
     }
+  }
+
+  isInPast(date : Date) {
+    return date.getDate() < new Date().getDate();
   }
 
   getFirstDayOfWeek(dateObject: Date) {

@@ -709,6 +709,35 @@
         }
       ],
       "id": 13
+    },
+    {
+      "userName": "asd",
+      "userLastName": "aasd",
+      "userMail": "aaa@qaaa",
+      "discountCode": "",
+      "userPhoneNumber": "112341243",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678130036171,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "6/3/2023",
+          "hour": "10.30",
+          "seat": {
+            "positon": "A1",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        }
+      ],
+      "id": 14
     }
   ],
   "blik": [
@@ -914,7 +943,8 @@
         "C9",
         "D4",
         "D5",
-        "A5"
+        "A5",
+        "A1"
       ],
       "priceList": [
         {
