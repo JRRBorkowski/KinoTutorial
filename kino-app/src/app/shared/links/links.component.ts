@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription, BehaviorSubject } from 'rxjs';
-import { LoginService } from '../login/login.service';
-import { User } from '../types';
-import { resetLoginData } from '../user-data/store/user-data.actions';
+import { LoginService } from '../../login/login.service';
+import { User } from '../../types';
+import { resetLoginData } from 'src/app/user-data/store/user-data.actions';
 
 @Component({
   selector: 'app-links',
@@ -12,10 +12,6 @@ import { resetLoginData } from '../user-data/store/user-data.actions';
   styleUrls: ['./links.component.scss'],
 })
 export class LinksComponent implements OnInit, OnDestroy {
-  private auth$$ = new BehaviorSubject<{ hasAuth: boolean }>({
-    hasAuth: false,
-  });
-
   isLogged = false;
 
   user: string | null = null;
@@ -29,15 +25,11 @@ export class LinksComponent implements OnInit, OnDestroy {
     this.subscription.add(login);
   }
 
-  getAuth() {
-    return this.auth$$.asObservable();
-  }
-
   checkUser() {
     this.user = localStorage.getItem('loginData');
+    console.log(this.user);
     if (this.user !== null) {
-      this.isLogged = true;
-      return this.auth$$.next({ hasAuth: true });
+      return this.loginService.userAuthentication();
     }
     return (this.isLogged = false);
   }
@@ -48,8 +40,7 @@ export class LinksComponent implements OnInit, OnDestroy {
 
   logoutUser() {
     this.store.dispatch(resetLoginData());
-    this.isLogged = false;
-    this.auth$$.next({ hasAuth: false });
+    this.loginService.userLogout();
     this.router.navigate(['']);
   }
 

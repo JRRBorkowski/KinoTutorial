@@ -2,9 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    flex-direction: column;
+    margin: 1em;
+    padding: 1em;
+    font-size: 1.5em;
+    gap: 1em;
+    &--title {
+        border-bottom: 4px solid #ffcc99;
+    }
+    &--info {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 1em;
+    }
     .movieimage {
-        max-width: 10%;
+        max-width: 150px;
     }
 }
 

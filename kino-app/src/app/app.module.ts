@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MoviesComponent } from './movies/movies.component';
-import { LinksComponent } from './links/links.component';
+import { LinksComponent } from './shared/links/links.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './reservation/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -104,7 +104,6 @@ const routes: Routes = [
     MoviesComponent,
     LinksComponent,
     ReservationComponent,
-    FooterComponent,
     FormComponent,
     SingleMovieComponent,
     AdminComponent,
@@ -120,6 +119,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FooterComponent,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,

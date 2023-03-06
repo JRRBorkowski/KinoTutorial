@@ -1,0 +1,16 @@
+.admin-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2em;
+    margin: 1em;
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+}

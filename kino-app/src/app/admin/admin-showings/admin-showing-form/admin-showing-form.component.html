@@ -3,44 +3,39 @@
   (submit)="(submitShowingForm)"
   class="showing-form"
 >
-  <div>
-    <mat-form-field>
-      <mat-label>Select movie</mat-label>
-      <mat-select
-        [(ngModel)]="selectedMovieId"
-        name="movie"
-        [formControl]="movieIdCtrl"
-      >
-        <mat-option>Clear</mat-option>
-        <mat-option *ngFor="let movie of movies$ | async" [value]="movie.id">
-          {{ movie.title }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="screenCtrl.hasError('required')">
-        Select screen
-      </mat-error>
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Select movie</mat-label>
+    <mat-select
+      [(ngModel)]="selectedMovieId"
+      name="movie"
+      [formControl]="movieIdCtrl"
+    >
+      <mat-option>Clear</mat-option>
+      <mat-option *ngFor="let movie of movies$ | async" [value]="movie.id">
+        {{ movie.title }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="screenCtrl.hasError('required')">
+      Select screen
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Select screen</mat-label>
-      <mat-select
-        [(ngModel)]="selectedScreen"
-        name="screen"
-        [formControl]="screenCtrl"
-      >
-        <mat-option>Clear</mat-option>
-        <mat-option
-          *ngFor="let screen of screens$ | async"
-          [value]="screen.name"
-        >
-          {{ screen.name }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="screenCtrl.hasError('required')">
-        Select screen
-      </mat-error>
-    </mat-form-field>
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Select screen</mat-label>
+    <mat-select
+      [(ngModel)]="selectedScreen"
+      name="screen"
+      [formControl]="screenCtrl"
+    >
+      <mat-option>Clear</mat-option>
+      <mat-option *ngFor="let screen of screens$ | async" [value]="screen.name">
+        {{ screen.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="screenCtrl.hasError('required')">
+      Select screen
+    </mat-error>
+  </mat-form-field>
 
   <div class="add-show-form__time">
     <mat-form-field color="primary" class="fieldset__input">
@@ -86,7 +81,7 @@
     mat-flat-button
     color="primary"
   >
-    Dodaj kolejny rodzaj biletu
+    Add another ticket type
   </button>
   <ol>
     <li
@@ -97,7 +92,7 @@
     >
       <div [formGroup]="priceListForm">
         <mat-form-field appearance="fill">
-          <mat-label>Wybierz rodzaj biletu</mat-label>
+          <mat-label>Select ticket type</mat-label>
           <mat-select name="type" [formControl]="priceListForm.controls.type">
             <mat-option>Wyczyść</mat-option>
             <mat-option *ngFor="let type of ticketTypes" [value]="type.type">
@@ -105,7 +100,7 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="priceListForm.controls.type.hasError('required')"
-            >Wybierz rodzaj biletu</mat-error
+            >Select ticket type</mat-error
           >
           <mat-error
             *ngIf="
@@ -113,12 +108,12 @@
               !priceListForm.controls.type.hasError('required')
             "
           >
-            Wybierz rodzaj biletu
+            Select ticket type
           </mat-error>
         </mat-form-field>
 
         <mat-form-field class="add-movie-form__input">
-          <mat-label>Cena biletu</mat-label>
+          <mat-label>Ticket cost</mat-label>
           <input
             matInput
             numbersOnly
@@ -130,9 +125,7 @@
               >To pole jest wymagane.</ng-container
             >
             <ng-container *ngIf="errors['min']">Minimum 10 PLN</ng-container>
-            <ng-container *ngIf="errors['max']"
-              >Maksymalnie 50 PLN</ng-container
-            >
+            <ng-container *ngIf="errors['max']">Maximum 50 PLN</ng-container>
           </mat-error>
         </mat-form-field>
         <button
@@ -146,5 +139,7 @@
       </div>
     </li>
   </ol>
-  <button (click)="submitShowingForm()">SUBMIT TO ME</button>
+  <button mat-raised-button color="primary" (click)="submitShowingForm()">
+    Add new showing
+  </button>
 </form>

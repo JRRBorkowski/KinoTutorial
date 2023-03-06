@@ -1,9 +1,11 @@
 <div class="movietitle">
   <ng-container *ngIf="selectedMovie">
-    <p>Selected movie: {{ selectedMovie.title }}</p>
-    <img src="{{ selectedMovie.image }}" class="movieimage" />
-    <p>{{ showing?.hour }}</p>
-    <p>{{ showing?.screen }}</p>
+    <h2 class="movietitle--title">Selected movie: {{ selectedMovie.title }}</h2>
+    <div class="movietitle--info">
+      <img src="{{ selectedMovie.image }}" class="movieimage" />
+      <p>{{ showing?.hour }}</p>
+      <p>Screen: {{ showing?.screen }}</p>
+    </div>
   </ng-container>
 </div>
 
