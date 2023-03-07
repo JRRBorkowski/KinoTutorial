@@ -2,21 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 import { ReservationService } from '../reservation.service';
 import { MoviesService } from 'src/app/movies/movies.service';
-import { AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
+import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms'
 import { Prices, User, UserOrder } from 'src/app/types';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { selectUser } from 'src/app/user-data/store/user-data.selectors';
-
-const customValidator = (source: string, target: string): ValidatorFn => {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const sourceCtrl = control.get(source)
-    const targetCtrl = control.get(target)
-
-    return sourceCtrl && targetCtrl && sourceCtrl.value !== targetCtrl.value ? { mismatch: true } : null;
-  }
-}
 
 type AllowedTicketTypes = "normal" | "reduced" | "voucher";
 function isAllowedTicketType(value: string): value is AllowedTicketTypes {
@@ -31,41 +22,51 @@ function isAllowedTicketType(value: string): value is AllowedTicketTypes {
 
 export class FormComponent {
 
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { whitespace: true };
+  }
+
   reservationForm = this.builder.group({
     userName: this.builder.control('', {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator]
     }),
     userLastName: this.builder.control('', {
-      validators: Validators.required
+      validators: [Validators.required, this.noWhitespaceValidator]
     }),
     discountCode: this.builder.control(''),
     userPhoneNumber: this.builder.control('', {
       validators: [
         Validators.required,
+        Validators.pattern("^[0-9]*$"),
         Validators.minLength(9),
         Validators.maxLength(9)
       ]
     }),
     userMail: this.builder.control('', {
-      validators: [Validators.required, Validators.email]
-    }),
-    confirmEmail: this.builder.control('', {
-      validators: [Validators.required, Validators.email]
+      validators: [Validators.required, Validators.email , this.noWhitespaceValidator]
     }),
     userInvoiceForm: this.builder.group({
-      userNIP: this.builder.control(''),
+      userNIP: this.builder.control('', 
+      {validators: Validators.pattern("^[0-9]*$")
+    },
+      ),
       userStreet: this.builder.control(''),
       userPostCode: this.builder.control(''),
       userCity: this.builder.control('')
     })
-  }, 
-  {
-    validators: customValidator('email', 'confirmEmail')
   });
 
+
+  invoice = false;
   user?: User;
   pricePerTicketType: Record<AllowedTicketTypes, number>;
   tickets: { seat: string, price: number }[];
+
+  addInvoice() {
+    this.invoice ? this.invoice = false : this.invoice = true 
+  }
 
   changeTicketType(event: MatButtonToggleChange, seat: string) {
     const targetType = event.value;
@@ -110,12 +111,6 @@ export class FormComponent {
     }
     this.tickets = reservationService.selectedSeats.map(seat => ({ seat: seat, price: this.pricePerTicketType.normal }));
     this.store.select(selectUser).subscribe(user => this.user = user);
-  }
-
-  emailsMatchValidatorError() {
-    return (
-      this.reservationForm.getError('mismatch') && this.reservationForm.get('confirmEmail')?.touched
-    )
   }
 
   submitForm() {

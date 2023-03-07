@@ -17,19 +17,24 @@
     <div class="form">
       <mat-form-field>
         <input matInput placeholder="Name" formControlName="userName">
-        <mat-error *ngIf="reservationCtrl.controls.userName.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userName.hasError('required')">Required</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Surname" formControlName="userLastName">
-        <mat-error *ngIf="reservationCtrl.controls.userLastName.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userLastName.hasError('required')">Required</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Phone number" formControlName="userPhoneNumber">
-        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('required')">To pole jest obowiązkowe</mat-error>
-        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('minlength')">Too short!</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('required')">Required</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('minlength')">Please input only 9 number</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('maxlength')">Please input only 9 number</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('pattern')">Only numbers!</mat-error>
+
       </mat-form-field>
 
-      <div class="form__invoice" formGroupName="userInvoiceForm">
+      <button mat-button color="primary" (click)="addInvoice()">Add invoice</button>
+
+      <div class="form__invoice" formGroupName="userInvoiceForm" *ngIf="invoice">
         <mat-form-field>
           <input matInput placeholder="NIP" formControlName="userNIP">
         </mat-form-field>
@@ -46,18 +51,14 @@
 
       <mat-form-field>
         <input matInput placeholder="E-Mail" formControlName="userMail">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Confirm E-Mail" formControlName="confirmEmail">
-        <div *ngIf="emailsMatchValidatorError()">
-            Email error!
-        </div>
+        <mat-error *ngIf="reservationCtrl.controls.userMail.hasError('required')">Required</mat-error>
+        <mat-error *ngIf="reservationCtrl.controls.userMail.hasError('email')">Not an email</mat-error>
       </mat-form-field>
         <p><input type="checkbox">I want to recieve information about sales</p>
         <mat-form-field>
           <input matInput placeholder="Promotion code" formControlName='discountCode'>
         </mat-form-field>
-        <button>Submit!</button>
+        <button mat-raised-button color="primary">Submit!</button>
     </div>
 </form>
 </div>

@@ -22,7 +22,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/admin-panel/admin.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserDataEffects } from './user-data/store/user-data.effects';

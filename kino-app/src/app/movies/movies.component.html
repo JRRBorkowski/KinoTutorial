@@ -1,6 +1,6 @@
 <div>
   <div class="schedule">
-    <button mat-button color="primary" (click)="changeWeek(-7)">
+    <button mat-button color="primary" (click)="changeWeek(-7)" [disabled]="weekNumber === 0">
       previous week
     </button>
     <button

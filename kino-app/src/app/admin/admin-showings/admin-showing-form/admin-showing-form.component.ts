@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, Validators, FormControl } from '@angular/forms';
 import { MoviesService } from 'src/app/movies/movies.service';
 import { Movie } from 'src/app/types';
 import { AdminPanelService } from '../../admin.service';
@@ -10,6 +10,12 @@ import { AdminPanelService } from '../../admin.service';
   styleUrls: ['./admin-showing-form.component.scss']
 })
 export class AdminShowingFormComponent {
+
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { whitespace: true };
+  }
 
   movies$ = this.movieService.moviesList$;
   screens$ = this.movieService.getAllScreens();
@@ -52,7 +58,7 @@ export class AdminShowingFormComponent {
       screen: this.builder.control('', {
         validators: [Validators.required],
       }),
-      prices: this.builder.array([
+      priceList: this.builder.array([
         this.createPriceListForm()
       ]),
       reservedSeats: this.builder.control([''])
@@ -92,17 +98,17 @@ export class AdminShowingFormComponent {
 
 
   addPriceListItem() {
-    if (this.showingForm.controls.prices.length === 3) {
+    if (this.showingForm.controls.priceList.length === 3) {
       return
     }
-    this.showingForm.controls.prices.push(this.createPriceListForm());
+    this.showingForm.controls.priceList.push(this.createPriceListForm());
   }
 
   removePriceListItem(index: number) {
-    if (this.showingForm.controls.prices.length === 1) {
+    if (this.showingForm.controls.priceList.length === 1) {
       return
     }
-    this.showingForm.controls.prices.removeAt(index);
+    this.showingForm.controls.priceList.removeAt(index);
   }
 
   submitShowingForm() {
@@ -112,7 +118,7 @@ export class AdminShowingFormComponent {
     }
     const showingData = this.showingForm.getRawValue()
     console.log(showingData)
-    // this.adminService.createShowing(showingData);
+    this.adminService.createShowing(showingData);
   }
 
 

@@ -50,7 +50,7 @@ export class AdminMovieComponent {
       validators: Validators.required,
     }),
     description: this.builder.control('', {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator]
     }),
     scores: this.builder.control([
       {
@@ -59,7 +59,7 @@ export class AdminMovieComponent {
       },
     ]),
     director: this.builder.control('', {
-      validators: Validators.required,
+      validators: [Validators.required, this.noWhitespaceValidator],
     }),
     actors: this.builder.control(['']),
     boxOff: this.builder.control(0, {
