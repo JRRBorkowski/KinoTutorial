@@ -18,7 +18,7 @@ export class LoginService {
     return this.http.get<User[]>(this.userUrl);
   }
 
-  getCurrentUser(id: number) {
+  getUserById(id: number) {
     return this.http.get<User>(`${this.userUrl}/${id}`);
   }
 

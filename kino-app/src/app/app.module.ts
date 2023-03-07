@@ -22,7 +22,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AdminComponent } from './admin/admin-panel/admin.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserDataEffects } from './user-data/store/user-data.effects';
@@ -31,14 +30,12 @@ import { WatchlistComponent } from './movies/watchlist/watchlist.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { OrdersComponent } from './reservation/ordered-tickets/ordered-tickets.component';
 import { CartComponent } from './reservation/cart/cart.component';
-import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
-import { AdminShowingsComponent } from './admin/admin-showings/admin-showings.component';
 import { ScoreComponent } from './movies/single-movie/score/score.component';
-import { AdminShowingFormComponent } from './admin/admin-showings/admin-showing-form/admin-showing-form.component';
 import { OrderDetailsComponent } from './reservation/order-details/order-details.component';
 import { AdminGuard } from './login/guards/admin.guard';
 import { SuccesspageComponent } from './reservation/successpage/successpage.component';
 import { UserGuard } from './login/guards/user.guard';
+import { BlikComponent } from './blik/blik.component';
 
 const routes: Routes = [
   {
@@ -52,18 +49,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent,
-    canMatch: [AdminGuard],
-    children: [
-      {
-        path: 'admin-movie',
-        component: AdminMovieComponent,
-      },
-      {
-        path: 'admin-showing',
-        component: AdminShowingsComponent,
-      },
-    ],
+    loadChildren: () => import('./admin/admin.module'),
+    canMatch: [AdminGuard]
   },
   {
     path: 'watchlist',
@@ -106,16 +93,13 @@ const routes: Routes = [
     ReservationComponent,
     FormComponent,
     SingleMovieComponent,
-    AdminComponent,
     WatchlistComponent,
     OrdersComponent,
     CartComponent,
-    AdminMovieComponent,
-    AdminShowingsComponent,
     ScoreComponent,
-    AdminShowingFormComponent,
     OrderDetailsComponent,
     SuccesspageComponent,
+    BlikComponent,
   ],
   imports: [
     BrowserModule,

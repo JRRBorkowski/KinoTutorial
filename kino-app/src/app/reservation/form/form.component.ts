@@ -22,6 +22,8 @@ function isAllowedTicketType(value: string): value is AllowedTicketTypes {
 
 export class FormComponent {
 
+  isBlikVisible = false;
+
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
@@ -115,6 +117,8 @@ export class FormComponent {
 
   submitForm() {
     this.reservationForm.markAllAsTouched();
+
+    this.isBlikVisible = true
 
     if (this.reservationForm.invalid) {
       return;

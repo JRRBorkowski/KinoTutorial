@@ -5,6 +5,8 @@ import {
   FormControl,
 } from '@angular/forms';
 import { AdminPanelService } from '../admin.service';
+import { MatChipInputEvent } from '@angular/material/chips';
+
 
 @Component({
   selector: 'app-admin-movie',
@@ -12,7 +14,7 @@ import { AdminPanelService } from '../admin.service';
   styleUrls: ['./admin-movie.component.scss'],
 })
 export class AdminMovieComponent {
-  public noWhitespaceValidator(control: FormControl) {
+  noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : { whitespace: true };
@@ -29,6 +31,8 @@ export class AdminMovieComponent {
   ];
 
   ages = ['E', 'PG+13', 'PG+16', 'PG+18', 'R'];
+
+  actors : string[] = []
 
   newMovieForm = this.builder.group({
     id: this.builder.control(0, {
@@ -68,6 +72,23 @@ export class AdminMovieComponent {
     premiere: this.builder.control(false),
     dateIds: this.builder.control([]),
   });
+
+  removeActor(actor: string) {
+    const index = this.actors.indexOf(actor);
+    if (index >= 0) {
+      this.actors.splice(index, 1);
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    if (value) {
+      this.actors.push(value);
+    }
+
+    event.chipInput.clear();
+  }
 
   submitForm() {
     this.newMovieForm.markAllAsTouched();

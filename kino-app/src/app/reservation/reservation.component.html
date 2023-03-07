@@ -15,7 +15,7 @@
       *ngIf="
         reservationService.selectedSeats.length >=
         reservationService.seatSelectionLimit
-      "
+        "
     >
       <div class="error-message">You can buy at most 10 tickets!</div>
     </div>
@@ -26,7 +26,7 @@
             mat-stroked-button
             [color]="this.isSeatSelected(column, row) ? 'accent' : 'primary'"
             [disabled]="this.isSeatReserved(column, row)"
-            (click)="reservationService.selectSeat(column, row)"
+            (click)="reservationService.selectSeat(column, row, showing.id)"
           >
             {{ column }}{{ row }}
           </button>

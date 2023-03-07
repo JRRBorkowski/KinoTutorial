@@ -36,33 +36,6 @@
       ],
       "userWatchlist": [
         {
-          "id": 2,
-          "image": "https://fwcdn.pl/fpo/81/78/558178/8047434.3.jpg",
-          "title": "Avatar: Istota wody",
-          "genre": "Science-Fiction",
-          "length": "193 min",
-          "ageRest": "PG-12",
-          "description": "Whenever i have time i will add some description",
-          "long-description": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
-          "score": [
-            8,
-            4,
-            5,
-            7,
-            5
-          ],
-          "director": "James Cameron",
-          "actors": [
-            "Stephen Lang",
-            "Zoe Saldana",
-            "Sam Worthington",
-            "Sigourney Weaver"
-          ],
-          "boxOff": 1000,
-          "premiere": false,
-          "dateIds": 6
-        },
-        {
           "id": 0,
           "image": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
           "title": "Duke Nukem: The Kino™",
@@ -107,6 +80,55 @@
             2,
             3,
             4,
+            5,
+            6
+          ]
+        },
+        {
+          "id": 2,
+          "image": "https://fwcdn.pl/fpo/81/78/558178/8047434.3.jpg",
+          "title": "Avatar: Istota wody",
+          "genre": "Science-Fiction",
+          "length": "193 min",
+          "ageRest": "PG-12",
+          "description": "Whenever i have time i will add some description",
+          "long-description": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+          "scores": [
+            {
+              "userId": 0,
+              "score": 10
+            },
+            {
+              "userId": 2,
+              "score": 1
+            },
+            {
+              "userId": 7,
+              "score": 1
+            },
+            {
+              "userId": 2,
+              "score": 1
+            },
+            {
+              "userId": 3,
+              "score": 1
+            },
+            {
+              "userId": 5,
+              "score": 10
+            }
+          ],
+          "director": "James Cameron",
+          "actors": [
+            "Stephen Lang",
+            "Zoe Saldana",
+            "Sam Worthington",
+            "Sigourney Weaver"
+          ],
+          "boxOff": 1000,
+          "premiere": false,
+          "dateIds": [
             5,
             6
           ]
@@ -767,6 +789,36 @@
         }
       ],
       "id": 15
+    },
+    {
+      "userName": "aassa",
+      "userLastName": "aaaa",
+      "userMail": "aaa@aaa",
+      "discountCode": "KINO2000",
+      "userPhoneNumber": "654654655",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678222786294,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "3/3/2023",
+          "hour": "14.30",
+          "seat": {
+            "positon": "A7",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ],
+      "userId": 1,
+      "id": 16
     }
   ],
   "blik": [
@@ -1011,7 +1063,10 @@
         "D6",
         "D7",
         "A8",
-        "A1"
+        "A1",
+        "A2",
+        "A3",
+        "A7"
       ],
       "priceList": [
         {
@@ -1048,7 +1103,8 @@
         "D8",
         "E8",
         "F8",
-        "G8"
+        "G8",
+        "H8"
       ],
       "priceList": [
         {

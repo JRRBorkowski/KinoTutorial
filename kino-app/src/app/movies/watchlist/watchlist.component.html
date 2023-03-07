@@ -3,11 +3,11 @@
   <div *ngFor="let movie of movies" class="single-movie">
     <img src="{{ movie.image }}" class="single-movie--image" />
     <div class="single-movie--body">
-      <p>{{ movie.title }}</p>
+      <h2>{{ movie.title }}</h2>
       <p>{{ movie.director }}</p>
       <p>{{ movie.description }}</p>
     </div>
-    <button (click)="remove(this.userId, movie.id)">
+    <button mat-raised-button color="primary" (click)="remove(this.userId, movie.id)">
       Remove from watchlist
     </button>
   </div>

@@ -37,30 +37,8 @@
     </mat-error>
   </mat-form-field>
 
-  <div class="add-show-form__time">
-    <mat-form-field color="primary" class="fieldset__input">
-      <mat-label>Date</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        [min]="minimumDate"
-        [max]="lastDate"
-        formControlName="dateId"
-      />
-      <mat-error *ngIf="dateIdCtrl.errors as errors">
-        <ng-container *ngIf="errors['required']">
-          To pole jest wymagane.
-        </ng-container>
-      </mat-error>
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
     <mat-form-field class="add-movie-form__input">
-      <mat-label>Godzina</mat-label>
+      <mat-label>Hour</mat-label>
       <input
         matInput
         type="time"
@@ -69,11 +47,10 @@
       />
       <mat-error *ngIf="hourCtrl.errors as errors">
         <ng-container *ngIf="errors['required']"
-          >To pole jest wymagane.</ng-container
+          >Required</ng-container
         >
       </mat-error>
     </mat-form-field>
-  </div>
   <h3>Select tickets type</h3>
   <button
     type="button"
@@ -86,7 +63,7 @@
   <ol>
     <li
       *ngFor="
-        let priceListForm of showingForm.controls.prices.controls;
+        let priceListForm of showingForm.controls.priceList.controls;
         let index = index
       "
     >
@@ -94,7 +71,6 @@
         <mat-form-field appearance="fill">
           <mat-label>Select ticket type</mat-label>
           <mat-select name="type" [formControl]="priceListForm.controls.type">
-            <mat-option>Wyczyść</mat-option>
             <mat-option *ngFor="let type of ticketTypes" [value]="type.type">
               {{ type.type }}
             </mat-option>

@@ -17,7 +17,7 @@ export class ReservationService {
 
   checkout?: number;
 
-  selectSeat(column : string, row: number) : void {
+  selectSeat(column : string, row: number, showingId: number) : void {
     const seat = `${column}${row}`;
     if (this.selectedSeats.includes(seat)) {
       const seatIndex= this.selectedSeats.indexOf(seat)
@@ -26,7 +26,8 @@ export class ReservationService {
       if (this.selectedSeats.length >= this.seatSelectionLimit) {
         return;
       }
-    this.selectedSeats.push(seat)
+    this.selectedSeats.push(seat);
+    this.reserveSeats(showingId).subscribe();
     }
   }
 
