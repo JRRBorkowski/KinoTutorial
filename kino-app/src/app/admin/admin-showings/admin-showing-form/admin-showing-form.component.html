@@ -98,7 +98,7 @@
           />
           <mat-error *ngIf="priceListForm.controls.price.errors as errors">
             <ng-container *ngIf="errors['required']"
-              >To pole jest wymagane.</ng-container
+              >Required</ng-container
             >
             <ng-container *ngIf="errors['min']">Minimum 10 PLN</ng-container>
             <ng-container *ngIf="errors['max']">Maximum 50 PLN</ng-container>

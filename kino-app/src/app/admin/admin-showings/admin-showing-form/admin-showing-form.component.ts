@@ -40,6 +40,7 @@ export class AdminShowingFormComponent {
   firstDate = new Date(this.today.setDate(this.first));
   lastDate = new Date(this.today.setDate(this.firstDate.getDate() + 7));
 
+  showings$ = this.movieService.getShowing(this.selectedMovie.id)
   showingForm = this.createForm();
 
 
@@ -94,6 +95,19 @@ export class AdminShowingFormComponent {
 
   get screenCtrl() {
     return this.showingForm.controls.screen;
+  }
+
+  //TODO: convert hours to minutes for both
+  checkShowingHour() {
+    this.showings$.subscribe((response) => {
+      response.forEach((show) => {
+        if (show.hour > this.hourCtrl.value) {
+          return true
+        } else {
+          return false
+        }
+      })
+    })
   }
 
 
