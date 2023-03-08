@@ -7,21 +7,17 @@ import { AdminPanelService } from '../../admin.service';
 @Component({
   selector: 'app-admin-showing-form',
   templateUrl: './admin-showing-form.component.html',
-  styleUrls: ['./admin-showing-form.component.scss']
+  styleUrls: ['./admin-showing-form.component.scss'],
 })
 export class AdminShowingFormComponent {
-
   movies$ = this.movieService.moviesList$;
   screens$ = this.movieService.getAllScreens();
-  
+
   ticketTypes = [
-    {type: 'Normal',
-    price: 20},
-    {type: 'Reduced',
-    price: 10}, 
-    {type: 'Voucher',
-    price: 15
-    }];
+    { type: 'Normal', price: 20 },
+    { type: 'Reduced', price: 10 },
+    { type: 'Voucher', price: 15 },
+  ];
 
   selectedMovie!: Movie;
   selectedMovieId!: number;
@@ -35,7 +31,6 @@ export class AdminShowingFormComponent {
   lastDate = new Date(this.today.setDate(this.firstDate.getDate() + 7));
 
   showingForm = this.createForm();
-
 
   createForm() {
     return this.builder.group({
@@ -52,10 +47,8 @@ export class AdminShowingFormComponent {
       screen: this.builder.control('', {
         validators: [Validators.required],
       }),
-      prices: this.builder.array([
-        this.createPriceListForm()
-      ]),
-      reservedSeats: this.builder.control([''])
+      prices: this.builder.array([this.createPriceListForm()]),
+      reservedSeats: this.builder.control(['']),
     });
   }
 
@@ -90,38 +83,35 @@ export class AdminShowingFormComponent {
     return this.showingForm.controls.screen;
   }
 
-
   addPriceListItem() {
     if (this.showingForm.controls.prices.length === 3) {
-      return
+      return;
     }
     this.showingForm.controls.prices.push(this.createPriceListForm());
   }
 
   removePriceListItem(index: number) {
     if (this.showingForm.controls.prices.length === 1) {
-      return
+      return;
     }
     this.showingForm.controls.prices.removeAt(index);
   }
 
   submitShowingForm() {
-    this.showingForm.markAllAsTouched()
+    this.showingForm.markAllAsTouched();
     if (this.showingForm.invalid) {
-      return console.log("ups")
+      return console.log('ups');
     }
-    const showingData = this.showingForm.getRawValue()
-    console.log(showingData)
+    const showingData = this.showingForm.getRawValue();
+    console.log(showingData);
     // this.adminService.createShowing(showingData);
   }
 
-
-  constructor (
+  constructor(
     private movieService: MoviesService,
     private adminService: AdminPanelService,
-    private builder : NonNullableFormBuilder,
+    private builder: NonNullableFormBuilder
   ) {
-    this.movieService.getMoviesFromId()
+    this.movieService.getMoviesFromId();
   }
-
 }

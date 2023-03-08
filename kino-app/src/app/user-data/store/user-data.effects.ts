@@ -37,18 +37,6 @@ export class UserDataEffects {
       })
     )
   );
-  //     getUserEffect$ = createEffect(() =>
-  //     this.actions$.pipe(
-  //       ofType(AuthActions.getId),
-  //       switchMap(({ userId }) => {
-  //         return this.authService.getUser(userId).pipe(
-  //           map((result) => {
-  //             return AuthApiActions.getUserSuccess(result);
-  //           })
-  //         );
-  //       })
-  //     )
-  //   );
 
   constructor(private actions$: Actions, private service: UserDataService) {}
 }

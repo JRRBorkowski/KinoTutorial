@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { LoginService } from '../../login/login.service';
 import { User } from '../../types';
-import { resetLoginData } from 'src/app/user-data/store/user-data.actions';
 
 @Component({
   selector: 'app-links',
@@ -39,7 +38,6 @@ export class LinksComponent implements OnInit, OnDestroy {
   }
 
   logoutUser() {
-    this.store.dispatch(resetLoginData());
     this.loginService.userLogout();
     this.router.navigate(['']);
   }

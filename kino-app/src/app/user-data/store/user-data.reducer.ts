@@ -3,14 +3,14 @@ import { User } from 'src/app/types';
 import { setLoginData, resetLoginData } from './user-data.actions';
 
 export const initialState: { user?: User } = {
-  user: undefined
+  user: undefined,
 };
 
 export const userDataReducer = createReducer(
   initialState,
   on(setLoginData, (state, user) => ({
     ...state,
-    user
+    user,
   })),
   on(resetLoginData, () => initialState)
 );

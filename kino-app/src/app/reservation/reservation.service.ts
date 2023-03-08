@@ -4,11 +4,9 @@ import { switchMap } from 'rxjs';
 import { Movie, Showing } from '../types';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReservationService {
-
-
   selectedReservationMovie?: Movie;
   selectedSeats: string[] = [];
   rows?: number[];
@@ -17,44 +15,49 @@ export class ReservationService {
 
   checkout?: number;
 
-  selectSeat(column : string, row: number) : void {
+  selectSeat(column: string, row: number): void {
     const seat = `${column}${row}`;
     if (this.selectedSeats.includes(seat)) {
-      const seatIndex= this.selectedSeats.indexOf(seat)
-      this.selectedSeats.splice(seatIndex, 1)
+      const seatIndex = this.selectedSeats.indexOf(seat);
+      this.selectedSeats.splice(seatIndex, 1);
     } else {
       if (this.selectedSeats.length >= this.seatSelectionLimit) {
         return;
       }
-    this.selectedSeats.push(seat)
+      this.selectedSeats.push(seat);
     }
   }
 
-  selectDay(dayIndex: number) : void {
+  selectDay(dayIndex: number): void {
     this.selectedDay = dayIndex;
   }
 
   selectReservationMovie(movie: Movie) {
-    this.selectedReservationMovie = movie
+    this.selectedReservationMovie = movie;
   }
 
-  createSeats(row:number) {
+  createSeats(row: number) {
     this.rows = [];
     for (let j = 1; j <= row; j++) {
-      this.rows.push(j)
+      this.rows.push(j);
     }
   }
 
   reserveSeats(showingId: number) {
-    return this.http.get<Showing>(`http://localhost:3000/showing/${showingId}`).pipe(
-      switchMap(result => {
-        const reservedSeats = Array.from(new Set<string>([...result.reservedSeats, ...this.selectedSeats]));
-        return this.http.patch<Showing>(`http://localhost:3000/showing/${showingId}`, {reservedSeats})
-      })
-    )
+    return this.http
+      .get<Showing>(`http://localhost:3000/showing/${showingId}`)
+      .pipe(
+        switchMap((result) => {
+          const reservedSeats = Array.from(
+            new Set<string>([...result.reservedSeats, ...this.selectedSeats])
+          );
+          return this.http.patch<Showing>(
+            `http://localhost:3000/showing/${showingId}`,
+            { reservedSeats }
+          );
+        })
+      );
   }
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) {}
 }

@@ -1,63 +1,97 @@
 <div class="form--container">
-  <p class="form--selected-seats">Selected seats:
-    <span class="form--selected-seats-list">{{reservationService.selectedSeats.join(", ")}}</span>
+  <p class="form--selected-seats">
+    Selected seats:
+    <span class="form--selected-seats-list">{{
+      reservationService.selectedSeats.join(", ")
+    }}</span>
   </p>
   <div *ngFor="let ticket of tickets">
-    <p><span>{{ticket.seat}} : </span> <span>{{ticket.price}}</span></p>
-    <mat-button-toggle-group name="ticketType" aria-label="ticket type radio"
-      (change)="changeTicketType($event, ticket.seat)">
+    <p>
+      <span>{{ ticket.seat }} : </span> <span>{{ ticket.price }}</span>
+    </p>
+    <mat-button-toggle-group
+      name="ticketType"
+      aria-label="ticket type radio"
+      (change)="changeTicketType($event, ticket.seat)"
+    >
       <mat-button-toggle value="normal" checked>Normal</mat-button-toggle>
       <mat-button-toggle value="reduced">Reduced</mat-button-toggle>
       <mat-button-toggle value="voucher">Voucher</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-<p>Selected seats:</p>
+  <p>Selected seats:</p>
 
-<form [formGroup]="reservationForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="reservationForm" (ngSubmit)="submitForm()">
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Name" formControlName="userName">
-        <mat-error *ngIf="reservationCtrl.controls.userName.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <input matInput placeholder="Name" formControlName="userName" />
+        <mat-error
+          *ngIf="reservationCtrl.controls.userName.hasError('required')"
+          >To pole jest obowiązkowe</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Surname" formControlName="userLastName">
-        <mat-error *ngIf="reservationCtrl.controls.userLastName.hasError('required')">To pole jest obowiązkowe</mat-error>
+        <input matInput placeholder="Surname" formControlName="userLastName" />
+        <mat-error
+          *ngIf="reservationCtrl.controls.userLastName.hasError('required')"
+          >To pole jest obowiązkowe</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Phone number" formControlName="userPhoneNumber">
-        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('required')">To pole jest obowiązkowe</mat-error>
-        <mat-error *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('minlength')">Too short!</mat-error>
+        <input
+          matInput
+          placeholder="Phone number"
+          formControlName="userPhoneNumber"
+        />
+        <mat-error
+          *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('required')"
+          >To pole jest obowiązkowe</mat-error
+        >
+        <mat-error
+          *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('minlength')"
+          >Too short!</mat-error
+        >
       </mat-form-field>
 
       <div class="form__invoice" formGroupName="userInvoiceForm">
         <mat-form-field>
-          <input matInput placeholder="NIP" formControlName="userNIP">
+          <input matInput placeholder="NIP" formControlName="userNIP" />
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Street" formControlName="userStreet">
-          </mat-form-field>
+          <input matInput placeholder="Street" formControlName="userStreet" />
+        </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Post code" formControlName="userPostCode">
-          </mat-form-field>
+          <input
+            matInput
+            placeholder="Post code"
+            formControlName="userPostCode"
+          />
+        </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="City" formControlName="userCity">
-          </mat-form-field>
+          <input matInput placeholder="City" formControlName="userCity" />
+        </mat-form-field>
       </div>
 
       <mat-form-field>
-        <input matInput placeholder="E-Mail" formControlName="userMail">
+        <input matInput placeholder="E-Mail" formControlName="userMail" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Confirm E-Mail" formControlName="confirmEmail">
-        <div *ngIf="emailsMatchValidatorError()">
-            Email error!
-        </div>
+        <input
+          matInput
+          placeholder="Confirm E-Mail"
+          formControlName="confirmEmail"
+        />
+        <div *ngIf="emailsMatchValidatorError()">Email error!</div>
       </mat-form-field>
-        <p><input type="checkbox">I want to recieve information about sales</p>
-        <mat-form-field>
-          <input matInput placeholder="Promotion code" formControlName='discountCode'>
-        </mat-form-field>
-        <button>Submit!</button>
+      <p><input type="checkbox" />I want to recieve information about sales</p>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Promotion code"
+          formControlName="discountCode"
+        />
+      </mat-form-field>
+      <button>Submit!</button>
     </div>
-</form>
+  </form>
 </div>

@@ -16,7 +16,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   week: Date[] = [];
 
-  //todo set initial date
   selectedDay = new Date();
 
   selectedDayDate = `${this.selectedDay.getDate()}/${
@@ -25,26 +24,25 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
 
-  constructor(private moviesService: MoviesService,
-    private route: ActivatedRoute) {
+  constructor(
+    private moviesService: MoviesService,
+    private route: ActivatedRoute
+  ) {
     this.availableMovies$ = this.getAvailableMovies();
   }
 
   ngOnInit(): void {
     this.moviesService.getMoviesFromId();
     this.getSchedule(0);
-    //todo set initial date
     this.selectDay(new Date());
-    this.route.queryParamMap.subscribe(
-      (params) => {
-        const dayOfMonth = params.get('day');
-        if (dayOfMonth) {
-          const initialDate = new Date();
-          initialDate.setDate(Number(dayOfMonth));
-          this.selectDay(initialDate);
-        }
+    this.route.queryParamMap.subscribe((params) => {
+      const dayOfMonth = params.get('day');
+      if (dayOfMonth) {
+        const initialDate = new Date();
+        initialDate.setDate(Number(dayOfMonth));
+        this.selectDay(initialDate);
       }
-    )
+    });
   }
 
   getAvailableMovies() {
@@ -59,7 +57,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   getSchedule(dayOffset: number) {
     this.week = [];
-    //todo set initial date
     const date = new Date();
     const currentFirstDayOfWeek = this.getFirstDayOfWeek(date);
     for (let i = 0; i < 7; i++) {
@@ -72,7 +69,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
     }
   }
 
-  isInPast(date : Date) {
+  isInPast(date: Date) {
     return date.getDate() < new Date().getDate();
   }
 
