@@ -819,6 +819,65 @@
       ],
       "userId": 1,
       "id": 16
+    },
+    {
+      "userName": "aaa",
+      "userLastName": "aaa",
+      "userMail": "aaa@aaa",
+      "discountCode": "",
+      "userPhoneNumber": "121234444",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678279387050,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Apokawixa",
+          "date": "4/3/2023",
+          "hour": "14.30",
+          "seat": {
+            "positon": "B7",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ],
+      "userId": 1,
+      "id": 17
+    },
+    {
+      "userName": "aa",
+      "userLastName": "aaa",
+      "userMail": "aa@aa",
+      "discountCode": "",
+      "userPhoneNumber": "123124211",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678279981439,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "4/3/2023",
+          "hour": "12.30",
+          "seat": {
+            "positon": "B8",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ],
+      "id": 18
     }
   ],
   "blik": [
@@ -921,7 +980,9 @@
         "C7",
         "A1",
         "A9",
-        "B9"
+        "B9",
+        "A8",
+        "B8"
       ],
       "priceList": [
         {
@@ -1066,7 +1127,9 @@
         "A1",
         "A2",
         "A3",
-        "A7"
+        "A7",
+        "B8",
+        "B7"
       ],
       "priceList": [
         {
@@ -1104,7 +1167,11 @@
         "E8",
         "F8",
         "G8",
-        "H8"
+        "H8",
+        "B7",
+        "H7",
+        "G7",
+        "F7"
       ],
       "priceList": [
         {

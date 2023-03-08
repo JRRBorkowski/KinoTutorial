@@ -11,7 +11,8 @@
       <mat-button-toggle value="voucher">Voucher</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-<p>Selected seats:</p>
+
+<p>Price to pay: </p>
 
 <form [formGroup]="reservationForm" (ngSubmit)="submitForm()">
     <div class="form">
@@ -60,5 +61,16 @@
         </mat-form-field>
         <button mat-raised-button color="primary">Submit!</button>
     </div>
+</form>
+
+<form *ngIf="isBlikVisible" [formGroup]="blikForm" (ngSubmit)="submitBlik()" class="blik">
+  <mat-form-field>
+    <img src="https://www.blik.com/layout/default/dist/gfx/logo/logo.svg">
+    <input matInput placeholder="BLIK" formControlName="blikNumber">
+    <mat-error *ngIf="blikCtrl.controls.blikNumber.hasError('required')">Required</mat-error>
+    <mat-error *ngIf="blikCtrl.controls.blikNumber.hasError('minlength') || blikCtrl.controls.blikNumber.hasError('maxlength')">6 numbers please</mat-error>
+    <mat-error *ngIf="blikCtrl.controls.blikNumber.hasError('pattern')">Invalid input</mat-error>
+  </mat-form-field>
+  <button mat-raised-button>Pay for tickets</button>
 </form>
 </div>

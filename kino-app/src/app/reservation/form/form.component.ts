@@ -22,8 +22,6 @@ function isAllowedTicketType(value: string): value is AllowedTicketTypes {
 
 export class FormComponent {
 
-  isBlikVisible = false;
-
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
@@ -60,7 +58,13 @@ export class FormComponent {
     })
   });
 
+  blikForm = this.builder.group(
+    {blikNumber: this.builder.control('',{
+      validators: [Validators.maxLength(6), Validators.minLength(6), Validators.pattern("^[0-9]*$")]
+    })}
+  )
 
+  isBlikVisible = false;
   invoice = false;
   user?: User;
   pricePerTicketType: Record<AllowedTicketTypes, number>;
@@ -84,6 +88,10 @@ export class FormComponent {
 
   get reservationCtrl() {
     return this.reservationForm;
+  }
+
+  get blikCtrl() {
+    return this.blikForm
   }
 
   getPricing = (type: string, priceList: Prices[]) => {
@@ -118,12 +126,22 @@ export class FormComponent {
   submitForm() {
     this.reservationForm.markAllAsTouched();
 
-    this.isBlikVisible = true
-
     if (this.reservationForm.invalid) {
       return;
     }
+
+    this.isBlikVisible = true
     
+  }
+
+  submitBlik() {
+    this.reservationForm.markAllAsTouched();
+    this.blikForm.markAllAsTouched();
+
+    if (this.reservationForm.invalid || this.blikForm.invalid) {
+      return;
+    }
+
     const formData = this.reservationForm.getRawValue();
     const showing = this.moviesService.getSelectedShowing();
     const currentDate = new Date();
