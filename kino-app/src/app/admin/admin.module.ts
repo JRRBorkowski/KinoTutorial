@@ -30,15 +30,15 @@ import { AdminShowingFormComponent } from './admin-showings/admin-showing-form/a
         path: '',
         component: AdminComponent,
         children: [
-            {
-                path: 'admin-movie',
-                component: AdminMovieComponent,
-              },
-              {
-                path: 'admin-showing',
-                component: AdminShowingsComponent,
-              },
-        ]
+          {
+            path: 'admin-movie',
+            component: AdminMovieComponent,
+          },
+          {
+            path: 'admin-showing',
+            component: AdminShowingsComponent,
+          },
+        ],
       },
     ]),
     MatButtonModule,
@@ -51,7 +51,7 @@ import { AdminShowingFormComponent } from './admin-showings/admin-showing-form/a
     MatDatepickerModule,
     MatNativeDateModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [AdminPanelService],
 })

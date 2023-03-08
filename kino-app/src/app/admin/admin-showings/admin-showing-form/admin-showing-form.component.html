@@ -37,20 +37,18 @@
     </mat-error>
   </mat-form-field>
 
-    <mat-form-field class="add-movie-form__input">
-      <mat-label>Hour</mat-label>
-      <input
-        matInput
-        type="time"
-        formControlName="hour"
-        placeholder="Movie hour"
-      />
-      <mat-error *ngIf="hourCtrl.errors as errors">
-        <ng-container *ngIf="errors['required']"
-          >Required</ng-container
-        >
-      </mat-error>
-    </mat-form-field>
+  <mat-form-field class="add-movie-form__input">
+    <mat-label>Hour</mat-label>
+    <input
+      matInput
+      type="time"
+      formControlName="hour"
+      placeholder="Movie hour"
+    />
+    <mat-error *ngIf="hourCtrl.errors as errors">
+      <ng-container *ngIf="errors['required']">Required</ng-container>
+    </mat-error>
+  </mat-form-field>
   <h3>Select tickets type</h3>
   <button
     type="button"
@@ -97,9 +95,7 @@
             placeholder="Ticket price"
           />
           <mat-error *ngIf="priceListForm.controls.price.errors as errors">
-            <ng-container *ngIf="errors['required']"
-              >Required</ng-container
-            >
+            <ng-container *ngIf="errors['required']">Required</ng-container>
             <ng-container *ngIf="errors['min']">Minimum 10 PLN</ng-container>
             <ng-container *ngIf="errors['max']">Maximum 50 PLN</ng-container>
           </mat-error>

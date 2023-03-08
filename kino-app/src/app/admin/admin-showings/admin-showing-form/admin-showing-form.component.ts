@@ -127,7 +127,6 @@ export class AdminShowingFormComponent {
       return console.log('ups');
     }
     const showingData = this.showingForm.getRawValue();
-    console.log(showingData);
     this.adminService.createShowing(showingData);
   }
 

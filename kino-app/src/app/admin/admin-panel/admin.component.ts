@@ -8,7 +8,6 @@ import { Movie } from '../../types';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-
   movies: Movie[] = [];
 
   private movieService = inject(MoviesService);

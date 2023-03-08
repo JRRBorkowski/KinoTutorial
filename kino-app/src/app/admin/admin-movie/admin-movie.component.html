@@ -36,17 +36,22 @@
 
     <mat-form-field>
       <mat-label>Actors</mat-label>
-      <mat-chip-grid #chipGrid formControlName="actors" >
-        <mat-chip-row *ngFor="let actor of actors" (removed)="removeActor(actor)">
-          {{actor}}
+      <mat-chip-grid #chipGrid formControlName="actors">
+        <mat-chip-row
+          *ngFor="let actor of actors"
+          (removed)="removeActor(actor)"
+        >
+          {{ actor }}
           <button matChipRemove label="'remove ' + actor">
             <mat-icon>cancel</mat-icon>
           </button>
         </mat-chip-row>
       </mat-chip-grid>
-      <input placeholder="New actor"
-      [matChipInputFor]="chipGrid"
-      (matChipInputTokenEnd)="add($event)"/>
+      <input
+        placeholder="New actor"
+        [matChipInputFor]="chipGrid"
+        (matChipInputTokenEnd)="add($event)"
+      />
     </mat-form-field>
 
     <mat-form-field>

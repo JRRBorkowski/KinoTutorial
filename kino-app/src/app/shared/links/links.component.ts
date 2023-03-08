@@ -4,10 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../../login/login.service';
 import { User } from '../../types';
-import {
-  resetLoginData,
-  setLoginData,
-} from 'src/app/user-data/store/user-data.actions';
+import { setLoginData } from 'src/app/user-data/store/user-data.actions';
 
 @Component({
   selector: 'app-links',

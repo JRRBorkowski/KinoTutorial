@@ -35,9 +35,7 @@ import { OrderDetailsComponent } from './reservation/order-details/order-details
 import { AdminGuard } from './login/guards/admin.guard';
 import { SuccesspageComponent } from './reservation/successpage/successpage.component';
 import { UserGuard } from './login/guards/user.guard';
-import { BlikComponent } from './blik/blik.component';
 import { NumbersDirective } from './shared/directive/numbers.directive';
-
 
 const routes: Routes = [
   {
@@ -52,7 +50,7 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module'),
-    canMatch: [AdminGuard]
+    canMatch: [AdminGuard],
   },
   {
     path: 'watchlist',
@@ -101,7 +99,6 @@ const routes: Routes = [
     ScoreComponent,
     OrderDetailsComponent,
     SuccesspageComponent,
-    BlikComponent,
   ],
   imports: [
     BrowserModule,

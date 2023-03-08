@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -12,7 +12,7 @@ import { setLoginData } from '../user-data/store/user-data.actions';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   //TODO: nie wyjebuje sesji na reload
 
   user$: Observable<User | undefined>;
@@ -72,9 +72,5 @@ export class LoginComponent implements OnInit {
     private store: Store<{ userData: { user?: User } }>
   ) {
     this.user$ = this.store.select((state) => state.userData.user);
-  }
-
-  ngOnInit(): void {
-    console.log('TODO: Initiate store');
   }
 }

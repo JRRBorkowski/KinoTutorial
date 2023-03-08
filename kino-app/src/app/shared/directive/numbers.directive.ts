@@ -2,10 +2,9 @@ import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 
 @Directive({
   selector: 'input[appNumbers]',
-  standalone: true 
+  standalone: true,
 })
 export class NumbersDirective {
-  
   private el = inject(ElementRef);
 
   @HostListener('input', ['$event']) onInputChange(event: KeyboardEvent) {

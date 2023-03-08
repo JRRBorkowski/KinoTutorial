@@ -7,7 +7,11 @@
       <p>{{ movie.director }}</p>
       <p>{{ movie.description }}</p>
     </div>
-    <button mat-raised-button color="primary" (click)="remove(this.userId, movie.id)">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="remove(this.userId, movie.id)"
+    >
       Remove from watchlist
     </button>
   </div>

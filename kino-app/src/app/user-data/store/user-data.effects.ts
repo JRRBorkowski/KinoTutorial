@@ -14,10 +14,7 @@ export class UserDataEffects {
         ofType(setLoginData),
         tap(
           (action) => {
-            return localStorage.setItem(
-              'loginData',
-              JSON.stringify(action.id)
-            );
+            return localStorage.setItem('loginData', JSON.stringify(action.id));
           },
           catchError(() => EMPTY)
         )

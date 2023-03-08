@@ -7,7 +7,13 @@
       <p>{{ order.userName }} {{ order.userLastName }}</p>
       <p>Phone number: {{ order.userPhoneNumber }}</p>
       <p>Ordered {{ order.paidAt }}</p>
-      <button mat-flat-button color="primary" [routerLink]="['/orderdetails', order.id]">order details here</button>
+      <button
+        mat-flat-button
+        color="primary"
+        [routerLink]="['/orderdetails', order.id]"
+      >
+        order details here
+      </button>
     </div>
   </div>
 </div>

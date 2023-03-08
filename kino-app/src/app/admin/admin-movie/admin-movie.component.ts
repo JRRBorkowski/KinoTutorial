@@ -7,7 +7,6 @@ import {
 import { AdminPanelService } from '../admin.service';
 import { MatChipInputEvent } from '@angular/material/chips';
 
-
 @Component({
   selector: 'app-admin-movie',
   templateUrl: './admin-movie.component.html',
@@ -32,7 +31,7 @@ export class AdminMovieComponent {
 
   ages = ['E', 'PG+13', 'PG+16', 'PG+18', 'R'];
 
-  actors : string[] = []
+  actors: string[] = [];
 
   newMovieForm = this.builder.group({
     id: this.builder.control(0, {
@@ -54,7 +53,7 @@ export class AdminMovieComponent {
       validators: Validators.required,
     }),
     description: this.builder.control('', {
-      validators: [Validators.required, this.noWhitespaceValidator]
+      validators: [Validators.required, this.noWhitespaceValidator],
     }),
     scores: this.builder.control([
       {

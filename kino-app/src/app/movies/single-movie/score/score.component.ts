@@ -11,10 +11,10 @@ export class ScoreComponent {
   @Input() movie?: Movie;
   @Input() userId?: number;
 
-  scoring = false
+  scoring = false;
 
   showScoring() {
-    this.scoring ? this.scoring = false : this.scoring = true
+    this.scoring ? (this.scoring = false) : (this.scoring = true);
   }
 
   getScore(scores?: Score[]) {
@@ -27,7 +27,6 @@ export class ScoreComponent {
 
   submitScore(score: string) {
     if (this.movie && this.userId) {
-      console.log({ score, id: this.userId, movieid: this.movie.id });
       this.moviesService.addScore(Number(score), this.userId, this.movie.id);
     }
   }

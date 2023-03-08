@@ -2,7 +2,9 @@
   <h3>Viewer's score:</h3>
   <h2>{{ getScore(movie?.scores) }}</h2>
   <ng-container *ngIf="userId">
-    <button mat-button color="primary" (click)="showScoring()">Score movie</button>
+    <button mat-button color="primary" (click)="showScoring()">
+      Score movie
+    </button>
     <div class="score--select" *ngIf="scoring">
       <mat-slider
         [max]="10"
@@ -14,7 +16,9 @@
         <input matSliderThumb #t />
       </mat-slider>
       <h2>Your score:{{ t.value }}</h2>
-      <button mat-button color="primary" (click)="submitScore(t.value)">Submit score</button>
+      <button mat-button color="primary" (click)="submitScore(t.value)">
+        Submit score
+      </button>
     </div>
   </ng-container>
 </div>
