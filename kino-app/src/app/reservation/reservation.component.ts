@@ -19,6 +19,7 @@ export class ReservationComponent implements OnInit {
   columns: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   rows = 8;
   dayIndex: number;
+  
 
   isSeatReserved(column: string, row: number) {
     return this.reservedSeats?.some((seat) => seat === `${column}${row}`);

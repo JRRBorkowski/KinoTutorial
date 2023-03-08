@@ -878,6 +878,64 @@
         }
       ],
       "id": 18
+    },
+    {
+      "userName": "aaa",
+      "userLastName": "aaa",
+      "userMail": "aa@aa",
+      "discountCode": "",
+      "userPhoneNumber": "121123122",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678297540579,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "4/3/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "A8",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        }
+      ],
+      "id": 19
+    },
+    {
+      "userName": "aaa",
+      "userLastName": "aaa",
+      "userMail": "aa@aa",
+      "discountCode": "",
+      "userPhoneNumber": "141223555",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678297588528,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "4/3/2023",
+          "hour": "20.30",
+          "seat": {
+            "positon": "A8",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        }
+      ],
+      "id": 20
     }
   ],
   "blik": [
@@ -969,7 +1027,7 @@
   "showing": [
     {
       "id": 0,
-      "hour": "12.30",
+      "hour": "12:30",
       "screen": "B",
       "reservedSeats": [
         "A3",
@@ -998,11 +1056,11 @@
           "price": 20
         }
       ],
-      "filmId": 0
+      "movieId": 0
     },
     {
       "id": 1,
-      "hour": "16.30",
+      "hour": "16:30",
       "screen": "A",
       "reservedSeats": [
         "A3",
@@ -1030,11 +1088,11 @@
           "price": 20
         }
       ],
-      "filmId": 0
+      "movieId": 0
     },
     {
       "id": 2,
-      "hour": "20.30",
+      "hour": "20:30",
       "screen": "C",
       "reservedSeats": [
         "A7",
@@ -1056,7 +1114,9 @@
         "G6",
         "E3",
         "E5",
-        "F4"
+        "F4",
+        "A8",
+        "H8"
       ],
       "priceList": [
         {
@@ -1072,12 +1132,12 @@
           "price": 10
         }
       ],
-      "filmId": 0
+      "movieId": 0
     },
     {
       "id": 3,
       "screen": "A",
-      "hour": "10.30",
+      "hour": "10:30",
       "reservedSeats": [
         "F5",
         "F4",
@@ -1103,11 +1163,11 @@
           "price": 10
         }
       ],
-      "filmId": 1
+      "movieId": 1
     },
     {
       "id": 4,
-      "hour": "14.30",
+      "hour": "14:30",
       "screen": "C",
       "reservedSeats": [
         "G10",
@@ -1145,11 +1205,11 @@
           "price": 20
         }
       ],
-      "filmId": 1
+      "movieId": 1
     },
     {
       "id": 5,
-      "hour": "18.30",
+      "hour": "18:30",
       "screen": "B",
       "reservedSeats": [
         "A7",
@@ -1188,7 +1248,7 @@
           "price": 20
         }
       ],
-      "filmId": 1
+      "movieId": 1
     }
   ],
   "movies": [

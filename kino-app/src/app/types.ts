@@ -36,7 +36,7 @@ export interface User {
   userWatchlist: Movie[];
 }
 
-export interface Prices {
+export interface Price {
   type: string;
   price: number;
 }
@@ -46,7 +46,7 @@ export interface Showing {
   hour: string;
   screen: string;
   reservedSeats: string[];
-  priceList: Prices[];
+  priceList: Price[];
   movieId: number;
 }
 

@@ -17,4 +17,8 @@ export class AdminPanelService {
   createShowing(showing: Showing) {
     return this.http.post(`${this.url}/showing`, showing);
   }
+
+  getShowingForScreen(screen: string) {
+    return this.http.get<Showing[]>(`${this.url}/showing?screen=${screen}`);
+  }
 }

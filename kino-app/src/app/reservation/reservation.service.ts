@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { switchMap } from 'rxjs';
-import { Movie, Showing } from '../types';
+import { Movie, Showing, UserOrderSeat } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReservationService {
+  selectedTickets?: UserOrderSeat[];
   selectedReservationMovie?: Movie;
   selectedSeats: string[] = [];
   rows?: number[];
@@ -27,6 +28,10 @@ export class ReservationService {
       this.selectedSeats.push(seat);
       this.reserveSeats(showingId).subscribe();
     }
+  }
+
+  setSelectedTickets(tickets: UserOrderSeat[]) {
+    this.selectedTickets = tickets;
   }
 
   selectDay(dayIndex: number): void {

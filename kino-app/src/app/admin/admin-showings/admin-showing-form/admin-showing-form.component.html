@@ -1,6 +1,6 @@
 <form
   [formGroup]="showingForm"
-  (submit)="(submitShowingForm)"
+  (ngSubmit)="submitShowingForm()"
   class="showing-form"
 >
   <mat-form-field>
@@ -45,6 +45,7 @@
       formControlName="hour"
       placeholder="Movie hour"
     />
+    <p *ngIf="this.isInvalid">Show needs to be at least 2h from another show</p>
     <mat-error *ngIf="hourCtrl.errors as errors">
       <ng-container *ngIf="errors['required']">Required</ng-container>
     </mat-error>
@@ -111,7 +112,7 @@
       </div>
     </li>
   </ol>
-  <button mat-raised-button color="primary" (click)="submitShowingForm()">
+  <button mat-raised-button color="primary">
     Add new showing
   </button>
 </form>

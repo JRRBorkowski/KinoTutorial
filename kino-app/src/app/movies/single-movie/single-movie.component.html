@@ -20,8 +20,9 @@
         </button>
       </div>
       <div class="viewings">
+        <ng-container *ngFor="let showing of showings">
         <button
-          *ngFor="let showing of showings"
+          *ngIf="showing.movieId === movie.id"
           [routerLinkActive]="['active']"
           [routerLink]="['/reservation', showing.hour, movie.id, day]"
           class="hour-buttons"
@@ -29,6 +30,7 @@
         >
           {{ showing.hour }}
         </button>
+      </ng-container>
       </div>
     </div>
     <div class="single-movie--rating">

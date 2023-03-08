@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReservationService } from '../reservation.service';
 import { MoviesService } from 'src/app/movies/movies.service';
@@ -7,7 +7,7 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
-import { Prices, User, UserOrder } from 'src/app/types';
+import { Price, User, UserOrder } from 'src/app/types';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
@@ -77,10 +77,17 @@ export class FormComponent {
   invoice = false;
   user?: User;
   pricePerTicketType: Record<AllowedTicketTypes, number>;
-  tickets: { seat: string; price: number }[];
+  @Input() tickets: { seat: string; price: number }[];
+  checkout: number[] = [];
 
   addInvoice() {
     this.invoice ? (this.invoice = false) : (this.invoice = true);
+  }
+
+  ticketsCheckout() {
+    let sum = 0
+    this.checkout.forEach(price => sum =+ price)
+    return sum
   }
 
   changeTicketType(event: MatButtonToggleChange, seat: string) {
