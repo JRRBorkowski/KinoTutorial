@@ -16,7 +16,7 @@ export class UserDataEffects {
           (action) => {
             return localStorage.setItem(
               'loginData',
-              JSON.stringify(action.userEmail)
+              JSON.stringify(action.id)
             );
           },
           catchError(() => EMPTY)

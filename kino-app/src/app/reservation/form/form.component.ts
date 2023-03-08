@@ -3,10 +3,8 @@ import { Router } from '@angular/router';
 import { ReservationService } from '../reservation.service';
 import { MoviesService } from 'src/app/movies/movies.service';
 import {
-  AbstractControl,
+  FormControl,
   NonNullableFormBuilder,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { Prices, User, UserOrder } from 'src/app/types';
@@ -14,17 +12,6 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { selectUser } from 'src/app/user-data/store/user-data.selectors';
-
-const customValidator = (source: string, target: string): ValidatorFn => {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const sourceCtrl = control.get(source);
-    const targetCtrl = control.get(target);
-
-    return sourceCtrl && targetCtrl && sourceCtrl.value !== targetCtrl.value
-      ? { mismatch: true }
-      : null;
-  };
-};
 
 type AllowedTicketTypes = 'normal' | 'reduced' | 'voucher';
 function isAllowedTicketType(value: string): value is AllowedTicketTypes {
@@ -37,43 +24,64 @@ function isAllowedTicketType(value: string): value is AllowedTicketTypes {
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent {
-  reservationForm = this.builder.group(
-    {
-      userName: this.builder.control('', {
-        validators: Validators.required,
-      }),
-      userLastName: this.builder.control('', {
-        validators: Validators.required,
-      }),
-      discountCode: this.builder.control(''),
-      userPhoneNumber: this.builder.control('', {
-        validators: [
-          Validators.required,
-          Validators.minLength(9),
-          Validators.maxLength(9),
-        ],
-      }),
-      userMail: this.builder.control('', {
-        validators: [Validators.required, Validators.email],
-      }),
-      confirmEmail: this.builder.control('', {
-        validators: [Validators.required, Validators.email],
-      }),
-      userInvoiceForm: this.builder.group({
-        userNIP: this.builder.control(''),
-        userStreet: this.builder.control(''),
-        userPostCode: this.builder.control(''),
-        userCity: this.builder.control(''),
-      }),
-    },
-    {
-      validators: customValidator('email', 'confirmEmail'),
-    }
-  );
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { whitespace: true };
+  }
 
+  reservationForm = this.builder.group({
+    userName: this.builder.control('', {
+      validators: [Validators.required, this.noWhitespaceValidator],
+    }),
+    userLastName: this.builder.control('', {
+      validators: [Validators.required, this.noWhitespaceValidator],
+    }),
+    discountCode: this.builder.control(''),
+    userPhoneNumber: this.builder.control('', {
+      validators: [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+        Validators.minLength(9),
+        Validators.maxLength(9),
+      ],
+    }),
+    userMail: this.builder.control('', {
+      validators: [
+        Validators.required,
+        Validators.email,
+        this.noWhitespaceValidator,
+      ],
+    }),
+    userInvoiceForm: this.builder.group({
+      userNIP: this.builder.control('', {
+        validators: Validators.pattern('^[0-9]*$'),
+      }),
+      userStreet: this.builder.control(''),
+      userPostCode: this.builder.control(''),
+      userCity: this.builder.control(''),
+    }),
+  });
+
+  blikForm = this.builder.group({
+    blikNumber: this.builder.control('', {
+      validators: [
+        Validators.maxLength(6),
+        Validators.minLength(6),
+        Validators.pattern('^[0-9]*$'),
+      ],
+    }),
+  });
+
+  isBlikVisible = false;
+  invoice = false;
   user?: User;
   pricePerTicketType: Record<AllowedTicketTypes, number>;
   tickets: { seat: string; price: number }[];
+
+  addInvoice() {
+    this.invoice ? (this.invoice = false) : (this.invoice = true);
+  }
 
   changeTicketType(event: MatButtonToggleChange, seat: string) {
     const targetType = event.value;
@@ -89,6 +97,10 @@ export class FormComponent {
 
   get reservationCtrl() {
     return this.reservationForm;
+  }
+
+  get blikCtrl() {
+    return this.blikForm;
   }
 
   getPricing = (type: string, priceList: Prices[]) => {
@@ -123,17 +135,21 @@ export class FormComponent {
     this.store.select(selectUser).subscribe((user) => (this.user = user));
   }
 
-  emailsMatchValidatorError() {
-    return (
-      this.reservationForm.getError('mismatch') &&
-      this.reservationForm.get('confirmEmail')?.touched
-    );
-  }
-
   submitForm() {
     this.reservationForm.markAllAsTouched();
 
     if (this.reservationForm.invalid) {
+      return;
+    }
+
+    this.isBlikVisible = true;
+  }
+
+  submitBlik() {
+    this.reservationForm.markAllAsTouched();
+    this.blikForm.markAllAsTouched();
+
+    if (this.reservationForm.invalid || this.blikForm.invalid) {
       return;
     }
 

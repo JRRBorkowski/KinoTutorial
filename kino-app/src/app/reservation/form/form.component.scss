@@ -17,5 +17,14 @@
 
 .form {
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
+}
+
+.blik {
+    margin: 1em;
+    padding: 1em;
+    gap: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }

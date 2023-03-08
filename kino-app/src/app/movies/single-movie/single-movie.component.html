@@ -35,6 +35,8 @@
       <app-score [movie]="movie" [userId]="userId"></app-score>
       <ng-container *ngIf="userId">
         <button
+          mat-button
+          color="primary"
           (click)="addToWatchlist(userId, movie)"
           [disabled]="!canAddToWatchlist(userWatchlist$ | async)"
         >

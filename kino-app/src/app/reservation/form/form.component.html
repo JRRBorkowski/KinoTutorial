@@ -19,7 +19,8 @@
       <mat-button-toggle value="voucher">Voucher</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-  <p>Selected seats:</p>
+
+  <p>Price to pay:</p>
 
   <form [formGroup]="reservationForm" (ngSubmit)="submitForm()">
     <div class="form">
@@ -27,35 +28,57 @@
         <input matInput placeholder="Name" formControlName="userName" />
         <mat-error
           *ngIf="reservationCtrl.controls.userName.hasError('required')"
-          >To pole jest obowiązkowe</mat-error
+          >Required</mat-error
         >
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Surname" formControlName="userLastName" />
         <mat-error
           *ngIf="reservationCtrl.controls.userLastName.hasError('required')"
-          >To pole jest obowiązkowe</mat-error
+          >Required</mat-error
         >
       </mat-form-field>
       <mat-form-field>
         <input
           matInput
+          appNumbers
           placeholder="Phone number"
           formControlName="userPhoneNumber"
         />
         <mat-error
           *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('required')"
-          >To pole jest obowiązkowe</mat-error
+          >Required</mat-error
         >
         <mat-error
           *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('minlength')"
-          >Too short!</mat-error
+          >Please input only 9 number</mat-error
+        >
+        <mat-error
+          *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('maxlength')"
+          >Please input only 9 number</mat-error
+        >
+        <mat-error
+          *ngIf="reservationCtrl.controls.userPhoneNumber.hasError('pattern')"
+          >Only numbers!</mat-error
         >
       </mat-form-field>
 
-      <div class="form__invoice" formGroupName="userInvoiceForm">
+      <button mat-button color="primary" (click)="addInvoice()">
+        Add invoice
+      </button>
+
+      <div
+        class="form__invoice"
+        formGroupName="userInvoiceForm"
+        *ngIf="invoice"
+      >
         <mat-form-field>
-          <input matInput placeholder="NIP" formControlName="userNIP" />
+          <input
+            matInput
+            appNumbers
+            placeholder="NIP"
+            formControlName="userNIP"
+          />
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Street" formControlName="userStreet" />
@@ -74,14 +97,13 @@
 
       <mat-form-field>
         <input matInput placeholder="E-Mail" formControlName="userMail" />
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Confirm E-Mail"
-          formControlName="confirmEmail"
-        />
-        <div *ngIf="emailsMatchValidatorError()">Email error!</div>
+        <mat-error
+          *ngIf="reservationCtrl.controls.userMail.hasError('required')"
+          >Required</mat-error
+        >
+        <mat-error *ngIf="reservationCtrl.controls.userMail.hasError('email')"
+          >Not an email</mat-error
+        >
       </mat-form-field>
       <p><input type="checkbox" />I want to recieve information about sales</p>
       <mat-form-field>
@@ -91,7 +113,38 @@
           formControlName="discountCode"
         />
       </mat-form-field>
-      <button>Submit!</button>
+      <button mat-raised-button color="primary">Submit!</button>
     </div>
+  </form>
+
+  <form
+    *ngIf="isBlikVisible"
+    [formGroup]="blikForm"
+    (ngSubmit)="submitBlik()"
+    class="blik"
+  >
+    <mat-form-field>
+      <img src="https://www.blik.com/layout/default/dist/gfx/logo/logo.svg" />
+      <input
+        matInput
+        appNumbers
+        placeholder="BLIK"
+        formControlName="blikNumber"
+      />
+      <mat-error *ngIf="blikCtrl.controls.blikNumber.hasError('required')"
+        >Required</mat-error
+      >
+      <mat-error
+        *ngIf="
+          blikCtrl.controls.blikNumber.hasError('minlength') ||
+          blikCtrl.controls.blikNumber.hasError('maxlength')
+        "
+        >6 numbers please</mat-error
+      >
+      <mat-error *ngIf="blikCtrl.controls.blikNumber.hasError('pattern')"
+        >Invalid input</mat-error
+      >
+    </mat-form-field>
+    <button mat-raised-button>Pay for tickets</button>
   </form>
 </div>

@@ -11,6 +11,12 @@ export class ScoreComponent {
   @Input() movie?: Movie;
   @Input() userId?: number;
 
+  scoring = false
+
+  showScoring() {
+    this.scoring ? this.scoring = false : this.scoring = true
+  }
+
   getScore(scores?: Score[]) {
     if (!scores || !scores.length) {
       return 0;

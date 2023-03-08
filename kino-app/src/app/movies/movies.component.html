@@ -1,6 +1,6 @@
 <div>
   <div class="schedule">
-    <button mat-button color="primary" (click)="changeWeek(-7)">
+    <button mat-button color="primary" (click)="changeWeek(-7)" [disabled]="weekNumber === 0">
       previous week
     </button>
     <button
@@ -12,7 +12,7 @@
     >
       {{ day.getDate() }}/{{ day.getMonth() + 1 }}
     </button>
-    <button mat-button color="primary" (click)="changeWeek(7)">
+    <button mat-button color="primary" (click)="changeWeek(7)" [disabled]="weekNumber === 7">
       next week
     </button>
     <p class="movies--date">Our schedule for {{ selectedDayDate }}</p>

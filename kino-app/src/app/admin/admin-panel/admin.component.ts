@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MoviesService } from '../movies/movies.service';
-import { Movie } from '../types';
+import { MoviesService } from '../../movies/movies.service';
+import { Movie } from '../../types';
 
 @Component({
   selector: 'app-admin',
@@ -8,7 +8,6 @@ import { Movie } from '../types';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  // TODO: Przerobić na standalone component, dodać module
 
   movies: Movie[] = [];
 

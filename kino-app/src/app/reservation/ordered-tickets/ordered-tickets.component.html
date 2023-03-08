@@ -2,10 +2,12 @@
   <h1>Your tickets</h1>
   <div class="user-orders" *ngFor="let order of userOrders">
     <div class="user-order">
-      <p>Order nr {{ order.id }}</p>
+      <h2>Order nr {{ order.id }}</h2>
       <p>{{ order.userMail }}</p>
       <p>{{ order.userName }} {{ order.userLastName }}</p>
-      <a [routerLink]="['/orderdetails', order.id]">order details here</a>
+      <p>Phone number: {{ order.userPhoneNumber }}</p>
+      <p>Ordered {{ order.paidAt }}</p>
+      <button mat-flat-button color="primary" [routerLink]="['/orderdetails', order.id]">order details here</button>
     </div>
   </div>
 </div>

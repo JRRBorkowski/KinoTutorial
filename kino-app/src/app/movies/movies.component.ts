@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable, map } from 'rxjs';
 import { Movie } from '../types';
 import { MoviesService } from './movies.service';
@@ -26,7 +26,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   constructor(
     private moviesService: MoviesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.availableMovies$ = this.getAvailableMovies();
   }
@@ -40,7 +41,11 @@ export class MoviesComponent implements OnInit, OnDestroy {
       if (dayOfMonth) {
         const initialDate = new Date();
         initialDate.setDate(Number(dayOfMonth));
-        this.selectDay(initialDate);
+        if (this.isInPast(initialDate)) {
+          this.router.navigate(['']);
+        } else {
+          this.selectDay(initialDate);
+        }
       }
     });
   }
