@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MoviesService } from '../movies/movies.service';
 import { Movie, Showing } from '../types';
 import { ReservationService } from './reservation.service';
@@ -32,6 +33,10 @@ export class ReservationComponent implements OnInit {
     }
   }
 
+  handleTicketPriceClick(event: MatButtonToggleChange, seat: string) {
+    this.reservationService.changeSeatTicketPrice(seat, event.value);
+  }
+
   isSeatSelected(column: string, row: number) {
     return this.reservationService.selectedSeats.some(
       (seat) => seat === `${column}${row}`
@@ -48,7 +53,17 @@ export class ReservationComponent implements OnInit {
   ) {
     this.movieId = Number(this.route.snapshot.paramMap.get('id'));
     this.showHour = this.route.snapshot.paramMap.get('hour');
-    this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));
+    this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));    
+  }
+
+  changeCheckout(price: string) {
+    return this.checkout?.push(price);
+  }
+
+  ngOnInit(): void {
+    this.reservationService.clearReservationData();
+    this.reservationService.createSeats(this.rows);
+
     this.reservationService.selectDay(this.dayIndex);
 
     this.moviesService.getMovie(this.movieId).subscribe((movie) => {
@@ -69,13 +84,5 @@ export class ReservationComponent implements OnInit {
         }
       });
     });
-  }
-
-  changeCheckout(price: string) {
-    return this.checkout?.push(price);
-  }
-
-  ngOnInit(): void {
-    this.reservationService.createSeats(this.rows);
   }
 }

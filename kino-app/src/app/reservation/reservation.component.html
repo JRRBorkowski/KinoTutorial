@@ -26,12 +26,24 @@
             mat-stroked-button
             [color]="this.isSeatSelected(column, row) ? 'accent' : 'primary'"
             [disabled]="this.isSeatReserved(column, row)"
-            (click)="reservationService.selectSeat(column, row, showing.id)"
+            (click)="reservationService.selectSeat(column, row, showing)"
           >
             {{ column }}{{ row }}
           </button>
         </div>
       </div>
+    </div>
+    <div *ngFor="let ticket of reservationService.selectedTickets">
+      <p>
+        <span>{{ ticket.positon }} : </span> <span>{{ ticket.price }}</span>
+      </p>
+      <mat-button-toggle-group
+        name="ticketType"
+        aria-label="ticket type radio"
+        (change)="handleTicketPriceClick($event, ticket.positon)"
+      >      
+        <mat-button-toggle *ngFor="let price of (showing.priceList || [])" [value]="price" [checked]="ticket.type === price.type">{{price.type}}</mat-button-toggle>
+      </mat-button-toggle-group>
     </div>
     <button
       mat-raised-button

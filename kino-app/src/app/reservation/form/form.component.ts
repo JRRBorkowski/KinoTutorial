@@ -8,15 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Price, User, UserOrder } from 'src/app/types';
-import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { selectUser } from 'src/app/user-data/store/user-data.selectors';
-
-type AllowedTicketTypes = 'normal' | 'reduced' | 'voucher';
-function isAllowedTicketType(value: string): value is AllowedTicketTypes {
-  return ['normal', 'reduced', 'voucher'].includes(value);
-}
 
 @Component({
   selector: 'app-form',
@@ -76,8 +70,6 @@ export class FormComponent {
   isBlikVisible = false;
   invoice = false;
   user?: User;
-  pricePerTicketType: Record<AllowedTicketTypes, number>;
-  @Input() tickets: { seat: string; price: number }[];
   checkout: number[] = [];
 
   addInvoice() {
@@ -90,18 +82,6 @@ export class FormComponent {
     return sum
   }
 
-  changeTicketType(event: MatButtonToggleChange, seat: string) {
-    const targetType = event.value;
-    const targetSeat = this.tickets.find((ticket) => ticket.seat === seat);
-    if (!targetSeat) {
-      return;
-    }
-    if (isAllowedTicketType(targetType)) {
-      const targetPrice = this.pricePerTicketType[targetType];
-      targetSeat.price = targetPrice;
-    }
-  }
-
   get reservationCtrl() {
     return this.reservationForm;
   }
@@ -110,7 +90,7 @@ export class FormComponent {
     return this.blikForm;
   }
 
-  getPricing = (type: string, priceList: Prices[]) => {
+  getPricing = (type: string, priceList: Price[]) => {
     const pricing = priceList.find((pricing) => pricing.type === type);
     if (!pricing) {
       throw new Error(`no normal pricing detected for the type ${type}!`);
@@ -129,16 +109,6 @@ export class FormComponent {
     if (!this.reservationService.selectedSeats.length) {
       this.router.navigate(['..']);
     }
-    const priceList = this.moviesService.getSelectedShowing().priceList;
-    this.pricePerTicketType = {
-      normal: this.getPricing('Normalny', priceList),
-      reduced: this.getPricing('Ulgowy', priceList),
-      voucher: this.getPricing('Voucher', priceList),
-    };
-    this.tickets = reservationService.selectedSeats.map((seat) => ({
-      seat: seat,
-      price: this.pricePerTicketType.normal,
-    }));
     this.store.select(selectUser).subscribe((user) => (this.user = user));
   }
 
@@ -179,12 +149,7 @@ export class FormComponent {
         title: this.reservationService.selectedReservationMovie?.title,
         date: ticketDateString,
         hour: showing.hour,
-        seat: {
-          positon: seat,
-          type: 'Normalny', //TODO: unmock by using ticket type toggle
-          price: this.pricePerTicketType.normal, //TODO: unmock
-          special: false, //TODO: unmock
-        },
+        seat: this.reservationService.selectedTickets.find(ticket => ticket.positon === seat),
       };
     });
 

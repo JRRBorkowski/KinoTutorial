@@ -936,6 +936,95 @@
         }
       ],
       "id": 20
+    },
+    {
+      "userName": "aaa",
+      "userLastName": "aaaa",
+      "userMail": "aaa@aaa",
+      "discountCode": "",
+      "userPhoneNumber": "123123123",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678307959082,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "4/3/2023",
+          "hour": "20:30",
+          "seat": {
+            "positon": "A4",
+            "type": "Normalny",
+            "price": 20
+          }
+        },
+        {
+          "id": 1,
+          "title": "Duke Nukem: The Kino™",
+          "date": "4/3/2023",
+          "hour": "20:30",
+          "seat": {
+            "positon": "A5",
+            "type": "Ulgowy",
+            "price": 10
+          }
+        }
+      ],
+      "id": 21
+    },
+    {
+      "userName": "aaa",
+      "userLastName": "aaa",
+      "userMail": "aa@aa",
+      "discountCode": "",
+      "userPhoneNumber": "123123111",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paidAt": 1678308524751,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Apokawixa",
+          "date": "4/3/2023",
+          "hour": "10:30",
+          "seat": {
+            "positon": "E3",
+            "type": "Voucher",
+            "price": 15
+          }
+        },
+        {
+          "id": 1,
+          "title": "Apokawixa",
+          "date": "4/3/2023",
+          "hour": "10:30",
+          "seat": {
+            "positon": "E4",
+            "type": "Voucher",
+            "price": 15
+          }
+        },
+        {
+          "id": 2,
+          "title": "Apokawixa",
+          "date": "4/3/2023",
+          "hour": "10:30",
+          "seat": {
+            "positon": "E5",
+            "type": "Ulgowy",
+            "price": 10
+          }
+        }
+      ],
+      "id": 22
     }
   ],
   "blik": [
@@ -1116,7 +1205,11 @@
         "E5",
         "F4",
         "A8",
-        "H8"
+        "H8",
+        "B3",
+        "B4",
+        "A4",
+        "A5"
       ],
       "priceList": [
         {
@@ -1147,7 +1240,10 @@
         "D5",
         "A5",
         "A1",
-        "A8"
+        "A8",
+        "E3",
+        "E4",
+        "E5"
       ],
       "priceList": [
         {

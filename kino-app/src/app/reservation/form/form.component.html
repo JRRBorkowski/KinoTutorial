@@ -5,20 +5,7 @@
       reservationService.selectedSeats.join(", ")
     }}</span>
   </p>
-  <div *ngFor="let ticket of tickets">
-    <p>
-      <span>{{ ticket.seat }} : </span> <span>{{ ticket.price }}</span>
-    </p>
-    <mat-button-toggle-group
-      name="ticketType"
-      aria-label="ticket type radio"
-      (change)="changeTicketType($event, ticket.seat)"
-    >
-      <mat-button-toggle value="normal" checked>Normal</mat-button-toggle>
-      <mat-button-toggle value="reduced">Reduced</mat-button-toggle>
-      <mat-button-toggle value="voucher">Voucher</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
+  
 
   <p>Price to pay: {{checkout}}</p>
 

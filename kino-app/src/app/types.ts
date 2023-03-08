@@ -82,7 +82,6 @@ export interface UserOrderSeat {
   positon: string;
   type: string;
   price: number;
-  special: boolean;
 }
 
 export interface DbDate {
