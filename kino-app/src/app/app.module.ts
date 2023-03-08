@@ -36,6 +36,8 @@ import { AdminGuard } from './login/guards/admin.guard';
 import { SuccesspageComponent } from './reservation/successpage/successpage.component';
 import { UserGuard } from './login/guards/user.guard';
 import { BlikComponent } from './blik/blik.component';
+import { NumbersDirective } from './shared/directive/numbers.directive';
+
 
 const routes: Routes = [
   {
@@ -118,6 +120,7 @@ const routes: Routes = [
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NumbersDirective,
     StoreModule.forRoot({ userData: userDataReducer }),
     EffectsModule.forRoot([UserDataEffects]),
     StoreDevtoolsModule.instrument({
