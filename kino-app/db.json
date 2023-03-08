@@ -8,14 +8,12 @@
       "userPassword": "asdf",
       "role": "Admin",
       "userPhoneNumber": "600700800",
-      "userInvoiceDetails": [
-        {
-          "userNIP": "",
-          "userStreet": "",
-          "userPostCode": "",
-          "userCity": ""
-        }
-      ],
+      "userInvoiceDetails": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
       "userWatchlist": []
     },
     {
@@ -26,14 +24,12 @@
       "userPassword": "fajne",
       "role": "User",
       "userPhoneNumber": "900800700",
-      "userInvoiceDetails": [
-        {
-          "userNIP": "1234567890",
-          "userStreet": "Losowa Ulica 5/15",
-          "userPostCode": "12-123",
-          "userCity": "Warszawa"
-        }
-      ],
+      "userInvoiceDetails": {
+        "userNIP": "1234567890",
+        "userStreet": "Losowa Ulica 5/15",
+        "userPostCode": "12-123",
+        "userCity": "Warszawa"
+      },
       "userWatchlist": [
         {
           "id": 0,
@@ -1129,7 +1125,10 @@
         "A9",
         "B9",
         "A8",
-        "B8"
+        "B8",
+        "H7",
+        "H8",
+        "A4"
       ],
       "priceList": [
         {
@@ -1209,7 +1208,9 @@
         "B3",
         "B4",
         "A4",
-        "A5"
+        "A5",
+        "B7",
+        "D6"
       ],
       "priceList": [
         {
@@ -1328,7 +1329,15 @@
         "H7",
         "G7",
         "F7",
-        "B6"
+        "B6",
+        "D7",
+        "D6",
+        "H6",
+        "C7",
+        "G6",
+        "F5",
+        "G5",
+        "D5"
       ],
       "priceList": [
         {

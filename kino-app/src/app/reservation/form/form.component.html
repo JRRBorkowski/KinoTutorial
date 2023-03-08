@@ -4,10 +4,11 @@
     <span class="form--selected-seats-list">{{
       reservationService.selectedSeats.join(", ")
     }}</span>
-  </p>
-  
+  </p>  
 
-  <p>Price to pay: {{checkout}}</p>
+  <div class="reservation__total-price" *ngIf="reservationService.getTotalTicketPrice() as currentPrice">
+    <span>Total ticket price: {{currentPrice}}</span>
+  </div>
 
   <form [formGroup]="reservationForm" (ngSubmit)="submitForm()">
     <div class="form">

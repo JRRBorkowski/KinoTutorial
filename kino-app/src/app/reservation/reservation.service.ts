@@ -50,6 +50,10 @@ export class ReservationService {
     this.selectedTickets?.push({positon, type: defaultPrice.type, price: defaultPrice.price });
   }
 
+  getTotalTicketPrice() {
+    return this.selectedTickets.reduce((acc, ticket) => acc + ticket.price, 0)
+  }
+
   setSelectedTickets(tickets: UserOrderSeat[]) {
     this.selectedTickets = tickets;
   }

@@ -109,7 +109,19 @@ export class FormComponent {
     if (!this.reservationService.selectedSeats.length) {
       this.router.navigate(['..']);
     }
-    this.store.select(selectUser).subscribe((user) => (this.user = user));
+    this.store.select(selectUser).subscribe((user) => {
+      this.user = user;
+      if( user ) {
+        this.reservationForm.patchValue(
+          {
+            userName: user.userName,
+            userLastName: user.userLastName,
+            userMail: user.userEmail,
+            userPhoneNumber: user.userPhoneNumber,
+            userInvoiceForm: { ...user.userInvoiceDetails },            
+          }
+        )}
+    });
   }
 
   submitForm() {

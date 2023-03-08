@@ -43,8 +43,6 @@ export class ReservationComponent implements OnInit {
     );
   }
 
-  checkout?: string[];
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -54,10 +52,6 @@ export class ReservationComponent implements OnInit {
     this.movieId = Number(this.route.snapshot.paramMap.get('id'));
     this.showHour = this.route.snapshot.paramMap.get('hour');
     this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));    
-  }
-
-  changeCheckout(price: string) {
-    return this.checkout?.push(price);
   }
 
   ngOnInit(): void {

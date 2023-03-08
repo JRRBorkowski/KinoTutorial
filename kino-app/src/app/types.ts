@@ -32,7 +32,7 @@ export interface User {
     userStreet: string;
     userPostCode: string;
     userCity: string;
-  }[];
+  };
   userWatchlist: Movie[];
 }
 

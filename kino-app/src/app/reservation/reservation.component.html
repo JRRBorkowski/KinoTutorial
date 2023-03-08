@@ -45,6 +45,10 @@
         <mat-button-toggle *ngFor="let price of (showing.priceList || [])" [value]="price" [checked]="ticket.type === price.type">{{price.type}}</mat-button-toggle>
       </mat-button-toggle-group>
     </div>
+
+    <div class="reservation__total-price" *ngIf="reservationService.getTotalTicketPrice() as currentPrice">
+      <span>Total ticket price: {{currentPrice}}</span>
+    </div>
     <button
       mat-raised-button
       color="primary"
