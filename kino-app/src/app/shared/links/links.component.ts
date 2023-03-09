@@ -16,6 +16,8 @@ export class LinksComponent implements OnInit, OnDestroy {
 
   user: string | null = null;
 
+  userRole?: string;
+
   private subscription = new Subscription();
 
   checkLoginStatus() {
@@ -55,6 +57,9 @@ export class LinksComponent implements OnInit, OnDestroy {
     private store: Store<{ user?: User }>
   ) {
     this.checkUser();
+    this.loginService.user$.subscribe(
+      (response) => (this.userRole = response.role)
+    );
   }
 
   ngOnInit(): void {

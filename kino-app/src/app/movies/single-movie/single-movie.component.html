@@ -14,23 +14,25 @@
         <p>Genre: {{ movie.genre }}</p>
         <p>Rating: {{ movie.ageRest }}</p>
         <p>Director: {{ movie.director }}</p>
-        <p *ngIf="clickedMore">{{ movie.description }}</p>
+        <div *ngIf="clickedMore">
+          <p>{{ movie.description }}</p>
+        </div>
         <button mat-button color="primary" (click)="tellMeMore()">
           Would you like to know more?
         </button>
       </div>
       <div class="viewings">
         <ng-container *ngFor="let showing of showings">
-        <button
-          *ngIf="showing.movieId === movie.id"
-          [routerLinkActive]="['active']"
-          [routerLink]="['/reservation', showing.hour, movie.id, day]"
-          class="hour-buttons"
-          (click)="handleSelectedMovie(showing)"
-        >
-          {{ showing.hour }}
-        </button>
-      </ng-container>
+          <button
+            *ngIf="showing.movieId === movie.id"
+            [routerLinkActive]="['active']"
+            [routerLink]="['/reservation', showing.hour, movie.id, day]"
+            class="hour-buttons"
+            (click)="handleSelectedMovie(showing)"
+          >
+            {{ showing.screen }} {{ showing.hour }}
+          </button>
+        </ng-container>
       </div>
     </div>
     <div class="single-movie--rating">

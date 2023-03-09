@@ -5,8 +5,13 @@
       class="success__img"
     />
     <h1 class="success__message">Order completed!</h1>
-    <a [routerLink]="['/orderdetails', orderId]" class="success__link"
-      >order details here</a
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/orderdetails', orderId]"
+      class="success__link"
     >
+      Order details here
+    </button>
   </div>
 </div>

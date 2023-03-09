@@ -15,7 +15,7 @@
       *ngIf="
         reservationService.selectedSeats.length >=
         reservationService.seatSelectionLimit
-        "
+      "
     >
       <div class="error-message">You can buy at most 10 tickets!</div>
     </div>
@@ -33,30 +33,42 @@
         </div>
       </div>
     </div>
-    <div *ngFor="let ticket of reservationService.selectedTickets">
-      <p>
-        <span>{{ ticket.positon }} : </span> <span>{{ ticket.price }}</span>
-      </p>
-      <mat-button-toggle-group
-        name="ticketType"
-        aria-label="ticket type radio"
-        (change)="handleTicketPriceClick($event, ticket.positon)"
-      >      
-        <mat-button-toggle *ngFor="let price of (showing.priceList || [])" [value]="price" [checked]="ticket.type === price.type">{{price.type}}</mat-button-toggle>
-      </mat-button-toggle-group>
+    <div class="reservation">
+      <div
+        *ngFor="let ticket of reservationService.selectedTickets"
+        class="reservation--ticket"
+      >
+        <p>Position: {{ ticket.positon }}</p>
+        <p>Ticket price: {{ ticket.price }}</p>
+        <mat-button-toggle-group
+          name="ticketType"
+          aria-label="ticket type radio"
+          (change)="handleTicketPriceClick($event, ticket.positon)"
+        >
+          <mat-button-toggle
+            *ngFor="let price of showing.priceList || []"
+            [value]="price"
+            [checked]="ticket.type === price.type"
+            >{{ price.type }}</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+      </div>
+      <div
+        class="reservation--total-price"
+        *ngIf="reservationService.getTotalTicketPrice() as currentPrice"
+      >
+        <span>Total ticket price: {{ currentPrice }}</span>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="reservationService.selectedSeats.length <= 0"
+        (click)="handleReservation()"
+        class="reservation--purchase"
+      >
+        Purchase
+      </button>
     </div>
-
-    <div class="reservation__total-price" *ngIf="reservationService.getTotalTicketPrice() as currentPrice">
-      <span>Total ticket price: {{currentPrice}}</span>
-    </div>
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="reservationService.selectedSeats.length <= 0"
-      (click)="handleReservation()"
-    >
-      Purchase
-    </button>
   </div>
 </ng-template>
 <ng-template #noShowing>

@@ -19,8 +19,16 @@
         Menu
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="watchlist">Watchlist</button>
-        <button mat-menu-item routerLink="orders">Tickets</button>
+        <button
+          mat-menu-item
+          routerLink="watchlist"
+          *ngIf="userRole === 'User'"
+        >
+          Watchlist
+        </button>
+        <button mat-menu-item routerLink="orders" *ngIf="userRole === 'User'">
+          Tickets
+        </button>
         <button mat-menu-item (click)="logoutUser()">Logout</button>
       </mat-menu>
     </li>

@@ -41,7 +41,7 @@ const routes: Routes = [
   {
     path: '',
     component: MoviesComponent,
-    canMatch: [UserGuard],
+    canActivate: [UserGuard],
   },
   {
     path: 'login',
@@ -55,32 +55,32 @@ const routes: Routes = [
   {
     path: 'watchlist',
     component: WatchlistComponent,
-    canMatch: [UserGuard],
+    canActivate: [UserGuard],
   },
   {
     path: 'orders',
     component: OrdersComponent,
-    canMatch: [UserGuard],
+    canActivate: [UserGuard],
   },
   {
     path: 'reservation/:hour/:id/:dayIndex',
     component: ReservationComponent,
-    canMatch: [UserGuard],
+    canActivate: [UserGuard],
   },
   {
     path: 'reservation/:hour/:id/:dayIndex/form',
     component: FormComponent,
-    canMatch: [UserGuard],
+    canActivate: [UserGuard],
   },
   {
     path: 'orderdetails/:id',
     component: OrderDetailsComponent,
-    canMatch: [UserGuard],
+    canActivate: [UserGuard],
   },
   {
     path: 'successpage/:orderId',
     component: SuccesspageComponent,
-    canMatch: [UserGuard],
+    canActivate: [UserGuard],
   },
 ];
 

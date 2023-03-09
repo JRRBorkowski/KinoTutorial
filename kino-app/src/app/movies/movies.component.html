@@ -25,7 +25,10 @@
     >
       next week
     </button>
-    <p class="movies--date">Our schedule for {{ selectedDayDate }}</p>
+    <div class="movies--date">
+      <p>Our schedule for {{ selectedDayDate }}</p>
+      <p class="movies--date--info">New schedule every 2 weeks!</p>
+    </div>
   </div>
 </div>
 <div class="movies" *ngIf="availableMovies$ | async as movies">
