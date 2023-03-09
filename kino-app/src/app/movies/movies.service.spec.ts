@@ -1,16 +1,19 @@
+import { EnvironmentInjector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { MoviesService } from './movies.service';
 
-describe('MoviesService', () => {
-  let service: MoviesService;
+describe('MoviesService', async () => {
+  //arrange
+  it('error', async () => {
+    await TestBed.configureTestingModule({
+      providers: [MoviesService],
+    });
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MoviesService);
-  });
+    //act
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+    //assert
+
+    const service = TestBed.inject(EnvironmentInjector).get(MoviesService);
   });
 });

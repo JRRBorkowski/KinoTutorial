@@ -20,6 +20,16 @@
     flex-direction: column;
 }
 
+.reservation--total-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1em;
+    border-bottom: 4px solid burlywood;
+}
+
 .blik {
     margin: 1em;
     padding: 1em;

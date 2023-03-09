@@ -1128,7 +1128,11 @@
         "B8",
         "H7",
         "H8",
-        "A4"
+        "A4",
+        "B6",
+        "A2",
+        "A5",
+        "A6"
       ],
       "priceList": [
         {
@@ -1160,7 +1164,8 @@
         "C8",
         "C9",
         "C10",
-        "A11"
+        "A11",
+        "H8"
       ],
       "priceList": [
         {
@@ -1227,7 +1232,10 @@
         "H4",
         "H5",
         "G5",
-        "G4"
+        "G4",
+        "B8",
+        "E1",
+        "A2"
       ],
       "priceList": [
         {
@@ -1458,6 +1466,44 @@
         {
           "type": "Voucher",
           "price": "25"
+        }
+      ],
+      "reservedSeats": [
+        ""
+      ]
+    },
+    {
+      "id": 10,
+      "movieId": 2,
+      "hour": "18:30",
+      "screen": "A",
+      "priceList": [
+        {
+          "type": "Normal",
+          "price": "30"
+        },
+        {
+          "type": "Reduced",
+          "price": "20"
+        }
+      ],
+      "reservedSeats": [
+        ""
+      ]
+    },
+    {
+      "id": 11,
+      "movieId": 3,
+      "hour": "16:30",
+      "screen": "C",
+      "priceList": [
+        {
+          "type": "Normal",
+          "price": "30"
+        },
+        {
+          "type": "Reduced",
+          "price": "20"
         }
       ],
       "reservedSeats": [

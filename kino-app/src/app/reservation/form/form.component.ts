@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReservationService } from '../reservation.service';
 import { MoviesService } from 'src/app/movies/movies.service';
@@ -18,7 +18,7 @@ import { selectUser } from 'src/app/user-data/store/user-data.selectors';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent {
-  public noWhitespaceValidator(control: FormControl) {
+  noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : { whitespace: true };
@@ -67,6 +67,7 @@ export class FormComponent {
     }),
   });
 
+  discount = false;
   isBlikVisible = false;
   invoice = false;
   user?: User;
@@ -77,9 +78,9 @@ export class FormComponent {
   }
 
   ticketsCheckout() {
-    let sum = 0
-    this.checkout.forEach(price => sum =+ price)
-    return sum
+    let sum = 0;
+    this.checkout.forEach((price) => (sum = +price));
+    return sum;
   }
 
   get reservationCtrl() {
@@ -111,16 +112,15 @@ export class FormComponent {
     }
     this.store.select(selectUser).subscribe((user) => {
       this.user = user;
-      if( user ) {
-        this.reservationForm.patchValue(
-          {
-            userName: user.userName,
-            userLastName: user.userLastName,
-            userMail: user.userEmail,
-            userPhoneNumber: user.userPhoneNumber,
-            userInvoiceForm: { ...user.userInvoiceDetails },            
-          }
-        )}
+      if (user) {
+        this.reservationForm.patchValue({
+          userName: user.userName,
+          userLastName: user.userLastName,
+          userMail: user.userEmail,
+          userPhoneNumber: user.userPhoneNumber,
+          userInvoiceForm: { ...user.userInvoiceDetails },
+        });
+      }
     });
   }
 
@@ -131,7 +131,14 @@ export class FormComponent {
       return;
     }
 
+    this.reducePrice();
     this.isBlikVisible = true;
+  }
+
+  reducePrice() {
+    if (this.reservationForm.controls.discountCode.value === 'DUKE2000') {
+      this.discount = true;
+    }
   }
 
   submitBlik() {
@@ -161,7 +168,9 @@ export class FormComponent {
         title: this.reservationService.selectedReservationMovie?.title,
         date: ticketDateString,
         hour: showing.hour,
-        seat: this.reservationService.selectedTickets.find(ticket => ticket.positon === seat),
+        seat: this.reservationService.selectedTickets.find(
+          (ticket) => ticket.positon === seat
+        ),
       };
     });
 

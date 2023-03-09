@@ -64,7 +64,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.week = [];
     const date = new Date();
     const currentFirstDayOfWeek = this.getFirstDayOfWeek(date);
-    for (let i = 0; i < 7; i++) {
+    for (let i = 1; i < 8; i++) {
       const nextWeek = new Date(
         currentFirstDayOfWeek.getFullYear(),
         currentFirstDayOfWeek.getMonth(),

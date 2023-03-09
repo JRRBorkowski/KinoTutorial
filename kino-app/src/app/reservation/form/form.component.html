@@ -1,13 +1,16 @@
 <div class="form--container">
-  <p class="form--selected-seats">
-    Selected seats:
-    <span class="form--selected-seats-list">{{
-      reservationService.selectedSeats.join(", ")
-    }}</span>
-  </p>  
-
-  <div class="reservation__total-price" *ngIf="reservationService.getTotalTicketPrice() as currentPrice">
-    <span>Total ticket price: {{currentPrice}}</span>
+  <div
+    class="reservation--total-price"
+    *ngIf="reservationService.getTotalTicketPrice() as currentPrice"
+  >
+    <p class="form--selected-seats">
+      Selected seats:
+      <span class="form--selected-seats-list">{{
+        reservationService.selectedSeats.join(", ")
+      }}</span>
+    </p>
+    <span *ngIf="!discount">Total ticket price: {{ currentPrice }}</span>
+    <span *ngIf="discount">Total ticket price: {{ currentPrice - 10 }}</span>
   </div>
 
   <form [formGroup]="reservationForm" (ngSubmit)="submitForm()">

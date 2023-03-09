@@ -15,7 +15,7 @@ import { AdminPanelService } from '../../admin.service';
   styleUrls: ['./admin-showing-form.component.scss'],
 })
 export class AdminShowingFormComponent {
-  public noWhitespaceValidator(control: FormControl) {
+  noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : { whitespace: true };
@@ -88,19 +88,6 @@ export class AdminShowingFormComponent {
     return this.showingForm.controls.screen;
   }
 
-  //TODO: convert hours to minutes for both
-  // checkShowingHour() {
-  //   this.showings$.subscribe((response) => {
-  //     response.forEach((show) => {
-  //       if (show.hour) {
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     });
-  //   });
-  // }
-
   addPriceListItem() {
     if (this.showingForm.controls.priceList.length === 3) {
       return;
@@ -120,41 +107,52 @@ export class AdminShowingFormComponent {
     const newShowingTimeArr = newShowing.split(':');
 
     const existingShowingTimeDate = new Date();
-    existingShowingTimeDate.setHours(Number(existingShowingTimeArr[0]), Number(existingShowingTimeArr[1]), 0, 0);
+    existingShowingTimeDate.setHours(
+      Number(existingShowingTimeArr[0]),
+      Number(existingShowingTimeArr[1]),
+      0,
+      0
+    );
 
     const newShowingTimeDate = new Date();
-    newShowingTimeDate.setHours(Number(newShowingTimeArr[0]), Number(newShowingTimeArr[1]), 0, 0);
+    newShowingTimeDate.setHours(
+      Number(newShowingTimeArr[0]),
+      Number(newShowingTimeArr[1]),
+      0,
+      0
+    );
 
-    const timeDifferenceInMs = existingShowingTimeDate.getTime() - newShowingTimeDate.getTime();
+    const timeDifferenceInMs =
+      existingShowingTimeDate.getTime() - newShowingTimeDate.getTime();
 
     const limitInMs = 2 * 60 * 60 * 1000;
 
     return limitInMs <= Math.abs(timeDifferenceInMs);
   }
 
-
   submitShowingForm() {
     this.showingForm.markAllAsTouched();
-
 
     if (this.showingForm.invalid) {
       return console.log('ups');
     }
 
-    this.adminService.getShowingForScreen(this.screenCtrl.value).subscribe(
-      (showings) => {
-        this.isInvalid = showings.some(singleShowing => {
-          return !this.isOverTimeDifferenceConstraint(singleShowing.hour, this.hourCtrl.value)
-        })
+    this.adminService
+      .getShowingForScreen(this.screenCtrl.value)
+      .subscribe((showings) => {
+        this.isInvalid = showings.some((singleShowing) => {
+          return !this.isOverTimeDifferenceConstraint(
+            singleShowing.hour,
+            this.hourCtrl.value
+          );
+        });
         if (!this.isInvalid) {
           const showingData = this.showingForm.getRawValue();
-          this.adminService.createShowing(showingData).subscribe(() =>
-            this.router.navigate(['admin'])
-          );
+          this.adminService
+            .createShowing(showingData)
+            .subscribe(() => this.router.navigate(['admin']));
         }
-      }
-    )
-
+      });
   }
 
   constructor(

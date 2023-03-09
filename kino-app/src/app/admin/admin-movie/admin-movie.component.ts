@@ -6,6 +6,7 @@ import {
 } from '@angular/forms';
 import { AdminPanelService } from '../admin.service';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-movie',
@@ -97,12 +98,13 @@ export class AdminMovieComponent {
     }
 
     this.service.createMovie(this.newMovieForm.getRawValue()).subscribe(() => {
-      this.newMovieForm.reset();
+      this.router.navigate(['admin']);
     });
   }
 
   constructor(
     private builder: NonNullableFormBuilder,
-    private service: AdminPanelService
+    private service: AdminPanelService,
+    private router: Router
   ) {}
 }
