@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MoviesService } from '../movies/movies.service';
-import { Movie, Showing } from '../types';
+import { Movie, Showing } from '../movies/movies.types';
 import { ReservationService } from './reservation.service';
 
 @Component({
@@ -20,7 +20,6 @@ export class ReservationComponent implements OnInit {
   columns: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   rows = 8;
   dayIndex: number;
-  
 
   isSeatReserved(column: string, row: number) {
     return this.reservedSeats?.some((seat) => seat === `${column}${row}`);
@@ -51,7 +50,7 @@ export class ReservationComponent implements OnInit {
   ) {
     this.movieId = Number(this.route.snapshot.paramMap.get('id'));
     this.showHour = this.route.snapshot.paramMap.get('hour');
-    this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));    
+    this.dayIndex = Number(this.route.snapshot.paramMap.get('dayIndex'));
   }
 
   ngOnInit(): void {

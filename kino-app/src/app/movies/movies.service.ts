@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Showing, Movie, Screen, DbDate } from '../types';
+import { Showing, Movie, Screen, DbDate } from './movies.types';
 import { ReplaySubject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

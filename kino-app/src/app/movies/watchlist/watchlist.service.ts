@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { Movie, User } from 'src/app/types';
+import { User } from 'src/app/login/login.types';
+import { Movie } from '../movies.types';
 
 //todo DB_PATH as an env variable http://localhost...
 

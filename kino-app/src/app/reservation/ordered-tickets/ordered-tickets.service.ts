@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserOrder } from 'src/app/types';
+import { UserOrder } from 'src/app/reservation/reservation.types';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { User } from 'src/app/types';
+import { User } from 'src/app/login/login.types';
 import { setLoginData, resetLoginData } from './user-data.actions';
 
 export const initialState: { user?: User } = {

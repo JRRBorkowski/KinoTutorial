@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Movie, Showing } from '../types';
+import { Movie, Showing } from '../movies/movies.types';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
-import { User } from 'src/app/types';
+import { User } from 'src/app/login/login.types';
 import { WatchlistService } from './watchlist.service';
 
 @Component({

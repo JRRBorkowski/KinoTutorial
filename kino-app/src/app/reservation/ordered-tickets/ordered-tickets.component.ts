@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UserOrder } from 'src/app/types';
+import { UserOrder } from 'src/app/reservation/reservation.types';
 import { CartService } from './ordered-tickets.service';
 
 @Component({

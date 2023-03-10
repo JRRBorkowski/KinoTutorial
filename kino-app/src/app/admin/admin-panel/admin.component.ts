@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MoviesService } from '../../movies/movies.service';
-import { Movie } from '../../types';
+import { Movie } from '../../movies/movies.types';
 
 @Component({
   selector: 'app-admin',

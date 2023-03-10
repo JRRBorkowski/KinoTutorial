@@ -11,7 +11,11 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Genre</mat-label>
-      <input matInput formControlName="genre" />
+      <mat-select formControlName="genre">
+        <mat-option *ngFor="let genre of genres" [value]="genre">{{
+          genre
+        }}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Length</mat-label>

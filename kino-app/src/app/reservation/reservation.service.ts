@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { switchMap } from 'rxjs';
-import { Movie, Showing, UserOrderSeat, Price } from '../types';
+import { UserOrderSeat } from './reservation.types';
+import { Movie, Showing, Price } from '../movies/movies.types';
 
 @Injectable({
   providedIn: 'root',
@@ -36,22 +37,32 @@ export class ReservationService {
     }
   }
 
-  removeSeatTicket(seat: string){
-    this.setSelectedTickets(this.selectedTickets?.filter(ticket => ticket.positon !== seat));
+  removeSeatTicket(seat: string) {
+    this.setSelectedTickets(
+      this.selectedTickets?.filter((ticket) => ticket.positon !== seat)
+    );
   }
 
-  changeSeatTicketPrice(seat: string, priceToSet: Price){
-    const newTicketArray = this.selectedTickets.map(ticket => ticket.positon === seat ? {positon: seat, type: priceToSet.type, price: priceToSet.price} : ticket);
+  changeSeatTicketPrice(seat: string, priceToSet: Price) {
+    const newTicketArray = this.selectedTickets.map((ticket) =>
+      ticket.positon === seat
+        ? { positon: seat, type: priceToSet.type, price: priceToSet.price }
+        : ticket
+    );
     this.setSelectedTickets(newTicketArray);
   }
 
   addDefaultSeat(positon: string, priceList: Price[]) {
     const defaultPrice = priceList[0];
-    this.selectedTickets?.push({positon, type: defaultPrice.type, price: defaultPrice.price });
+    this.selectedTickets?.push({
+      positon,
+      type: defaultPrice.type,
+      price: defaultPrice.price,
+    });
   }
 
   getTotalTicketPrice() {
-    return this.selectedTickets.reduce((acc, ticket) => acc + ticket.price, 0)
+    return this.selectedTickets.reduce((acc, ticket) => acc + ticket.price, 0);
   }
 
   setSelectedTickets(tickets: UserOrderSeat[]) {

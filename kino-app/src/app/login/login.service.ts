@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { User } from '../types';
+import { User } from './login.types';
 import { Store } from '@ngrx/store';
 import { resetLoginData } from '../user-data/store/user-data.actions';
 

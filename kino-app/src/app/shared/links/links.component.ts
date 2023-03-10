@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../../login/login.service';
-import { User } from '../../types';
+import { User } from 'src/app/login/login.types';
 import { setLoginData } from 'src/app/user-data/store/user-data.actions';
 
 @Component({

@@ -4,7 +4,7 @@ import {
   props,
   emptyProps,
 } from '@ngrx/store';
-import { User } from '../../types';
+import { User } from 'src/app/login/login.types';
 
 export const SET_LOGIN_DATA_ACTION = '[UserData] SetLoginData';
 export const RESET_LOGIN_DATA_ACTION = '[UserData] ResetLoginData';

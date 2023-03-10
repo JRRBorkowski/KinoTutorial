@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/login/login.service';
-import { User } from '../types';
+import { User } from './login.types';
 import { setLoginData } from '../user-data/store/user-data.actions';
 
 @Component({

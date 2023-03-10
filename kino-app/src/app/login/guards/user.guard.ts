@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { CanMatch, Router, UrlTree, CanActivate } from '@angular/router';
+import { Router, UrlTree, CanActivate } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, of, switchMap } from 'rxjs';
 import { selectUserRole } from 'src/app/user-data/store/user-data.selectors';

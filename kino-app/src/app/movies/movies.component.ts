@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable, map } from 'rxjs';
-import { Movie } from '../types';
+import { Movie } from './movies.types';
 import { MoviesService } from './movies.service';
 
 @Component({

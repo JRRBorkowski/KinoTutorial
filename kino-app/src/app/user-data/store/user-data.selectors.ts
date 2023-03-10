@@ -1,4 +1,4 @@
-import { User } from 'src/app/types';
+import { User } from 'src/app/login/login.types';
 
 export const selectUser = (state: { userData: { user?: User } }) =>
   state.userData.user;

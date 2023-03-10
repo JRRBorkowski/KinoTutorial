@@ -32,55 +32,6 @@
       },
       "userWatchlist": [
         {
-          "id": 0,
-          "image": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
-          "title": "Duke Nukem: The Kino™",
-          "genre": "Action, Super hero",
-          "length": "130 min",
-          "ageRest": "PG-13",
-          "description": "It's payback tim",
-          "scores": [
-            {
-              "userId": 0,
-              "score": 10
-            },
-            {
-              "userId": 2,
-              "score": 10
-            },
-            {
-              "userId": 3,
-              "score": 1
-            },
-            {
-              "userId": 4,
-              "score": 10
-            },
-            {
-              "score": 8,
-              "userId": 1
-            }
-          ],
-          "director": "Kino Fabino",
-          "actors": [
-            "Maciek",
-            "Janek",
-            "Ktos",
-            "Leszek"
-          ],
-          "boxOff": 200,
-          "premiere": true,
-          "dateIds": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ]
-        },
-        {
           "id": 2,
           "image": "https://fwcdn.pl/fpo/81/78/558178/8047434.3.jpg",
           "title": "Avatar: Istota wody",
@@ -125,6 +76,55 @@
           "boxOff": 1000,
           "premiere": false,
           "dateIds": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": 0,
+          "image": "https://pbs.twimg.com/media/EGAmPkYXkAAfe9q.png",
+          "title": "Duke Nukem: The Kino™",
+          "genre": "Action, Super hero",
+          "length": "130 min",
+          "ageRest": "PG-13",
+          "description": "It's payback tim",
+          "scores": [
+            {
+              "userId": 0,
+              "score": 10
+            },
+            {
+              "userId": 2,
+              "score": 10
+            },
+            {
+              "userId": 3,
+              "score": 1
+            },
+            {
+              "userId": 4,
+              "score": 10
+            },
+            {
+              "score": 6,
+              "userId": 1
+            }
+          ],
+          "director": "Kino Fabino",
+          "actors": [
+            "Maciek",
+            "Janek",
+            "Ktos",
+            "Leszek"
+          ],
+          "boxOff": 200,
+          "premiere": true,
+          "dateIds": [
+            0,
+            1,
+            2,
+            3,
+            4,
             5,
             6
           ]
@@ -1021,6 +1021,46 @@
         }
       ],
       "id": 22
+    },
+    {
+      "userName": "       x",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@gmail.com",
+      "discountCode": "DUKE2000",
+      "userPhoneNumber": "900800700",
+      "userInvoiceForm": {
+        "userNIP": "1234567890",
+        "userStreet": "Losowa Ulica 5/15",
+        "userPostCode": "12-123",
+        "userCity": "Warszawa"
+      },
+      "paidAt": 1678372608703,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "5/3/2023",
+          "hour": "16:30",
+          "seat": {
+            "positon": "G2",
+            "type": "Normalny",
+            "price": 30
+          }
+        },
+        {
+          "id": 1,
+          "title": "Duke Nukem: The Kino™",
+          "date": "5/3/2023",
+          "hour": "16:30",
+          "seat": {
+            "positon": "F1",
+            "type": "Normalny",
+            "price": 30
+          }
+        }
+      ],
+      "userId": 1,
+      "id": 23
     }
   ],
   "blik": [
@@ -1165,7 +1205,12 @@
         "C9",
         "C10",
         "A11",
-        "H8"
+        "H8",
+        "F5",
+        "F6",
+        "F7",
+        "G2",
+        "F1"
       ],
       "priceList": [
         {
@@ -1235,7 +1280,9 @@
         "G4",
         "B8",
         "E1",
-        "A2"
+        "A2",
+        "G7",
+        "F7"
       ],
       "priceList": [
         {
@@ -1538,7 +1585,7 @@
           "score": 10
         },
         {
-          "score": 10,
+          "score": 6,
           "userId": 1
         }
       ],

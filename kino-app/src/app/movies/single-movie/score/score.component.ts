@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Movie, Score } from 'src/app/types';
+import { Movie, Score } from '../../movies.types';
 import { MoviesService } from '../../movies.service';
 
 @Component({

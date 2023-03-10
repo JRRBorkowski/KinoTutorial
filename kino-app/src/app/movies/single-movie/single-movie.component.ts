@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { Movie, Score, Showing, User } from '../../types';
+import { Movie, Score, Showing } from '../movies.types';
+import { User } from 'src/app/login/login.types';
 import { MoviesService } from '../movies.service';
 import { WatchlistService } from '../watchlist/watchlist.service';
 

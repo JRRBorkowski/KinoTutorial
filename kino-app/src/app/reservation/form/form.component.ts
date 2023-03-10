@@ -7,7 +7,9 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
-import { Price, User, UserOrder } from 'src/app/types';
+import { UserOrder } from 'src/app/reservation/reservation.types';
+import { Price } from 'src/app/movies/movies.types';
+import { User } from 'src/app/login/login.types';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { selectUser } from 'src/app/user-data/store/user-data.selectors';

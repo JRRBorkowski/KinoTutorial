@@ -32,6 +32,8 @@ export class AdminMovieComponent {
 
   ages = ['E', 'PG+13', 'PG+16', 'PG+18', 'R'];
 
+  genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Romance', 'Documentary'];
+
   actors: string[] = [];
 
   newMovieForm = this.builder.group({

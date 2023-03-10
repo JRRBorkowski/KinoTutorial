@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MoviesService } from 'src/app/movies/movies.service';
-import { Movie } from 'src/app/types';
+import { Movie } from 'src/app/movies/movies.types';
 import { AdminPanelService } from '../../admin.service';
 
 @Component({
