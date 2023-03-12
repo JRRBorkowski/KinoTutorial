@@ -13,7 +13,7 @@ export class MoviesService {
 
   showing: Showing[] = [];
 
-  private selectedMovie = new ReplaySubject<Movie>(1);
+  public selectedMovie = new ReplaySubject<Movie>(1);
   private selectedShowing = new ReplaySubject<Showing>(1);
 
   selectedSeats: string[] = [];

@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AdminMovieComponent } from './admin-movie/admin-movie.component';
 import { AdminShowingsComponent } from './admin-showings/admin-showings.component';
 import { AdminShowingFormComponent } from './admin-showings/admin-showing-form/admin-showing-form.component';
+import { NumbersDirective } from '../shared/directive/numbers.directive';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AdminShowingFormComponent } from './admin-showings/admin-showing-form/a
     MatNativeDateModule,
     MatChipsModule,
     MatIconModule,
+    NumbersDirective,
   ],
   providers: [AdminPanelService],
 })
