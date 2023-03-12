@@ -198,7 +198,7 @@ export class FormComponent {
     this.http
       .post<UserOrder>('http://localhost:3000/orders', reqBody)
       .subscribe((response) => {
-        this.router.navigate([`/successpage/${response.id}`]);
+        this.router.navigate([`movies/successpage/${response.id}`]);
       });
   }
 }

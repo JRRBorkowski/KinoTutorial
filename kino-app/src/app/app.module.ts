@@ -39,9 +39,8 @@ import { NumbersDirective } from './shared/directive/numbers.directive';
 
 const routes: Routes = [
   {
-    path: 'movies/:date',
-    component: MoviesComponent,
-    canActivate: [UserGuard],
+    path: 'movies',
+    loadChildren: () => import('./movies/movies.module'),
   },
   {
     path: 'login',
@@ -52,36 +51,7 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module'),
     canMatch: [AdminGuard],
   },
-  {
-    path: 'watchlist',
-    component: WatchlistComponent,
-    canActivate: [UserGuard],
-  },
-  {
-    path: 'orders',
-    component: OrdersComponent,
-    canActivate: [UserGuard],
-  },
-  {
-    path: 'reservation/:hour/:id/:dayIndex',
-    component: ReservationComponent,
-    canActivate: [UserGuard],
-  },
-  {
-    path: 'reservation/:hour/:id/:dayIndex/form',
-    component: FormComponent,
-    canActivate: [UserGuard],
-  },
-  {
-    path: 'orderdetails/:id',
-    component: OrderDetailsComponent,
-    canActivate: [UserGuard],
-  },
-  {
-    path: 'successpage/:orderId',
-    component: SuccesspageComponent,
-    canActivate: [UserGuard],
-  },
+
   {
     path: '**',
     component: MoviesComponent,
@@ -90,21 +60,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    MoviesComponent,
-    LinksComponent,
-    ReservationComponent,
-    FormComponent,
-    SingleMovieComponent,
-    WatchlistComponent,
-    OrdersComponent,
-    CartComponent,
-    ScoreComponent,
-    OrderDetailsComponent,
-    SuccesspageComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, LinksComponent, CartComponent],
   imports: [
     BrowserModule,
     FooterComponent,
@@ -118,7 +74,6 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatSliderModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
