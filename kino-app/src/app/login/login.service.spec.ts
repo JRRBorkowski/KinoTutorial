@@ -1,5 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { EnvironmentInjector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import { userDataReducer } from '../user-data/store/user-data.reducer';
 
 import { LoginService } from './login.service';
 import { User } from './login.types';
@@ -25,6 +28,10 @@ describe('LoginService', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [LoginService],
+      imports: [
+        HttpClientTestingModule,
+        StoreModule.forRoot({ userData: userDataReducer }),
+      ],
     });
   });
 
@@ -33,7 +40,7 @@ describe('LoginService', () => {
 
     state.isUserLoggedIn$.subscribe((result) => {
       expect(result).toEqual(false);
-      done;
+      done();
     });
   });
 
@@ -44,7 +51,7 @@ describe('LoginService', () => {
 
     state.isUserLoggedIn$.subscribe((result) => {
       expect(result).toEqual(true);
-      done;
+      done();
     });
   });
 
@@ -55,7 +62,7 @@ describe('LoginService', () => {
 
     state.user$.subscribe((result) => {
       expect(result).toEqual(user);
-      done;
+      done();
     });
   });
 
@@ -66,7 +73,7 @@ describe('LoginService', () => {
 
     state.user$.subscribe((result) => {
       expect(result).toEqual({} as User);
-      done;
+      done();
     });
   });
 });

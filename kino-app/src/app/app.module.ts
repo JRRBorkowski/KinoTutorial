@@ -39,7 +39,7 @@ import { NumbersDirective } from './shared/directive/numbers.directive';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'movies/:date',
     component: MoviesComponent,
     canActivate: [UserGuard],
   },
@@ -80,6 +80,11 @@ const routes: Routes = [
   {
     path: 'successpage/:orderId',
     component: SuccesspageComponent,
+    canActivate: [UserGuard],
+  },
+  {
+    path: '**',
+    component: MoviesComponent,
     canActivate: [UserGuard],
   },
 ];

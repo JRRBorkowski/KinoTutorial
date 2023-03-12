@@ -36,11 +36,15 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.moviesService.getMoviesFromId();
     this.getSchedule(0);
     this.selectDay(new Date());
-    this.route.queryParamMap.subscribe((params) => {
-      const dayOfMonth = params.get('day');
-      if (dayOfMonth) {
+    this.route.params.subscribe((params) => {
+      const paramsDate = params['date'] as string;
+      if (paramsDate) {
+        const paramsDateArray = paramsDate.split('-');
+        const paramsDateDay = paramsDateArray[0];
+        const paramsDateMonth = paramsDateArray[1];
         const initialDate = new Date();
-        initialDate.setDate(Number(dayOfMonth));
+        initialDate.setDate(Number(paramsDateDay));
+        initialDate.setMonth(Number(paramsDateMonth) - 1);
         if (this.isInPast(initialDate)) {
           this.router.navigate(['']);
         } else {
@@ -100,6 +104,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
       newDay.getMonth() + 1
     }/${newDay.getFullYear()}`;
     this.availableMovies$ = this.getAvailableMovies();
+    this.router.navigate([
+      `movies/${this.selectedDay.getDate()}-${this.selectedDay.getMonth() + 1}`,
+    ]);
   }
 
   onMovieSelection() {

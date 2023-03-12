@@ -2,31 +2,36 @@ import { EnvironmentInjector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { MoviesService } from './movies.service';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
-describe('MoviesService', async () => {
-  //arrange
+const movie = {
+  id: 0,
+  image: 'image',
+  title: 'title',
+  genre: 'genre',
+  length: 'length',
+  ageRest: 'ageRest',
+  description: 'description',
+  scores: [],
+  director: 'director',
+  actors: [],
+  boxOff: 0,
+  premiere: false,
+  dateIds: [],
+};
 
-  const movie = {
-    id: 0,
-    image: 'image',
-    title: 'title',
-    genre: 'genre',
-    length: 'length',
-    ageRest: 'ageRest',
-    description: 'description',
-    scores: [],
-    director: 'director',
-    actors: [],
-    boxOff: 0,
-    premiere: false,
-    dateIds: [],
-  };
+const seat = 'A1';
+const score = 10;
+const userId = 0;
 
-  const seat = 'A1';
-
+describe('MoviesService', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [MoviesService],
+      imports: [HttpClientTestingModule],
     });
   });
 
@@ -39,13 +44,10 @@ describe('MoviesService', async () => {
     });
   });
 
-  //act
-
   it('add selected movie to subject', (done) => {
     const state = TestBed.inject(EnvironmentInjector).get(MoviesService);
 
     state.addSubjectMovie(movie);
-
     state.selectMovie();
 
     state.selectedMovie.subscribe((result) => {
@@ -63,9 +65,29 @@ describe('MoviesService', async () => {
     done();
   });
 
-  //assert
+  it('add score to movie', (done) => {
+    const state = TestBed.inject(EnvironmentInjector).get(MoviesService);
+    const httpController = TestBed.inject(HttpTestingController);
 
-  expect(window.alert).toHaveBeenCalledWith('Error');
+    state.addScore(score, userId, movie.id);
 
-  // this.moviesService.success()
+    state.moviesList$.subscribe((result) => {
+      expect(result[0].scores[0]).toEqual({ score, userId });
+      done();
+    });
+
+    const req = httpController.expectOne('http://localhost:3000/movies/0');
+
+    req.flush(movie);
+
+    const req2 = httpController.expectOne('http://localhost:3000/movies/0');
+
+    expect(req2.request.body.scores[0].score).toEqual(score);
+    expect(req2.request.body.scores[0].userId).toEqual(userId);
+    req2.flush(movie);
+
+    const req3 = httpController.expectOne('http://localhost:3000/movies');
+
+    req3.flush([{ ...movie, scores: [{ score, userId }] }]);
+  });
 });
