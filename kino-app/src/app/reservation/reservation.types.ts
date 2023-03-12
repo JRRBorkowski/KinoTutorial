@@ -1,9 +1,3 @@
-//TODO: move to movies
-
-//TODO: move to login
-
-//TODO: Move to reservation
-
 export interface UserOrder {
   id: number;
   userName: string;

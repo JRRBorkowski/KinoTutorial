@@ -19,6 +19,8 @@ const movie = {
   dateIds: [],
 };
 
+const userId = 0;
+
 describe('WatchlistService', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -49,7 +51,7 @@ describe('WatchlistService', () => {
   it('add movie to watchlist', (done) => {
     const state = TestBed.inject(EnvironmentInjector).get(WatchlistService);
 
-    state.addToWatchlist(0, movie);
+    state.addToWatchlist(userId, movie);
 
     state.userWatchlist$.subscribe((result) => {
       expect(result).toEqual([movie]);
@@ -60,7 +62,7 @@ describe('WatchlistService', () => {
   it('remove movie from watchlist', (done) => {
     const state = TestBed.inject(EnvironmentInjector).get(WatchlistService);
 
-    state.removeFromWatchlist(0, movie.id);
+    state.removeFromWatchlist(userId, movie.id);
 
     state.userWatchlist$.subscribe((result) => {
       expect(result).toEqual([]);

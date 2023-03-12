@@ -22,6 +22,12 @@ const user: User = {
 };
 
 describe('LoginService', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      providers: [LoginService],
+    });
+  });
+
   it('login initial state', (done) => {
     const state = TestBed.inject(EnvironmentInjector).get(LoginService);
 
