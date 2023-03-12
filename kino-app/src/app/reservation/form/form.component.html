@@ -97,15 +97,27 @@
         >
       </mat-form-field>
       <p><input type="checkbox" />I want to recieve information about sales</p>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Promotion code"
-          formControlName="discountCode"
-        />
-      </mat-form-field>
       <button mat-raised-button color="primary">Submit!</button>
     </div>
+  </form>
+
+  <form [formGroup]="discountForm" class="form">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Promotion code"
+        formControlName="discountCode"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="reducePrice()"
+      [disabled]="discount"
+    >
+      I have discount code
+    </button>
+    <p *ngIf="discount">Discount code used!</p>
   </form>
 
   <form
@@ -114,8 +126,9 @@
     (ngSubmit)="submitBlik()"
     class="blik"
   >
+    <img src="https://www.blik.com/layout/default/dist/gfx/logo/logo.svg" />
+
     <mat-form-field>
-      <img src="https://www.blik.com/layout/default/dist/gfx/logo/logo.svg" />
       <input
         matInput
         appNumbers
@@ -136,6 +149,10 @@
         >Invalid input</mat-error
       >
     </mat-form-field>
+    <div *ngIf="reservationService.getTotalTicketPrice() as currentPrice">
+      <h2 *ngIf="!discount">Total ticket price: {{ currentPrice }}</h2>
+      <h2 *ngIf="discount">Total ticket price: {{ currentPrice - 10 }}</h2>
+    </div>
     <button mat-raised-button>Pay for tickets</button>
   </form>
 </div>

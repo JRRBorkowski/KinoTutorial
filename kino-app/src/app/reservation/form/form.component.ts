@@ -33,7 +33,6 @@ export class FormComponent {
     userLastName: this.builder.control('', {
       validators: [Validators.required, this.noWhitespaceValidator],
     }),
-    discountCode: this.builder.control(''),
     userPhoneNumber: this.builder.control('', {
       validators: [
         Validators.required,
@@ -67,6 +66,10 @@ export class FormComponent {
         Validators.pattern('^[0-9]*$'),
       ],
     }),
+  });
+
+  discountForm = this.builder.group({
+    discountCode: this.builder.control(''),
   });
 
   discount = false;
@@ -133,13 +136,13 @@ export class FormComponent {
       return;
     }
 
-    this.reducePrice();
     this.isBlikVisible = true;
   }
 
   reducePrice() {
-    if (this.reservationForm.controls.discountCode.value === 'DUKE2000') {
+    if (this.discountForm.controls.discountCode.value === 'DUKE2000') {
       this.discount = true;
+      this.discountForm.disable();
     }
   }
 
@@ -180,7 +183,6 @@ export class FormComponent {
       userName: formData.userName,
       userLastName: formData.userLastName,
       userMail: formData.userMail,
-      discountCode: formData.discountCode,
       userPhoneNumber: formData.userPhoneNumber,
       userInvoiceForm: {
         userNIP: formData.userInvoiceForm.userNIP,
