@@ -27,6 +27,8 @@ import { CartComponent } from './reservation/cart/cart.component';
 import { AdminGuard } from './login/guards/admin.guard';
 import { UserGuard } from './login/guards/user.guard';
 import { NumbersDirective } from './shared/directive/numbers.directive';
+import { WatchlistComponent } from './movies/watchlist/watchlist.component';
+import { OrdersComponent } from './reservation/ordered-tickets/ordered-tickets.component';
 
 const routes: Routes = [
   {
@@ -42,7 +44,16 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module'),
     canMatch: [AdminGuard],
   },
-
+  {
+    path: 'watchlist',
+    component: WatchlistComponent,
+    canActivate: [UserGuard],
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    canActivate: [UserGuard],
+  },
   {
     path: '**',
     component: MoviesComponent,

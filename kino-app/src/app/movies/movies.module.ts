@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -50,16 +51,6 @@ import { WatchlistService } from './watchlist/watchlist.service';
         canActivate: [UserGuard],
       },
       {
-        path: 'watchlist',
-        component: WatchlistComponent,
-        canActivate: [UserGuard],
-      },
-      {
-        path: 'orders',
-        component: OrdersComponent,
-        canActivate: [UserGuard],
-      },
-      {
         path: 'reservation/:hour/:id/:dayIndex',
         component: ReservationComponent,
         canActivate: [UserGuard],
@@ -93,6 +84,7 @@ import { WatchlistService } from './watchlist/watchlist.service';
     MatIconModule,
     NumbersDirective,
     MatSliderModule,
+    MatButtonToggleModule,
   ],
   providers: [
     MoviesService,

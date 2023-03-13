@@ -1061,6 +1061,34 @@
       ],
       "userId": 1,
       "id": 23
+    },
+    {
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@gmail.com",
+      "userPhoneNumber": "900800700",
+      "userInvoiceForm": {
+        "userNIP": "1234567890",
+        "userStreet": "Losowa Ulica 5/15",
+        "userPostCode": "12-123",
+        "userCity": "Warszawa"
+      },
+      "paidAt": 1678666041582,
+      "ticket": [
+        {
+          "id": 0,
+          "title": "Duke Nukem: The Kino™",
+          "date": "2/3/2023",
+          "hour": "16:30",
+          "seat": {
+            "positon": "A8",
+            "type": "Normalny",
+            "price": 30
+          }
+        }
+      ],
+      "userId": 1,
+      "id": 24
     }
   ],
   "blik": [
@@ -1213,7 +1241,8 @@
         "F7",
         "G2",
         "F1",
-        "B7"
+        "B7",
+        "A8"
       ],
       "priceList": [
         {
